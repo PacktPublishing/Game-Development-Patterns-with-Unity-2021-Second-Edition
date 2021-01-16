@@ -2,4 +2,4 @@
 Game Development Patterns with Unity 2021 by Packt Publishing
 
 # Author
-David Baron
+David Baron (david@nerdtron.com)
