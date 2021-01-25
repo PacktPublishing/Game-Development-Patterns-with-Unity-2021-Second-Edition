@@ -1,19 +1,18 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ClientStrategy : MonoBehaviour
 {
     public Drone Drone;
-
-    // Start is called before the first frame update
+    private List<IManeuverBehaviour> _components = new List<IManeuverBehaviour>();
+    
     void Start()
     {
-        IManeuverBehaviour test = Drone.gameObject.AddComponent<BoppingManeuver>();
-        Drone.ApplyStrategy(test);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        _components.Add(Drone.gameObject.AddComponent<WeavingManeuver>());
+        _components.Add(Drone.gameObject.AddComponent<BoppingManeuver>());
+        _components.Add(Drone.gameObject.AddComponent<FallbackManeuver>());
         
+        int index = Random.Range(0, _components.Count);
+        Drone.ApplyStrategy(_components[index]);
     }
 }

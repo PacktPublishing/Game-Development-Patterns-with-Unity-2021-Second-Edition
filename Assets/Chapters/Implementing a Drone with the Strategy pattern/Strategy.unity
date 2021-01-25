@@ -359,8 +359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f057d4fbe3c9cc4ab088e6748e41895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 1
   MaxHeight: 5
+  WeavingDistance: 1.5
+  FallbackDistance: 10
 --- !u!1 &2045071118
 GameObject:
   m_ObjectHideFlags: 0

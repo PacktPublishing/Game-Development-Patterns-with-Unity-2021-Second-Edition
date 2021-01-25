@@ -1,21 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
+public class WeavingManeuver : MonoBehaviour, IManeuverBehaviour
 { 
     public void Maneuver(Drone drone)
     {
-        StartCoroutine(Bopple(drone));
+        StartCoroutine(Weave(drone));
     }
 
-    IEnumerator Bopple(Drone drone)
+    IEnumerator Weave(Drone drone)
     {
         float time;
         bool isReverse = false;
         float speed = drone.Speed;
         Vector3 startPosition = drone.transform.position;
         Vector3 endPosition = startPosition;
-        endPosition.y = drone.MaxHeight;
+        endPosition.x = drone.WeavingDistance;
         
         while (true)
         {

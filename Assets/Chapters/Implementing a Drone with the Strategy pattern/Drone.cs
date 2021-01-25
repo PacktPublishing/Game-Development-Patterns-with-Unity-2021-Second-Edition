@@ -4,7 +4,8 @@ public class Drone : MonoBehaviour
 {
     public float Speed;
     public float MaxHeight;
-
+    public float WeavingDistance;
+    public float FallbackDistance;
     private Vector3 _upPosition;
     private Vector3 _downPosition;
 
