@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Events;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Chapter.EventBus
 {
@@ -9,7 +10,6 @@ namespace Chapter.EventBus
 
         public override void Awake()
         {
-            base.Awake();
             Instance.Init();
         }
 
@@ -38,6 +38,8 @@ namespace Chapter.EventBus
 
         public static void Unsubscribe(RaceEventType eventType, UnityAction listener)
         {
+            Debug.Log("test");
+
             UnityEvent thisEvent = null;
             if (Instance._eventDictionary.TryGetValue(eventType, out thisEvent))
             {

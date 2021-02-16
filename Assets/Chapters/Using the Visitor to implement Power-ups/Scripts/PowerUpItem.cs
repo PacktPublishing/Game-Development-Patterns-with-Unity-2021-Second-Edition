@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Pattern.Visitor
 {
@@ -11,11 +12,7 @@ namespace Pattern.Visitor
         [Range(-50f, 100f)]
         [Tooltip("Shield boost between -50% and 100%.")]
         public float shieldBoost;
-    
-        [Range(-50f, 100f)]
-        [Tooltip("Turbo boost between -50% and 100%.")]
-        public float turboBoost;
-    
+
         [Range(-50f, 100f)]
         [Tooltip("Speed boost between -50% and 100%.")]
         public float speedBoost;
@@ -31,18 +28,25 @@ namespace Pattern.Visitor
         public void Visit(BikeShield bikeShield)
         {
             bikeShield.strength += bikeShield.strength * shieldBoost / 100;
-        }
+            
+            Debug.Log("Shield Strenght: " + bikeShield.strength);
+        } 
     
         public void Visit(BikeWeapon bikeWeapon)
         {
             bikeWeapon.range += weaponRangeBoost;
-            bikeWeapon.strength = bikeWeapon.strength * weaponStrengthBoost / 100;
+            bikeWeapon.strength += bikeWeapon.strength * weaponStrengthBoost / 100;
+            
+            Debug.Log("Weapon Range: " + bikeWeapon.range);
+            Debug.Log("Weapon Strenght: " + bikeWeapon.strength);
         }
     
         public void Visit(BikeEngine bikeEngine)
         {
             bikeEngine.NormalSpeed += bikeEngine.NormalSpeed * speedBoost / 100;
-            bikeEngine.TurboSpeed += bikeEngine.TurboSpeed * turboBoost / 100;
+
+            Debug.Log("Default Speed: " + bikeEngine.NormalSpeed);
+            Debug.Log("Turbo Speed: " + bikeEngine.TurboSpeed);
         }
     }
 }

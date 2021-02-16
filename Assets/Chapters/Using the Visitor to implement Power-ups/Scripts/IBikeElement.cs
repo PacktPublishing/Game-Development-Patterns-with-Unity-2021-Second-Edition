@@ -1,6 +1,6 @@
 ﻿namespace Pattern.Visitor
 {
-    public interface IVisitable
+    public interface IBikeElement
     { 
         void Accept(IVisitor visitor);
     }

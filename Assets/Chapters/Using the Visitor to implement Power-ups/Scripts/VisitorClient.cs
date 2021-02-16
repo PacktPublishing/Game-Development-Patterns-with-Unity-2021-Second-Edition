@@ -6,17 +6,21 @@ namespace Pattern.Visitor
     {
         public PowerUpItem enginePowerUp;
         public PowerUpItem shieldPowerUp;
-        public PowerUpItem kamikazePowerUp;
+        public BikeController bikeController; 
 
-        void Start()
+        void Update()
         {
-            BikeShield shield = gameObject.AddComponent<BikeShield>();
-        
-            shield.Accept(shieldPowerUp);
-            Debug.Log(shield.strength.ToString());
-        
-            shield.Accept(enginePowerUp);
-            Debug.Log(shield.strength.ToString());
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Debug.Log("Applying the shield power-up");
+                bikeController.Accept(shieldPowerUp);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Applying the engine power-up");
+                bikeController.Accept(enginePowerUp);
+            }
         }
     }
 }

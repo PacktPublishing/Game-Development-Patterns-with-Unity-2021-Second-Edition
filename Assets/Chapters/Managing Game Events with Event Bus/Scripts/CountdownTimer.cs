@@ -15,7 +15,7 @@ namespace Chapter.EventBus
 
         void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StartCount);
+           if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StartCount);
         }
 
         public void StartCount()

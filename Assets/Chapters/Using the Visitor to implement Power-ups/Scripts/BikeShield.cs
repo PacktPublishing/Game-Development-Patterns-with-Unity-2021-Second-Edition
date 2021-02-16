@@ -2,13 +2,14 @@
 
 namespace Pattern.Visitor
 {
-    public class BikeShield : MonoBehaviour, IVisitable
+    public class BikeShield : MonoBehaviour, IBikeElement
     { 
         public float strength = 100.0f;
 
-        public void Damage(float damage)
+        public float Damage(float damage)
         {
             strength -= damage;
+            return strength;
         }
     
         public void Accept(IVisitor visitor)

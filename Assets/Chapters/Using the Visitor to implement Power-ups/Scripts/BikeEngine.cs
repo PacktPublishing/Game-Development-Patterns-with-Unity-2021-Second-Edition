@@ -2,7 +2,7 @@
 
 namespace Pattern.Visitor
 {
-    public class BikeEngine : MonoBehaviour, IVisitable
+    public class BikeEngine : MonoBehaviour, IBikeElement
     {
         private bool _isTurboOn;
     
@@ -26,9 +26,7 @@ namespace Pattern.Visitor
         {
             get
             {
-                if (_isTurboOn)
-                    return _turboSpeed;
-            
+                if (_isTurboOn) return _turboSpeed;
                 return _normalSpeed;
             }
         }

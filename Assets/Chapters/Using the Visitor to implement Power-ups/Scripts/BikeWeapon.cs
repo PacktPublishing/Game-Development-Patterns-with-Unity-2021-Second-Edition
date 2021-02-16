@@ -2,7 +2,7 @@
 
 namespace Pattern.Visitor
 {
-    public class BikeWeapon : MonoBehaviour, IVisitable
+    public class BikeWeapon : MonoBehaviour, IBikeElement
     {
         public int range = 5; // Units
         public float strength = 25; // Percentage 

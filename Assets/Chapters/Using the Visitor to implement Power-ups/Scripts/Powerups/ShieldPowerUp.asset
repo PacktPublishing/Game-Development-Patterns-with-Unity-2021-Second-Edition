@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b768454e09040884bb57074aafe2591e, type: 3}
-  m_Name: SpeedPowerUp
+  m_Name: ShieldPowerUp
   m_EditorClassIdentifier: 
-  title: Speed
-  description: 
-  shieldBoost: 100
-  turboBoost: 27.6
-  speedBoost: 0
+  title: Shield
+  description: Boost shield by 25% / Reduce speed by 5%
+  shieldBoost: 25
+  speedBoost: -5
   weaponRangeBoost: 0
-  weaponStrengthBoost: -50
+  weaponStrengthBoost: 0

@@ -16,8 +16,8 @@ namespace Chapter.EventBus
 
         void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.START, DisplayRaceTimer);
-            RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.START, DisplayRaceTimer);
+            if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
         }
 
         private void DisplayPauseMenu()
