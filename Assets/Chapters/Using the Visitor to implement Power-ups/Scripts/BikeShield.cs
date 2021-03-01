@@ -15,6 +15,8 @@ namespace Pattern.Visitor
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
+            
+            Debug.Log("New Shield Strength: " + strength);
         }
     }
 }

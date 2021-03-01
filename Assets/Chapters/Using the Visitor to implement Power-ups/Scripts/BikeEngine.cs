@@ -4,33 +4,20 @@ namespace Pattern.Visitor
 {
     public class BikeEngine : MonoBehaviour, IBikeElement
     {
+        public float turboBoost = 25.0f; // mph  
+        
         private bool _isTurboOn;
-    
-        // Default settings
-        private float _normalSpeed = 500.0f; // 500 kmh
-        private float _turboSpeed = 700.0f; // 700 kmh
-    
-        public float NormalSpeed
-        {
-            get => _normalSpeed;
-            set => _normalSpeed = value;
-        }
-    
-        public float TurboSpeed
-        {
-            get => _turboSpeed;
-            set => _turboSpeed = value;
-        }
+        private float _defaultSpeed = 300.0f; // mph
 
         public float CurrentSpeed
         {
             get
             {
-                if (_isTurboOn) return _turboSpeed;
-                return _normalSpeed;
+                if (_isTurboOn) return _defaultSpeed + turboBoost;
+                return _defaultSpeed;
             }
         }
-
+        
         public void ToggleTurbo()
         {
             _isTurboOn = !_isTurboOn;
@@ -39,6 +26,8 @@ namespace Pattern.Visitor
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
+            
+            Debug.Log("Turbo Boost: " + turboBoost);
         }
     }
 }

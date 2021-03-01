@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b768454e09040884bb57074aafe2591e, type: 3}
-  m_Name: SpeedPowerUp
+  m_Name: EnginePowerUp
   m_EditorClassIdentifier: 
-  title: Speed
-  description: Gain 25% speed boost but lose 5% shield power
-  shieldBoost: -5
-  turboBoost: 0
-  speedBoost: 25
+  title: Engine
+  description: Gain 15% speed boost but lose 5% shield power
+  pickupPrefab: {fileID: 0}
+  shieldBoost: 0
+  turboBoost: 25
   weaponRangeBoost: 0
   weaponStrengthBoost: 0

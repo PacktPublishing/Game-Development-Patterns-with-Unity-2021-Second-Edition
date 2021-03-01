@@ -15,6 +15,9 @@ namespace Pattern.Visitor
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
+            
+            Debug.Log("New Weapon Range: " + range);
+            Debug.Log("New Weapon Strength: " + strength);
         }
     }
 }
