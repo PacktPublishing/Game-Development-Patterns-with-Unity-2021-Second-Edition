@@ -4,7 +4,7 @@ namespace Pattern.Visitor
 {
     public class BikeShield : MonoBehaviour, IBikeElement
     { 
-        public float strength = 100.0f;
+        public float strength = 100.0f; // percentage
 
         public float Damage(float damage)
         {

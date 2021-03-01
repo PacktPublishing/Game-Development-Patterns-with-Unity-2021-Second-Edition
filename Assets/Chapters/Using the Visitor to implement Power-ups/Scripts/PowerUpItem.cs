@@ -8,37 +8,43 @@ namespace Pattern.Visitor
         public string title;
         public string description;
         public GameObject pickupPrefab;
-    
-        [Range(-50f, 100f)]
-        [Tooltip("Shield boost between -50% and 100%.")]
-        public float shieldBoost;
+        
+        [Tooltip("Heal the shield fully")]
+        public bool healShield;
 
-        [Range(0.0f, 100f)]
-        [Tooltip("Add to the turbo boost speed up to 100/mph.")]
+        [Range(-50.0f, 50f)]
+        [Tooltip("Turbo boost between -50/mph and 50/mph")]
         public float turboBoost;
     
-        [Range(0, 25)]
-        [Tooltip("Weapon range boost between 0 unit and 25 units.")]
+        [Range(-25, 25)]
+        [Tooltip("Weapon range boost between -25 unit and 25 units.")]
         public int weaponRangeBoost;
 
-        [Range(-50f, 100f)]
-        [Tooltip("Weapon strength boost between -50% and 100%.")]
+        [Range(-50f, 50f)]
+        [Tooltip("Weapon strength boost between -50% and 50%.")]
         public float weaponStrengthBoost;
 
         public void Visit(BikeShield bikeShield)
         {
-            bikeShield.strength += bikeShield.strength * shieldBoost / 100;
+            if (healShield) bikeShield.strength = 100.0f; // percentage
         } 
     
         public void Visit(BikeWeapon bikeWeapon)
         {
             bikeWeapon.range += weaponRangeBoost;
-            bikeWeapon.strength += bikeWeapon.strength * weaponStrengthBoost / 100;
+            bikeWeapon.strength += bikeWeapon.strength * weaponStrengthBoost / 100; // TODO: Value needs to be rounded
         }
     
         public void Visit(BikeEngine bikeEngine)
         {
-            bikeEngine.turboBoost += turboBoost;
+            if ((bikeEngine.turboBoost + turboBoost) < 0.0f)
+            {
+                bikeEngine.turboBoost = 0.0f;
+            }
+            else
+            {
+                bikeEngine.turboBoost += turboBoost;
+            }
         }
     }
 }

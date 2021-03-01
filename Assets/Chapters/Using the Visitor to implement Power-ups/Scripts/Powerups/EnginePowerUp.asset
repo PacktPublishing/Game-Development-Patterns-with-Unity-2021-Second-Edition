@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnginePowerUp
   m_EditorClassIdentifier: 
   title: Engine
-  description: Gain 15% speed boost but lose 5% shield power
+  description: Boost turbo by 25%
   pickupPrefab: {fileID: 0}
-  shieldBoost: 0
+  healShield: 0
   turboBoost: 25
   weaponRangeBoost: 0
   weaponStrengthBoost: 0

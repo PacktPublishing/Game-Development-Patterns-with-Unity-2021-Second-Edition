@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ShieldPowerUp
   m_EditorClassIdentifier: 
   title: Shield
-  description: Boost shield by 25% / Reduce speed by 5%
-  shieldBoost: 25
-  speedBoost: -5
+  description: Fully heal shield
+  pickupPrefab: {fileID: 0}
+  healShield: 1
+  turboBoost: 0
   weaponRangeBoost: 0
   weaponStrengthBoost: 0
