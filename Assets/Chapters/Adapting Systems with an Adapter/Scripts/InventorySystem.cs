@@ -4,6 +4,8 @@ namespace Chapter.Adapter
 {
     public class InventorySystem
     {
+        // ....
+
         public void AddItem(int itemID)
         {
             Debug.Log("Adding item to the cloud");
@@ -13,5 +15,7 @@ namespace Chapter.Adapter
         {
             Debug.Log("Removing item from the cloud");
         }
+
+        // ....
     }
 }
