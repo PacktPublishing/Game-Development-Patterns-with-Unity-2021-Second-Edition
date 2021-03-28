@@ -1,4 +1,7 @@
-public interface IManeuverBehaviour
+namespace Chapter.Strategy
 {
-    void Maneuver(Drone drone);
+    public interface IManeuverBehaviour
+    {
+        void Maneuver(Drone drone);
+    }
 }

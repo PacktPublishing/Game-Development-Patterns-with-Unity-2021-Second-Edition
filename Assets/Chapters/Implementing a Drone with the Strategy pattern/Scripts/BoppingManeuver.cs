@@ -1,37 +1,40 @@
 using UnityEngine;
 using System.Collections;
 
-public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
-{ 
-    public void Maneuver(Drone drone)
+namespace Chapter.Strategy
+{
+    public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
     {
-        StartCoroutine(Bopple(drone));
-    }
-
-    IEnumerator Bopple(Drone drone)
-    {
-        float time;
-        bool isReverse = false;
-        float speed = drone.Speed;
-        Vector3 startPosition = drone.transform.position;
-        Vector3 endPosition = startPosition;
-        endPosition.y = drone.MaxHeight;
-        
-        while (true)
+        public void Maneuver(Drone drone)
         {
-            time = 0;
-            Vector3 start = drone.transform.position;
-            Vector3 end = (isReverse) ? startPosition : endPosition;
+            StartCoroutine(Bopple(drone));
+        }
 
-            while (time < speed)
+        IEnumerator Bopple(Drone drone)
+        {
+            float time;
+            bool isReverse = false;
+            float speed = drone.Speed;
+            Vector3 startPosition = drone.transform.position;
+            Vector3 endPosition = startPosition;
+            endPosition.y = drone.MaxHeight;
+
+            while (true)
             {
-                drone.transform.position = Vector3.Lerp(start, end, time / speed);
-                time += Time.deltaTime;
-                yield return null;
-            }
+                time = 0;
+                Vector3 start = drone.transform.position;
+                Vector3 end = (isReverse) ? startPosition : endPosition;
 
-            yield return new WaitForSeconds(1);
-            isReverse = !isReverse;
+                while (time < speed)
+                {
+                    drone.transform.position = Vector3.Lerp(start, end, time / speed);
+                    time += Time.deltaTime;
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(1);
+                isReverse = !isReverse;
+            }
         }
     }
 }

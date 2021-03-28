@@ -1,37 +1,40 @@
 using UnityEngine;
 using System.Collections;
 
-public class WeavingManeuver : MonoBehaviour, IManeuverBehaviour
-{ 
-    public void Maneuver(Drone drone)
+namespace Chapter.Strategy
+{
+    public class WeavingManeuver : MonoBehaviour, IManeuverBehaviour
     {
-        StartCoroutine(Weave(drone));
-    }
-
-    IEnumerator Weave(Drone drone)
-    {
-        float time;
-        bool isReverse = false;
-        float speed = drone.Speed;
-        Vector3 startPosition = drone.transform.position;
-        Vector3 endPosition = startPosition;
-        endPosition.x = drone.WeavingDistance;
-        
-        while (true)
+        public void Maneuver(Drone drone)
         {
-            time = 0;
-            Vector3 start = drone.transform.position;
-            Vector3 end = (isReverse) ? startPosition : endPosition;
+            StartCoroutine(Weave(drone));
+        }
 
-            while (time < speed)
+        IEnumerator Weave(Drone drone)
+        {
+            float time;
+            bool isReverse = false;
+            float speed = drone.Speed;
+            Vector3 startPosition = drone.transform.position;
+            Vector3 endPosition = startPosition;
+            endPosition.x = drone.WeavingDistance;
+
+            while (true)
             {
-                drone.transform.position = Vector3.Lerp(start, end, time / speed);
-                time += Time.deltaTime;
-                yield return null;
-            }
+                time = 0;
+                Vector3 start = drone.transform.position;
+                Vector3 end = (isReverse) ? startPosition : endPosition;
 
-            yield return new WaitForSeconds(1);
-            isReverse = !isReverse;
+                while (time < speed)
+                {
+                    drone.transform.position = Vector3.Lerp(start, end, time / speed);
+                    time += Time.deltaTime;
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(1);
+                isReverse = !isReverse;
+            }
         }
     }
 }
