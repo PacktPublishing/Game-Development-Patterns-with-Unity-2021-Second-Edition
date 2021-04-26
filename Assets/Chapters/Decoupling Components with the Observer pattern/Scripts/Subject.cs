@@ -1,24 +1,28 @@
+using UnityEngine;
 using System.Collections;
 
-public abstract class Subject
+namespace Chapter.Observer
 {
-    private ArrayList observers = new ArrayList();
-
-    public void Attach(IObserver o)
+    public abstract class Subject : MonoBehaviour
     {
-        observers.Add(o);
-    }
+        private ArrayList observers = new ArrayList();
 
-    public void Detach(IObserver o)
-    {
-        observers.Remove(o);
-    }
-
-    public void Notify()
-    {
-        foreach (IObserver o in observers)
+        public void Attach(Observer o)
         {
-            o.Update();
+            observers.Add(o);
+        }
+
+        public void Detach(Observer o)
+        {
+            observers.Remove(o);
+        }
+
+        public void Notify()
+        {
+            foreach (Observer o in observers)
+            {
+                o.Notify(this);
+            }
         }
     }
 }
