@@ -9,8 +9,10 @@ namespace Chapter.Observer
         
         void OnGUI()
         {
+            GUILayout.BeginArea (new Rect (50,50,100,100));
+           
             GUILayout.BeginHorizontal ("box");
-            GUILayout.Label ("Health: " + _currentHealth);        
+            GUILayout.Label ("Health: " + _currentHealth);
             GUILayout.EndHorizontal ();
 
             if (_isTurboOn)
@@ -19,6 +21,15 @@ namespace Chapter.Observer
                 GUILayout.Label("Turbo Activated!");
                 GUILayout.EndHorizontal();
             }
+            
+            if (_currentHealth <= 50.0f)
+            {
+                GUILayout.BeginHorizontal("box");
+                GUILayout.Label("WARNING: Low Health");
+                GUILayout.EndHorizontal();
+            }
+            
+            GUILayout.EndArea ();
         }
 
         public override void Notify(Subject subject)
