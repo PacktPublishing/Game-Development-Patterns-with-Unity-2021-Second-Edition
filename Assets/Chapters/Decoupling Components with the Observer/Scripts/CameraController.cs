@@ -17,7 +17,8 @@ namespace Chapter.Observer
         {
             if (_isTurboOn)
             {
-                gameObject.transform.localPosition = _initialPosition + Random.insideUnitSphere * _shakeMagnitude;
+                gameObject.transform.localPosition = 
+                    _initialPosition + Random.insideUnitSphere * _shakeMagnitude;
             }
             else
             {
@@ -28,10 +29,7 @@ namespace Chapter.Observer
         public override void Notify(Subject subject)
         {
             BikeController controller = subject.GetComponent<BikeController>();
-            if (controller)
-            {
-                _isTurboOn = controller.IsTurboOn;
-            }
+            if (controller) _isTurboOn = controller.IsTurboOn;
         }
     }
 }
