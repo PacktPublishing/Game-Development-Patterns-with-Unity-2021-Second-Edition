@@ -17,7 +17,7 @@ namespace Chapter.Observer
             _observers.Remove(observer);
         }
 
-        public void Notify()
+        public void NotifyObservers()
         {
             foreach (Observer observer in _observers)
             {

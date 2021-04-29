@@ -15,7 +15,8 @@ namespace Chapter.Observer
         void Awake()
         {
             _hudController = gameObject.AddComponent<HUDController>();
-            _cameraController = (CameraController) FindObjectOfType(typeof(CameraController));
+            _cameraController = 
+                (CameraController) FindObjectOfType(typeof(CameraController));
         }
 
         private void Start()
@@ -38,19 +39,19 @@ namespace Chapter.Observer
         private void StartEngine()
         {
             _isEngineOn = true;
-            Notify();
+            NotifyObservers();
         }
         
         public void ToggleTurbo()
         {
             IsTurboOn = !IsTurboOn;
-            Notify();
+            NotifyObservers();
         }
         
         public void Damage(float amount)
         {
             health -= amount;
-            Notify();
+            NotifyObservers();
             
             if (health < 0) Destroy(gameObject);
         }
