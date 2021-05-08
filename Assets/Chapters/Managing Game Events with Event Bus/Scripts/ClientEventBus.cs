@@ -6,17 +6,17 @@ namespace Chapter.EventBus
     {
         private void Start()
         {
+            gameObject.AddComponent<HUDController>();
             gameObject.AddComponent<CountdownTimer>();
             gameObject.AddComponent<BikeController>();
-            gameObject.AddComponent<HUDController>();
         }
 
-        void Update()
+        void OnGUI()
         {
-            if (Input.GetKeyDown("s"))
+            if (GUILayout.Button("Start Countdown"))
                 RaceEventBus.Publish(RaceEventType.COUNTDOWN);
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (GUILayout.Button("Pause Game"))
                 RaceEventBus.Publish(RaceEventType.PAUSE);
         }
     }

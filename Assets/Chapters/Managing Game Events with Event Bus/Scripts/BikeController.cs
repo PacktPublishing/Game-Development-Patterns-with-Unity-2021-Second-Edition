@@ -12,8 +12,8 @@ namespace Chapter.EventBus
 
         void OnDisable()
         {
-            if (RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.START, ReleaseBike);
-            if (RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.PAUSE, PauseBike);
+            RaceEventBus.Unsubscribe(RaceEventType.START, ReleaseBike);
+            RaceEventBus.Unsubscribe(RaceEventType.PAUSE, PauseBike);
         }
 
         public void ReleaseBike()

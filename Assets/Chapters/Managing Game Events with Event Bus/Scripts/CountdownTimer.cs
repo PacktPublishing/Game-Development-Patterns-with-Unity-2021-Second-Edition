@@ -6,7 +6,7 @@ namespace Chapter.EventBus
     public class CountdownTimer : MonoBehaviour
     {
         [SerializeField]
-        private float _duration = 5.0f;
+        private float duration = 5.0f;
 
         void OnEnable()
         {
@@ -15,7 +15,7 @@ namespace Chapter.EventBus
 
         void OnDisable()
         {
-           if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StartCount);
+            RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StartCount);
         }
 
         public void StartCount()
@@ -25,15 +25,19 @@ namespace Chapter.EventBus
 
         private IEnumerator StartCountdown()
         {
-            while (_duration > 0)
+            while (duration > 0)
             {
-                Debug.Log(_duration.ToString());
                 yield return new WaitForSeconds(1f);
-                _duration--;
+                duration--;
             }
 
             RaceEventBus.Publish(RaceEventType.START);
-            Destroy(this);
+        }
+        
+        void OnGUI()
+        {
+            GUI.color = Color.blue;
+            GUI.Label(new Rect(125, 0, 100, 20), "COUNTDOWN: " + duration);
         }
     }
 }

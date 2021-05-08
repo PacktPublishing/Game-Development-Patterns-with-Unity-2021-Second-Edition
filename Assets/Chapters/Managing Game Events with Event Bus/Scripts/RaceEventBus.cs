@@ -1,30 +1,17 @@
 ﻿using UnityEngine.Events;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Chapter.EventBus
 {
-    public class RaceEventBus : Singleton<RaceEventBus>
+    public class RaceEventBus
     {
-        private Dictionary<RaceEventType, UnityEvent> _eventDictionary;
-
-        public override void Awake()
-        {
-            Instance.Init();
-        }
-
-        private void Init()
-        {
-            if (Instance._eventDictionary == null)
-            {
-                Instance._eventDictionary = new Dictionary<RaceEventType, UnityEvent>();
-            }
-        }
+        private static readonly IDictionary<RaceEventType, UnityEvent> Events =
+            new Dictionary<RaceEventType, UnityEvent>();
 
         public static void Subscribe(RaceEventType eventType, UnityAction listener)
         {
-            UnityEvent thisEvent = null;
-            if (Instance._eventDictionary.TryGetValue(eventType, out thisEvent))
+            UnityEvent thisEvent;
+            if (Events.TryGetValue(eventType, out thisEvent))
             {
                 thisEvent.AddListener(listener);
             }
@@ -32,16 +19,14 @@ namespace Chapter.EventBus
             {
                 thisEvent = new UnityEvent();
                 thisEvent.AddListener(listener);
-                Instance._eventDictionary.Add(eventType, thisEvent);
+                Events.Add(eventType, thisEvent);
             }
         }
 
         public static void Unsubscribe(RaceEventType eventType, UnityAction listener)
         {
-            Debug.Log("test");
-
-            UnityEvent thisEvent = null;
-            if (Instance._eventDictionary.TryGetValue(eventType, out thisEvent))
+            UnityEvent thisEvent;
+            if (Events.TryGetValue(eventType, out thisEvent))
             {
                 thisEvent.RemoveListener(listener);
             }
@@ -49,8 +34,8 @@ namespace Chapter.EventBus
 
         public static void Publish(RaceEventType eventType)
         {
-            UnityEvent thisEvent = null;
-            if (Instance._eventDictionary.TryGetValue(eventType, out thisEvent))
+            UnityEvent thisEvent;
+            if (Events.TryGetValue(eventType, out thisEvent))
             {
                 thisEvent.Invoke();
             }

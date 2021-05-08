@@ -4,46 +4,34 @@ namespace Chapter.EventBus
 {
     public class HUDController : MonoBehaviour
     {
-        private bool isRacePaused;
-        private bool isRaceStarted;
-        private float _currentTime;
+        private string _raceStatus = "N/A";
 
         void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.START, DisplayRaceTimer);
             RaceEventBus.Subscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            RaceEventBus.Subscribe(RaceEventType.START, DisplayStartMenu);
         }
 
         void OnDisable()
         {
-            if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.START, DisplayRaceTimer);
-            if(RaceEventBus.Instance) RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            RaceEventBus.Unsubscribe(RaceEventType.START, DisplayStartMenu);
         }
 
         private void DisplayPauseMenu()
         {
-            isRacePaused = !isRacePaused;
+            _raceStatus = "GAME PAUSED";
         }
 
-        private void DisplayRaceTimer()
+        private void DisplayStartMenu()
         {
-            isRaceStarted = true;
-        }
-
-        void FixedUpdate()
-        {
-            if (isRaceStarted)
-            {
-                _currentTime += Time.deltaTime;
-            }
+            _raceStatus = "GAME STARTED";
         }
 
         void OnGUI()
         {
-            GUI.color = Color.black;
-            if (isRacePaused) GUI.Label(new Rect(10, 10, 500, 20), "The race is paused.");
-            if (isRaceStarted && !isRacePaused) GUI.Label(new Rect(10, 10, 500, 20), _currentTime.ToString());
+            GUI.color = Color.red;
+            GUI.Label(new Rect(125, 30, 500, 20), _raceStatus);
         }
     }
 }
-
