@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace Chapter.Decorator
 {
-    [CreateAssetMenu(fileName = "Weapon Attachment", menuName = "ScriptableObjects/New Weapon Attachment", order = 1)]
+    [CreateAssetMenu(fileName = "NewAttachment", menuName = "Weapon/Attachment", order = 2)]
     public class WeaponAttachment : ScriptableObject
     {
         public float range;
-        public float fireTime;
+        public float duration;
         public float strength;
         public float cooldown;
+        public string attachmentName;
         public GameObject attachmentPrefab;
         public string attachmentDescription;
     }
