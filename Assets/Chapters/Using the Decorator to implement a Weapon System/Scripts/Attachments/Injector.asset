@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Injector
   m_EditorClassIdentifier: 
   range: 0
-  duration: 0
   strength: 20
+  duration: 0
   cooldown: 0
   attachmentName: Injector
   attachmentPrefab: {fileID: 0}
-  attachmentDescription: 
+  attachmentDescription: Plasma injector boots the strength of the weapon

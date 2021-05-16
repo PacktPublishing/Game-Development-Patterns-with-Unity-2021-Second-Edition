@@ -18,4 +18,4 @@ MonoBehaviour:
   cooldown: -0.3
   weaponName: Default
   weaponPrefab: {fileID: 0}
-  weaponDescription: 
+  weaponDescription: Default weapon

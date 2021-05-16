@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Stabilizer
   m_EditorClassIdentifier: 
   range: 20
-  duration: 0
   strength: 0
+  duration: 0
   cooldown: 0
   attachmentName: Stabilizer
   attachmentPrefab: {fileID: 0}
-  attachmentDescription: 
+  attachmentDescription: Stabilize the weapon mechanism and enhance it's range
