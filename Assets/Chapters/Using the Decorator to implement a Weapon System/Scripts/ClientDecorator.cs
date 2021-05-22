@@ -13,8 +13,14 @@ namespace Chapter.Decorator
 
         void OnGUI()
         {
-            if (GUILayout.Button("Fire"))
+            if (GUILayout.Button("Fire Weapon"))
                 _bikeWeapon.Fire();
+            
+            if (GUILayout.Button("Decorate Weapon"))
+                _bikeWeapon.Decorate();
+            
+            if (GUILayout.Button("Reset Weapon"))
+                _bikeWeapon.Reset();
         }
     }
 }

@@ -12,7 +12,8 @@ namespace Chapter.ObjectPool
             get
             {
                 if (_pool == null)
-                    _pool = new ObjectPool<Drone>(CreatedPooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, 5, maxPoolSize);
+                    _pool = 
+                        new ObjectPool<Drone>(CreatedPooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, 5, maxPoolSize);
                 return _pool;
             }
         }
@@ -21,7 +22,6 @@ namespace Chapter.ObjectPool
 
         private Drone CreatedPooledItem()
         {
-            // We could load a prefab instead
             var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Drone drone = go.AddComponent<Drone>();
             
@@ -52,7 +52,10 @@ namespace Chapter.ObjectPool
             for (int i = 0; i < amount; ++i)
             {
                 var drone = Pool.Get();
-                drone.transform.position = Random.insideUnitSphere * 10;
+                
+                drone.transform.position = 
+                    Random.insideUnitSphere * 10;
+                
                 drone.Attack();
             }
         }

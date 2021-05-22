@@ -13,22 +13,22 @@ namespace Chapter.Decorator
 
         public float Range
         {
-            get { return _decoratedWeapon.Range + _attachment.range; }
+            get { return _decoratedWeapon.Range + _attachment.Range; }
         }
 
         public float Strength
         {
-            get { return _decoratedWeapon.Strength + _attachment.strength; }
+            get { return _decoratedWeapon.Strength + _attachment.Strength; }
         }
 
         public float Duration
         {
-            get { return _decoratedWeapon.Duration + _attachment.duration; }
+            get { return _decoratedWeapon.Duration + _attachment.Duration; }
         }
 
         public float Cooldown
         {
-            get { return _decoratedWeapon.Cooldown + _attachment.cooldown; }
+            get { return _decoratedWeapon.Cooldown + _attachment.Cooldown; }
         }
     }
 }
