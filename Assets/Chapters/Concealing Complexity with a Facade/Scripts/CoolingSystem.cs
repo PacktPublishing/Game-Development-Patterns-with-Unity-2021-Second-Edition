@@ -1,30 +1,49 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Chapter.Facade
 {
     public class CoolingSystem : MonoBehaviour
     {
-        public bool isCoolingOn;
-        public float maxTemperature;
-        public float minTemperature;
-        
-        private void OnEnable()
+        public Engine engine;
+        public IEnumerator coolEngine;
+       
+        private bool _isPaused;
+
+        void Start()
         {
-            EngineFacade.OnTurnOn += ToggleCooling;
-            EngineFacade.OnTurnOff += ToggleCooling;
+            coolEngine = CoolEngine();
         }
 
-        private void OnDisable()
+        public void ToggleCoolingPausing()
         {
-            EngineFacade.OnTurnOn -= ToggleCooling;
-            EngineFacade.OnTurnOff -= ToggleCooling;
+            _isPaused = !_isPaused;
         }
-        
-        public void ToggleCooling()
+
+        IEnumerator CoolEngine()
         {
-            isCoolingOn = !isCoolingOn;
-            Debug.Log("The cooling system is turned on? " + isCoolingOn);
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+
+                if (!_isPaused)
+                {
+                    if (engine.currentTemp > engine.minTemp)
+                        engine.currentTemp -= engine.tempRate;
+
+                    if (engine.currentTemp < engine.minTemp)
+                        engine.currentTemp += engine.tempRate;
+                }
+                else
+                {
+                    engine.currentTemp += engine.tempRate;
+                }
+                
+                if (engine.currentTemp > engine.maxTemp)
+                    engine.TurnOff();
+
+                Debug.Log("Temp: " + engine.currentTemp);
+            }
         }
     }
 }
-

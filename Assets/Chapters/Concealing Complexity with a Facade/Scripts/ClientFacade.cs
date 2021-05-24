@@ -4,24 +4,25 @@ namespace Chapter.Facade
 {
     public class ClientFacade : MonoBehaviour
     {
-        private EngineFacade _engineFacade;
+        private Engine _engine;
     
         void Start()
         {
-            _engineFacade = gameObject.AddComponent<EngineFacade>();
+            _engine = gameObject.AddComponent<Engine>();
         }
-    
-        void Update()
+        
+        void OnGUI()
         {
-            if (Input.GetKeyDown(KeyCode.S))
-                _engineFacade.TurnOn();
+            GUILayout.Label("Output in console");
+
+            if (GUILayout.Button("Start Engine"))
+                _engine.TurnOn();
             
-            if (Input.GetKeyDown(KeyCode.D))
-                _engineFacade.TurnOff();
+            if (GUILayout.Button("Stop Engine"))
+                _engine.TurnOff();
             
-            if (Input.GetKeyDown(KeyCode.T))
-                _engineFacade.ToggleTurbo();
+            if (GUILayout.Button("Toggle Turbo"))
+                _engine.ToggleTurbo();
         }
     }
 }
-

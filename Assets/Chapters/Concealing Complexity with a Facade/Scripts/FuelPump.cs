@@ -1,42 +1,33 @@
-using System;
 using UnityEngine;
+using System.Collections;
 
 namespace Chapter.Facade
 {
     public class FuelPump : MonoBehaviour
     {
-        public float fuelAmount
+        public Engine engine;
+        public IEnumerator burnFuel;
+
+        void Start()
         {
-            get;
-            private set;
+            burnFuel = BurnFuel();
         }
-
-        public delegate void TankEmpty();
-        public static event TankEmpty OnTankEmpty;
-
-        private bool _isPumpOn;
-
-        private void OnEnable()
+        
+        IEnumerator BurnFuel()
         {
-            EngineFacade.OnTurnOn += TogglePump;
-            EngineFacade.OnTurnOff += TogglePump;
-        }
-
-        private void OnDisable()
-        {
-            EngineFacade.OnTurnOn -= TogglePump;
-            EngineFacade.OnTurnOff -= TogglePump;
-        }
-
-        public void AddFuel(float Amount)
-        {
-            if (!_isPumpOn) fuelAmount = Amount;
-        }
-
-        public void TogglePump()
-        {
-            _isPumpOn = !_isPumpOn;
-            Debug.Log("The fuel pump is turned on? " + _isPumpOn);
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+                engine.fuelAmount -= engine.burnRate;
+                
+                Debug.Log("Fuel: " + engine.fuelAmount);
+                
+                if (engine.fuelAmount <= 0.0f)
+                {
+                    engine.TurnOff();
+                    yield return 0;
+                }
+            }
         }
     } 
 }

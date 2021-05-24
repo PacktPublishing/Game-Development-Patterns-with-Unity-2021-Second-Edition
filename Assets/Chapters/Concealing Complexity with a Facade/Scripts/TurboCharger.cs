@@ -1,36 +1,33 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Chapter.Facade
 {
     public class TurboCharger : MonoBehaviour
     {
-        public float boostAmount;
-        public float boostDuration;
+        public Engine engine;
+        
+        private bool _isTurboOn;
+        private CoolingSystem _coolingSystem;
 
-        private bool isTurboOn;
-
-        private void OnEnable()
+        public void ToggleTurbo(CoolingSystem coolingSystem)
         {
-            EngineFacade.OnTogglingTurbo += ToggleTurbo;
-            EngineFacade.OnTurnOff += StopTurbo;
+            _coolingSystem = coolingSystem;
+            if (!_isTurboOn)
+                StartCoroutine(TurboCharge());
         }
-
-        private void OnDisable()
+        
+        IEnumerator TurboCharge()
         {
-            EngineFacade.OnTogglingTurbo -= ToggleTurbo;
-            EngineFacade.OnTurnOff -= StopTurbo;
-        }
-
-        private void StopTurbo()
-        {
-            isTurboOn = false;
-            Debug.Log("Turbo charge stopped");
-        }
-
-        private void ToggleTurbo()
-        {
-            isTurboOn = !isTurboOn;
-            Debug.Log("The turbo charge is turned on? " + isTurboOn);
+            _isTurboOn = true;
+            _coolingSystem.ToggleCoolingPausing();
+            Debug.Log("Turbo started");
+            
+            yield return new WaitForSeconds(engine.turboDuration);
+            
+            _isTurboOn = false;
+            _coolingSystem.ToggleCoolingPausing();
+            Debug.Log("Turbo stopped");
         }
     }
 }
