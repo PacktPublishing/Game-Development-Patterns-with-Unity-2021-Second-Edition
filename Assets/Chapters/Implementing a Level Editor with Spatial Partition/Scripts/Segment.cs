@@ -9,7 +9,7 @@ namespace Chapter.SpatialPartition
         private void OnDestroy()
         {
             if (trackController)
-                trackController.LoadNextSegments();
+                trackController.LoadNextSegment();
         }
     }
 }

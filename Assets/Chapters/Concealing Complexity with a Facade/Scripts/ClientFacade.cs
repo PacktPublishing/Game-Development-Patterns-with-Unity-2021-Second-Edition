@@ -1,28 +1,23 @@
 using UnityEngine;
+using System.Collections;
 
-namespace Chapter.Facade
+public class CountdownTimer : MonoBehaviour
 {
-    public class ClientFacade : MonoBehaviour
-    {
-        private Engine _engine;
-    
-        void Start()
-        {
-            _engine = gameObject.AddComponent<Engine>();
-        }
-        
-        void OnGUI()
-        {
-            GUILayout.Label("Output in console");
+    private float _duration = 10.0f;
 
-            if (GUILayout.Button("Start Engine"))
-                _engine.TurnOn();
-            
-            if (GUILayout.Button("Stop Engine"))
-                _engine.TurnOff();
-            
-            if (GUILayout.Button("Toggle Turbo"))
-                _engine.ToggleTurbo();
+    IEnumerator Start()
+    {
+        Debug.Log("Timer Started!");
+        yield return StartCoroutine(WaitAndPrint(1.0F));
+        Debug.Log("Timer Ended!");
+    }
+
+    IEnumerator WaitAndPrint(float waitTime)
+    {
+        while (Time.time < _duration)
+        {
+            yield return new WaitForSeconds(waitTime);
+            Debug.Log("Seconds: " + Mathf.Round(Time.time));
         }
     }
 }

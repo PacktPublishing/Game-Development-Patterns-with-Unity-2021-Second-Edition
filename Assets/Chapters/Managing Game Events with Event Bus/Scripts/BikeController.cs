@@ -6,17 +6,17 @@ namespace Chapter.EventBus
     {
         void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.START, ReleaseBike);
+            RaceEventBus.Subscribe(RaceEventType.START, StartBike);
             RaceEventBus.Subscribe(RaceEventType.PAUSE, PauseBike);
         }
 
         void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.START, ReleaseBike);
+            RaceEventBus.Unsubscribe(RaceEventType.START, StartBike);
             RaceEventBus.Unsubscribe(RaceEventType.PAUSE, PauseBike);
         }
 
-        public void ReleaseBike()
+        public void StartBike()
         {
             Debug.Log("The bike is released");
         }

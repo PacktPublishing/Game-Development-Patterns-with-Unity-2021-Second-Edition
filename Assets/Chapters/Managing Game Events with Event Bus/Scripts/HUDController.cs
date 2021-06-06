@@ -4,34 +4,33 @@ namespace Chapter.EventBus
 {
     public class HUDController : MonoBehaviour
     {
-        private string _raceStatus = "N/A";
+        private bool isButtonEnabled;
 
         void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.PAUSE, DisplayPauseMenu);
-            RaceEventBus.Subscribe(RaceEventType.START, DisplayStartMenu);
+            RaceEventBus.Subscribe(RaceEventType.START, DisplayRestartButton);
         }
 
         void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
-            RaceEventBus.Unsubscribe(RaceEventType.START, DisplayStartMenu);
+            RaceEventBus.Unsubscribe(RaceEventType.START, DisplayRestartButton);
         }
-
-        private void DisplayPauseMenu()
+        
+        private void DisplayRestartButton()
         {
-            _raceStatus = "GAME PAUSED";
-        }
-
-        private void DisplayStartMenu()
-        {
-            _raceStatus = "GAME STARTED";
+            isButtonEnabled = true;
         }
 
         void OnGUI()
         {
-            GUI.color = Color.red;
-            GUI.Label(new Rect(125, 30, 500, 20), _raceStatus);
+            if (isButtonEnabled)
+            {
+                if (GUILayout.Button("Restart Race"))
+                {
+                    isButtonEnabled = false;
+                    RaceEventBus.Publish(RaceEventType.RESTART);
+                }
+            }
         }
     }
 }

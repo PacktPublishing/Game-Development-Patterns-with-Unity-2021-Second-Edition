@@ -4,20 +4,42 @@ namespace Chapter.EventBus
 {
     public class ClientEventBus : MonoBehaviour
     {
-        private void Start()
+        private bool _isButtonEnabled;
+        
+        void Start()
         {
             gameObject.AddComponent<HUDController>();
             gameObject.AddComponent<CountdownTimer>();
             gameObject.AddComponent<BikeController>();
+
+            _isButtonEnabled = true;
+        }
+        
+        void OnEnable()
+        {
+            RaceEventBus.Subscribe(RaceEventType.RESTART, Restart);
+        }
+
+        void OnDisable()
+        {
+            RaceEventBus.Unsubscribe(RaceEventType.RESTART, Restart);
+        }
+
+        private void Restart()
+        {
+            _isButtonEnabled = true;
         }
 
         void OnGUI()
         {
-            if (GUILayout.Button("Start Countdown"))
-                RaceEventBus.Publish(RaceEventType.COUNTDOWN);
-
-            if (GUILayout.Button("Pause Game"))
-                RaceEventBus.Publish(RaceEventType.PAUSE);
+            if (_isButtonEnabled)
+            {
+                if (GUILayout.Button("Start Countdown"))
+                {
+                    _isButtonEnabled = false;
+                    RaceEventBus.Publish(RaceEventType.COUNTDOWN);
+                }
+            }
         }
     }
 }

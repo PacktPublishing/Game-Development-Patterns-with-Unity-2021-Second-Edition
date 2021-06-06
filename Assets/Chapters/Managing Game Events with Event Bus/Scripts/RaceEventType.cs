@@ -2,6 +2,6 @@
 {
     public enum RaceEventType
     {
-        COUNTDOWN, START, FINISH, PAUSE, QUIT
+        COUNTDOWN, START, RESTART, FINISH, PAUSE, QUIT
     }
 }
