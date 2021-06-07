@@ -5,18 +5,19 @@ namespace Chapter.EventBus
 {
     public class CountdownTimer : MonoBehaviour
     {
-        [SerializeField]
-        private float duration = 5.0f;
         private float _currentTime;
-
+        private float duration = 3.0f;
+        
         void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.COUNTDOWN, StartTimer);
+            RaceEventBus.Subscribe(
+                RaceEventType.COUNTDOWN, StartTimer);
         }
 
         void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StartTimer);
+            RaceEventBus.Unsubscribe(
+                RaceEventType.COUNTDOWN, StartTimer);
         }
 
         private void StartTimer()
@@ -27,6 +28,7 @@ namespace Chapter.EventBus
         private IEnumerator Countdown()
         {
             _currentTime = duration;
+            
             while (_currentTime > 0)
             {
                 yield return new WaitForSeconds(1f);
@@ -38,8 +40,10 @@ namespace Chapter.EventBus
         
         void OnGUI()
         {
-            GUI.color = Color.blue;
-            GUI.Label(new Rect(125, 0, 100, 20), "COUNTDOWN: " + _currentTime);
+            GUI.color = Color.red;
+            GUI.Label(
+                new Rect(10, 30, 200, 20), 
+                "COUNTDOWN: " + _currentTime);
         }
     }
 }
