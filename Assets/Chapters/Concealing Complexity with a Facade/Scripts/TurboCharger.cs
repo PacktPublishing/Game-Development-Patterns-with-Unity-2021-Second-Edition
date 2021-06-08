@@ -5,7 +5,7 @@ namespace Chapter.Facade
 {
     public class TurboCharger : MonoBehaviour
     {
-        public Engine engine;
+        public BikeEngine engine;
         
         private bool _isTurboOn;
         private CoolingSystem _coolingSystem;
@@ -20,14 +20,20 @@ namespace Chapter.Facade
         IEnumerator TurboCharge()
         {
             _isTurboOn = true;
-            _coolingSystem.ToggleCoolingPausing();
-            Debug.Log("Turbo started");
-            
+            _coolingSystem.PauseCooling();
+
             yield return new WaitForSeconds(engine.turboDuration);
             
             _isTurboOn = false;
-            _coolingSystem.ToggleCoolingPausing();
-            Debug.Log("Turbo stopped");
+            _coolingSystem.PauseCooling();
+        }
+        
+        void OnGUI()
+        {
+            GUI.color = Color.green;
+            GUI.Label(
+                new Rect(100, 60, 500, 20), 
+                "Turbo Activated: " +  _isTurboOn);
         }
     }
 }

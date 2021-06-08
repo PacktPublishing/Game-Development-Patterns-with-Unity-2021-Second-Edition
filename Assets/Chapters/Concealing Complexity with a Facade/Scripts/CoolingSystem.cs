@@ -5,45 +5,47 @@ namespace Chapter.Facade
 {
     public class CoolingSystem : MonoBehaviour
     {
-        public Engine engine;
+        public BikeEngine engine;
         public IEnumerator coolEngine;
-       
+        
         private bool _isPaused;
 
-        void Start()
-        {
+        void Start() {
             coolEngine = CoolEngine();
         }
 
-        public void ToggleCoolingPausing()
-        {
+        public void PauseCooling() {
             _isPaused = !_isPaused;
         }
 
-        IEnumerator CoolEngine()
-        {
-            while (true)
-            {
+        public void ResetTemperature() {
+            engine.currentTemp = 0.0f;
+        }
+
+        IEnumerator CoolEngine() {
+            while (true) {
                 yield return new WaitForSeconds(1);
 
-                if (!_isPaused)
-                {
+                if (!_isPaused) {
                     if (engine.currentTemp > engine.minTemp)
                         engine.currentTemp -= engine.tempRate;
-
+                    
                     if (engine.currentTemp < engine.minTemp)
                         engine.currentTemp += engine.tempRate;
-                }
-                else
-                {
+                } else {
                     engine.currentTemp += engine.tempRate;
                 }
-                
+
                 if (engine.currentTemp > engine.maxTemp)
                     engine.TurnOff();
-
-                Debug.Log("Temp: " + engine.currentTemp);
             }
+        }
+
+        void OnGUI() {
+            GUI.color = Color.green;
+            GUI.Label(
+                new Rect(100, 20, 500, 20), 
+                "Temp: " +  engine.currentTemp);
         }
     }
 }

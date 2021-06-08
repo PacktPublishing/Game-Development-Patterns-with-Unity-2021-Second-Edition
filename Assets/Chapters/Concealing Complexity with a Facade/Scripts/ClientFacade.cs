@@ -1,23 +1,26 @@
 using UnityEngine;
-using System.Collections;
 
-public class CountdownTimer : MonoBehaviour
+namespace Chapter.Facade
 {
-    private float _duration = 10.0f;
-
-    IEnumerator Start()
+    public class ClientFacade : MonoBehaviour
     {
-        Debug.Log("Timer Started!");
-        yield return StartCoroutine(WaitAndPrint(1.0F));
-        Debug.Log("Timer Ended!");
-    }
-
-    IEnumerator WaitAndPrint(float waitTime)
-    {
-        while (Time.time < _duration)
+        private BikeEngine _bikeEngine;
+    
+        void Start()
         {
-            yield return new WaitForSeconds(waitTime);
-            Debug.Log("Seconds: " + Mathf.Round(Time.time));
+            _bikeEngine = gameObject.AddComponent<BikeEngine>();
+        }
+        
+        void OnGUI()
+        {
+            if (GUILayout.Button("Turn On"))
+                _bikeEngine.TurnOn();
+            
+            if (GUILayout.Button("Turn Off"))
+                _bikeEngine.TurnOff();
+            
+            if (GUILayout.Button("Toggle Turbo"))
+                _bikeEngine.ToggleTurbo();
         }
     }
 }
