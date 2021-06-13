@@ -8,7 +8,8 @@ namespace Chapter.Facade
     
         void Start()
         {
-            _bikeEngine = gameObject.AddComponent<BikeEngine>();
+            _bikeEngine = 
+                gameObject.AddComponent<BikeEngine>();
         }
         
         void OnGUI()

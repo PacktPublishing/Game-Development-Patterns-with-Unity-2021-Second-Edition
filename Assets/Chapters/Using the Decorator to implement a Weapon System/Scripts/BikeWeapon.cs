@@ -14,8 +14,7 @@ namespace Chapter.Decorator
         private Vector3 _startPosition;
         private Vector3 _beamDirection;
 
-        void Start()
-        {
+        void Start() {
             _weapon = new Weapon(weaponConfig);
         }
 

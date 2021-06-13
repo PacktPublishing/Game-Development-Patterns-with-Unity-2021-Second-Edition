@@ -18,9 +18,14 @@ namespace Chapter.Facade
         private CoolingSystem _coolingSystem;
         
         void Awake() {
-            _fuelPump = gameObject.AddComponent<FuelPump>();
-            _turboCharger = gameObject.AddComponent<TurboCharger>();
-            _coolingSystem = gameObject.AddComponent<CoolingSystem>();
+            _fuelPump = 
+                gameObject.AddComponent<FuelPump>();
+            
+            _turboCharger = 
+                gameObject.AddComponent<TurboCharger>();
+            
+            _coolingSystem = 
+                gameObject.AddComponent<CoolingSystem>();
         }
 
         void Start() {

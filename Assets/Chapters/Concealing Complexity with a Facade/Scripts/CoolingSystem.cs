@@ -1,13 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Chapter.Facade
-{
-    public class CoolingSystem : MonoBehaviour
-    {
+namespace Chapter.Facade {
+    public class CoolingSystem : MonoBehaviour {
+        
         public BikeEngine engine;
         public IEnumerator coolEngine;
-        
         private bool _isPaused;
 
         void Start() {
@@ -29,7 +27,6 @@ namespace Chapter.Facade
                 if (!_isPaused) {
                     if (engine.currentTemp > engine.minTemp)
                         engine.currentTemp -= engine.tempRate;
-                    
                     if (engine.currentTemp < engine.minTemp)
                         engine.currentTemp += engine.tempRate;
                 } else {

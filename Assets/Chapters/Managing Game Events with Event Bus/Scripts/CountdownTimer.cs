@@ -7,30 +7,26 @@ namespace Chapter.EventBus
     {
         private float _currentTime;
         private float duration = 3.0f;
-        
-        void OnEnable()
-        {
+
+        void OnEnable() {
             RaceEventBus.Subscribe(
                 RaceEventType.COUNTDOWN, StartTimer);
         }
 
-        void OnDisable()
-        {
+        void OnDisable() {
             RaceEventBus.Unsubscribe(
                 RaceEventType.COUNTDOWN, StartTimer);
         }
 
-        private void StartTimer()
-        {
+        private void StartTimer() {
             StartCoroutine(Countdown());
         }
 
-        private IEnumerator Countdown()
-        {
+        private IEnumerator Countdown() {
+
             _currentTime = duration;
             
-            while (_currentTime > 0)
-            {
+            while (_currentTime > 0) {
                 yield return new WaitForSeconds(1f);
                 _currentTime--;
             }
@@ -38,11 +34,10 @@ namespace Chapter.EventBus
             RaceEventBus.Publish(RaceEventType.START);
         }
         
-        void OnGUI()
-        {
-            GUI.color = Color.red;
+        void OnGUI() {
+            GUI.color = Color.blue;
             GUI.Label(
-                new Rect(10, 30, 200, 20), 
+                new Rect(125, 0, 100, 20), 
                 "COUNTDOWN: " + _currentTime);
         }
     }
