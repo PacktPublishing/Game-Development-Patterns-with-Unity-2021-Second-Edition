@@ -6,7 +6,7 @@ namespace Chapter.ServiceLocator
     {
         public void Log(string message)
         {
-            Debug.Log("Logged:" + message);
+            Debug.Log("Logged: " + message);
         }
     }
 }

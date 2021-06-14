@@ -6,7 +6,7 @@ namespace Chapter.ServiceLocator
     {
         public void SendEvent(string eventName)
         {
-            Debug.Log("Sent:" + eventName);
+            Debug.Log("Sent: " + eventName);
         }
     }
 }

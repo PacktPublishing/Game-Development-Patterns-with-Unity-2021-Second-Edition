@@ -5,17 +5,21 @@ namespace Chapter.ServiceLocator
 {
     public static class ServiceLocator
     {
-        private static readonly IDictionary<Type, object> _services = new Dictionary<Type, Object>();
+        private static readonly 
+            IDictionary<Type, object> Services = 
+                new Dictionary<Type, Object>();
 
         public static void RegisterService<T>(T service)
         {
-            if (!_services.ContainsKey(typeof(T)))
+            if (!Services.ContainsKey(typeof(T)))
             {
-                _services[typeof(T)] = service;
+                Services[typeof(T)] = service;
             }
             else
             {
-                throw new ApplicationException("Service already registered");
+                throw new 
+                    ApplicationException
+                    ("Service already registered");
             }
         }
 
@@ -23,11 +27,13 @@ namespace Chapter.ServiceLocator
         {
             try
             {
-                return (T) _services[typeof(T)];
+                return (T) Services[typeof(T)];
             }
             catch
             {
-                throw new ApplicationException("Requested service not found.");
+                throw new 
+                    ApplicationException
+                    ("Requested service not found.");
             }
         }
     }
