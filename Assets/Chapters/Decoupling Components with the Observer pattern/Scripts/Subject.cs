@@ -5,7 +5,8 @@ namespace Chapter.Observer
 {
     public abstract class Subject : MonoBehaviour
     {
-        private readonly ArrayList _observers = new ();
+        private readonly 
+            ArrayList _observers = new ArrayList();
 
         public void Attach(Observer observer)
         {

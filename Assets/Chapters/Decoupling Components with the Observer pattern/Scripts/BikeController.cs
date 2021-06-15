@@ -4,8 +4,16 @@ namespace Chapter.Observer
 {
     public class BikeController : Subject
     {
-        public bool IsTurboOn { get; private set; }
-        public float CurrentHealth { get { return health; } }
+        public bool IsTurboOn
+        {
+            get; private set;
+        }
+
+        public float CurrentHealth
+        {
+            get { return health; } 
+            
+        }
         
         private bool _isEngineOn;
         private HUDController _hudController;
@@ -14,9 +22,12 @@ namespace Chapter.Observer
         
         void Awake()
         {
-            _hudController = gameObject.AddComponent<HUDController>();
+            _hudController = 
+                gameObject.AddComponent<HUDController>();
+            
             _cameraController = 
-                (CameraController) FindObjectOfType(typeof(CameraController));
+                (CameraController) 
+                FindObjectOfType(typeof(CameraController));
         }
 
         private void Start()
@@ -26,34 +37,46 @@ namespace Chapter.Observer
 
         void OnEnable()
         {
-            if (_hudController) Attach(_hudController);
-            if (_cameraController) Attach(_cameraController);
+            if (_hudController) 
+                Attach(_hudController);
+            
+            if (_cameraController) 
+                Attach(_cameraController);
         }
         
         void OnDisable()
         {
-            if (_hudController) Detach(_hudController);
-            if (_cameraController) Detach(_cameraController);
+            if (_hudController) 
+                Detach(_hudController);
+            
+            if (_cameraController) 
+                Detach(_cameraController);
         }
 
         private void StartEngine()
         {
             _isEngineOn = true;
+            
             NotifyObservers();
         }
         
         public void ToggleTurbo()
         {
-            IsTurboOn = !IsTurboOn;
+            if (_isEngineOn) 
+                IsTurboOn = !IsTurboOn;
+            
             NotifyObservers();
         }
         
         public void Damage(float amount)
         {
             health -= amount;
+            IsTurboOn = false;
+            
             NotifyObservers();
             
-            if (health < 0) Destroy(gameObject);
+            if (health < 0)
+                Destroy(gameObject);
         }
     }
 }
