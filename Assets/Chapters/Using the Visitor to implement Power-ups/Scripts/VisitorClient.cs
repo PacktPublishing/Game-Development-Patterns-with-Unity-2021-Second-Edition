@@ -4,21 +4,20 @@ namespace Pattern.Visitor
 {
     public class VisitorClient : MonoBehaviour
     {
-        public PowerUpItem enginePowerUp;
-        public PowerUpItem shieldPowerUp;
-        public PowerUpItem weaponPowerUp;
+        public PowerUp enginePowerUp;
+        public PowerUp shieldPowerUp;
+        public PowerUp weaponPowerUp;
         
         private BikeController _bikeController;
 
         void Start()
         {
-            _bikeController = gameObject.AddComponent<BikeController>();
+            _bikeController = 
+                gameObject.AddComponent<BikeController>();
         }
 
         void OnGUI()
         {
-            GUILayout.Label("Output in console");
-            
             if (GUILayout.Button("PowerUp Shield"))
                 _bikeController.Accept(shieldPowerUp);
 

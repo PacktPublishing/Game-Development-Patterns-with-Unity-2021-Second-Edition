@@ -4,19 +4,26 @@ namespace Pattern.Visitor
 {
     public class BikeShield : MonoBehaviour, IBikeElement
     { 
-        public float strength = 100.0f; // percentage
+        public float health = 50.0f; // Percentage
 
         public float Damage(float damage)
         {
-            strength -= damage;
-            return strength;
+            health -= damage;
+            return health;
         }
     
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
+        }
+        
+        void OnGUI() 
+        {
+            GUI.color = Color.green;
             
-            Debug.Log("New Shield Strength: " + strength);
+            GUI.Label(
+                new Rect(125, 0, 200, 20), 
+                "Shield Health: " + health);
         }
     }
 }

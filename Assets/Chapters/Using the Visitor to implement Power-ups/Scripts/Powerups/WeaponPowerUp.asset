@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Weapon
   description: Gain 10% range and 15% weapon strength
-  shieldBoost: 0
-  speedBoost: 0
+  pickupPrefab: {fileID: 0}
+  healShield: 0
+  turboBoost: 0
   weaponRangeBoost: 10
-  weaponStrengthBoost: 15
+  weaponStrengthBoost: 50
