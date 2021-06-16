@@ -20,8 +20,12 @@ namespace Chapter.Strategy
 
             while (time < speed)
             {
-                drone.transform.position = Vector3.Lerp(startPosition, endPosition, time / speed);
+                drone.transform.position = 
+                    Vector3.Lerp(
+                        startPosition, endPosition, time / speed);
+               
                 time += Time.deltaTime;
+                
                 yield return null;
             }
         }

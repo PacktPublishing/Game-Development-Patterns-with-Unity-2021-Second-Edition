@@ -1,9 +1,8 @@
 using UnityEngine;
 
-namespace Chapter.Strategy
-{
-    public class Drone : MonoBehaviour
-    {
+namespace Chapter.Strategy {
+    public class Drone : MonoBehaviour {
+        
         // Ray parameters
         private RaycastHit _hit;
         private Vector3 _rayDirection;
@@ -16,27 +15,27 @@ namespace Chapter.Strategy
         [SerializeField] public float WeavingDistance = 1.5f;
         [SerializeField] public float FallbackDistance = 20.0f;
 
-        void Start()
-        {
-            _rayDirection = transform.TransformDirection(Vector3.back) * _rayDistance;
-            _rayDirection = Quaternion.Euler(_rayAngle, 0.0f, 0f) * _rayDirection;
+        void Start() {
+            _rayDirection = 
+                transform.TransformDirection(Vector3.back) * _rayDistance;
+            
+            _rayDirection = 
+                Quaternion.Euler(_rayAngle, 0.0f, 0f) * _rayDirection;
         }
 
-        public void ApplyStrategy(IManeuverBehaviour strategy)
-        {
+        public void ApplyStrategy(IManeuverBehaviour strategy) {
             strategy.Maneuver(this);
         }
 
-        void Update()
-        {
-            // Drawing a ray to detect target
+        void Update() {
             Debug.DrawRay(transform.position, _rayDirection, Color.blue);
-            if (Physics.Raycast(transform.position, _rayDirection, out _hit, _rayDistance))
-            {
-                if (_hit.collider)
-                {
-                    Debug.DrawRay(transform.position, _rayDirection, Color.green);
-                    Debug.Log("Hit something");
+            
+            if (Physics.Raycast(
+                transform.position, _rayDirection, out _hit, _rayDistance)) {
+                
+                if (_hit.collider) {
+                    Debug.DrawRay(
+                        transform.position, _rayDirection, Color.green);
                 }
             }
         }
