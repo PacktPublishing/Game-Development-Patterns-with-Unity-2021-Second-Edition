@@ -6,6 +6,7 @@ namespace Chapter.ObjectPool
     public class DroneObjectPool : MonoBehaviour
     {
         public int maxPoolSize = 10;
+        public int stackDefaultCapacity = 10;
 
         public IObjectPool<Drone> Pool 
         {
@@ -19,7 +20,7 @@ namespace Chapter.ObjectPool
                             OnReturnedToPool, 
                             OnDestroyPoolObject, 
                             true, 
-                            5, 
+                            stackDefaultCapacity,
                             maxPoolSize);
                 return _pool;
             }
@@ -35,24 +36,24 @@ namespace Chapter.ObjectPool
             Drone drone = go.AddComponent<Drone>();
             
             go.name = "Drone";
-            drone.pool = Pool;
+            drone.Pool = Pool;
             
             return drone;
         }
 
-        private void OnReturnedToPool(Drone system) 
+        private void OnReturnedToPool(Drone drone) 
         {
-            system.gameObject.SetActive(false);
+            drone.gameObject.SetActive(false);
         }
 
-        private void OnTakeFromPool(Drone system) 
+        private void OnTakeFromPool(Drone drone) 
         {
-            system.gameObject.SetActive(true);
+            drone.gameObject.SetActive(true);
         }
 
-        private void OnDestroyPoolObject(Drone system) 
+        private void OnDestroyPoolObject(Drone drone) 
         {
-            Destroy(system.gameObject);
+            Destroy(drone.gameObject);
         }
 
         public void Spawn() 
@@ -64,8 +65,6 @@ namespace Chapter.ObjectPool
                 
                 drone.transform.position = 
                     Random.insideUnitSphere * 10;
-                
-                drone.Attack();
             }
         }
     }

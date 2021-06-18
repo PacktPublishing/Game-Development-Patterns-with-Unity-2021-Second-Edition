@@ -5,7 +5,7 @@ namespace Chapter.ObjectPool
     public class ClientObjectPool : MonoBehaviour
     {
         private DroneObjectPool _pool;
-
+        
         void Start()
         {
             _pool = gameObject.AddComponent<DroneObjectPool>();

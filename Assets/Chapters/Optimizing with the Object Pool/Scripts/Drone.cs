@@ -2,36 +2,52 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
 
-namespace Chapter.ObjectPool
-{
-    public class Drone : MonoBehaviour
-    {
-        public IObjectPool<Drone> pool { get; set; }
+namespace Chapter.ObjectPool {
+    public class Drone : MonoBehaviour {
+        public IObjectPool<Drone> Pool { get; set; }
 
-        private void OnEnable()
-        {
+        public float _currentHealth;
+
+        [SerializeField] 
+        private float maxHealth = 100.0f;
+        [SerializeField] 
+        private float timeToSelfDestruct = 3.0f;
+
+        void Start() {
+            _currentHealth = maxHealth;
+        }
+        
+        void OnEnable() {
+            AttackPlayer();
             StartCoroutine(SelfDestruct());
         }
 
-        private void OnDisable()
-        {
-            Debug.Log("Reset drone");
+        private void OnDisable() {
+            ResetDrone();
         }
 
-        IEnumerator SelfDestruct()
-        {
-            yield return new WaitForSeconds(2);
-            ReturnToPool();
+        IEnumerator SelfDestruct() {
+            yield return new WaitForSeconds(timeToSelfDestruct);
+            TakeDamage(maxHealth);
         }
         
-        private void ReturnToPool()
-        {
-            pool.Release(this);
+        private void ReturnToPool() {
+            Pool.Release(this);
+        }
+        
+        private void ResetDrone() {
+            _currentHealth = maxHealth;
         }
 
-        public void Attack()
-        {
-            Debug.Log("Attack player");
+        public void AttackPlayer() {
+            Debug.Log("Attack player!");
+        }
+
+        public void TakeDamage(float amount) {
+            _currentHealth -= amount;
+            
+            if (_currentHealth <= 0.0f)
+                ReturnToPool();
         }
     }
 }
