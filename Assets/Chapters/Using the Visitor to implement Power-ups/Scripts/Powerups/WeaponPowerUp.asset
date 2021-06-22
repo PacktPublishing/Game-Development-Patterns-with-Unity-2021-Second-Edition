@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b768454e09040884bb57074aafe2591e, type: 3}
   m_Name: WeaponPowerUp
   m_EditorClassIdentifier: 
-  title: Weapon
-  description: Gain 10% range and 15% weapon strength
-  pickupPrefab: {fileID: 0}
+  powerupName: 
+  powerupPrefab: {fileID: 0}
+  powerupDescription: 
   healShield: 0
   turboBoost: 0
-  weaponRangeBoost: 10
-  weaponStrengthBoost: 50
+  weaponRange: 11
+  weaponStrength: 14.1

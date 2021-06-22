@@ -17,7 +17,7 @@ namespace Chapter.Observer
         {
             if (GUILayout.Button("Damage Bike"))
                 if (_bikeController) 
-                    _bikeController.Damage(15.0f);
+                    _bikeController.TakeDamage(15.0f);
 
             if (GUILayout.Button("Toggle Turbo"))
                 if (_bikeController) 

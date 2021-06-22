@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65ca73e4c694a4f439cb2ad32550518a, type: 3}
-  m_Name: Injector
+  m_Script: {fileID: 11500000, guid: fa9f1e12074e838469f015f20d208d74, type: 3}
+  m_Name: Default
   m_EditorClassIdentifier: 
-  range: 0
+  rate: 10
+  range: 15
   strength: 20
-  duration: 0
-  cooldown: 0
-  attachmentName: Injector
-  attachmentPrefab: {fileID: 0}
-  attachmentDescription: Plasma injector boots the strength of the weapon
+  cooldown: 1.5
+  weaponName: Default
+  weaponPrefab: {fileID: 0}
+  weaponDescription: The default weapon

@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
 
-namespace Chapter.ObjectPool {
-    public class Drone : MonoBehaviour {
+namespace Chapter.ObjectPool 
+{
+    public class Drone : MonoBehaviour 
+    {
         public IObjectPool<Drone> Pool { get; set; }
 
         public float _currentHealth;
@@ -13,16 +15,19 @@ namespace Chapter.ObjectPool {
         [SerializeField] 
         private float timeToSelfDestruct = 3.0f;
 
-        void Start() {
+        void Start() 
+        {
             _currentHealth = maxHealth;
         }
         
-        void OnEnable() {
+        void OnEnable() 
+        {
             AttackPlayer();
             StartCoroutine(SelfDestruct());
         }
 
-        private void OnDisable() {
+        private void OnDisable() 
+        {
             ResetDrone();
         }
 

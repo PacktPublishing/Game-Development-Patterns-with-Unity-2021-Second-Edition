@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9f1e12074e838469f015f20d208d74, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 65ca73e4c694a4f439cb2ad32550518a, type: 3}
+  m_Name: Cooler
   m_EditorClassIdentifier: 
-  range: 10
-  duration: 0.3
-  strength: 5
-  cooldown: -0.3
-  weaponName: Default
-  weaponPrefab: {fileID: 0}
-  weaponDescription: Default weapon
+  rate: 20
+  range: 0
+  strength: 0
+  cooldown: -1
+  attachmentName: Cooler
+  attachmentPrefab: {fileID: 0}
+  attachmentDescription: Keeps weapon cool

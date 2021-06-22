@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Chapter.Strategy
-{
-    public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
-    {
-        public void Maneuver(Drone drone)
-        {
+namespace Chapter.Strategy {
+    public class BoppingManeuver : 
+        MonoBehaviour, IManeuverBehaviour { 
+        
+        public void Maneuver(Drone drone) {
             StartCoroutine(Bopple(drone));
         }
 
@@ -14,19 +13,18 @@ namespace Chapter.Strategy
         {
             float time;
             bool isReverse = false;
-            float speed = drone.Speed;
+            float speed = drone.speed;
             Vector3 startPosition = drone.transform.position;
             Vector3 endPosition = startPosition;
-            endPosition.y = drone.MaxHeight;
+            endPosition.y = drone.maxHeight;
 
-            while (true)
-            {
+            while (true) {
                 time = 0;
                 Vector3 start = drone.transform.position;
-                Vector3 end = (isReverse) ? startPosition : endPosition;
+                Vector3 end = 
+                    (isReverse) ? startPosition : endPosition;
 
-                while (time < speed)
-                {
+                while (time < speed) {
                     drone.transform.position = 
                         Vector3.Lerp(start, end, time / speed);
                     time += Time.deltaTime;

@@ -9,7 +9,9 @@ namespace Chapter.Strategy {
             _components = new List<IManeuverBehaviour>();
         
         private void SpawnDrone() {
-            _drone = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            _drone = 
+                GameObject.CreatePrimitive(PrimitiveType.Cube);
+            
             _drone.AddComponent<Drone>();
             
             _drone.transform.position = 

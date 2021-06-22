@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b768454e09040884bb57074aafe2591e, type: 3}
   m_Name: EnginePowerUp
   m_EditorClassIdentifier: 
-  title: Engine
-  description: Boost turbo by 25%
-  pickupPrefab: {fileID: 0}
+  powerupName: 
+  powerupPrefab: {fileID: 0}
+  powerupDescription: 
   healShield: 0
   turboBoost: 25
-  weaponRangeBoost: 0
-  weaponStrengthBoost: 0
+  weaponRange: 0
+  weaponStrength: 0

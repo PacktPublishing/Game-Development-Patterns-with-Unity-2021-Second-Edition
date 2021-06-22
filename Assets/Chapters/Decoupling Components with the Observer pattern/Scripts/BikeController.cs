@@ -68,7 +68,7 @@ namespace Chapter.Observer
             NotifyObservers();
         }
         
-        public void Damage(float amount)
+        public void TakeDamage(float amount)
         {
             health -= amount;
             IsTurboOn = false;

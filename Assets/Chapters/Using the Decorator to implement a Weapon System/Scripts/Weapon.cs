@@ -7,9 +7,9 @@ namespace Chapter.Decorator
             get { return _config.Range; }
         }
 
-        public float Duration
+        public float Rate
         {
-            get { return _config.Duration; }
+            get { return _config.Rate; }
         }
 
         public float Strength

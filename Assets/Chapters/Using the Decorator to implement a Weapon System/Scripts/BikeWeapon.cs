@@ -1,70 +1,90 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Chapter.Decorator
 {
     public class BikeWeapon : MonoBehaviour
     {
         public WeaponConfig weaponConfig;
-        public WeaponAttachment fstAttachment;
-        public WeaponAttachment secAttachment;
+        public WeaponAttachment mainAttachment;
+        public WeaponAttachment secondaryAttachment;
 
         private bool _isFiring;
         private IWeapon _weapon;
-        private float _beamTimer;
-        private Vector3 _startPosition;
-        private Vector3 _beamDirection;
+        private bool _isDecorated;
 
         void Start() {
             _weapon = new Weapon(weaponConfig);
         }
-
-        void Update()
-        {
-            if (_isFiring)
-            {
-                _startPosition = transform.position;
-                _beamDirection = transform.TransformDirection(Vector3.left);
-                Debug.DrawRay(_startPosition, _beamDirection * _weapon.Range, Color.red);
-                
-                if (_beamTimer > 0)
-                    _beamTimer -= Time.deltaTime;
-                else
-                    _isFiring = false;
-            }
-        }
-
+        
         void OnGUI()
         {
-            GUILayout.BeginArea (new Rect (25,100,100,100));
-            GUILayout.BeginHorizontal ("box");
-            GUILayout.Label ("Range: " + _weapon.Range);
-            GUILayout.EndHorizontal ();
-            GUILayout.BeginHorizontal ("box");
-            GUILayout.Label ("Strength: " + _weapon.Strength);
-            GUILayout.EndHorizontal ();
-            GUILayout.EndArea ();
+            GUI.color = Color.green;
+            
+            GUI.Label (
+                new Rect (5, 50, 150, 100), 
+                "Range: "+ _weapon.Range);
+            
+            GUI.Label (
+                new Rect (5, 70, 150, 100), 
+                "Strength: "+ _weapon.Strength);
+            
+            GUI.Label (
+                new Rect (5, 90, 150, 100), 
+                "Cooldown: "+ _weapon.Cooldown);
+            
+            GUI.Label (
+                new Rect (5, 110, 150, 100), 
+                "Firing Rate: " + _weapon.Rate);
+            
+            GUI.Label (
+                new Rect (5, 130, 150, 100), 
+                "Weapon Firing: " + _isFiring);
+            
+            if (mainAttachment && _isDecorated)
+                GUI.Label (
+                    new Rect (5, 150, 150, 100), 
+                    "Main Attachment: " + mainAttachment.name);
+            
+            if (secondaryAttachment && _isDecorated)
+                GUI.Label (
+                    new Rect (5, 170, 200, 100), 
+                    "Secondary Attachment: " + secondaryAttachment.name);
         }
 
-        public void Fire()
-        {
-            _beamTimer = _weapon.Duration;
-            _isFiring = true;
-        }
-
-
-        public void Reset()
-        {
-            _weapon = new Weapon(weaponConfig);
+        public void ToggleFire() {
+            _isFiring = !_isFiring;
+            
+            if (_isFiring)
+                StartCoroutine(FireWeapon());
         }
         
-        public void Decorate()
-        {
-            if (fstAttachment && !secAttachment)
-                _weapon = new WeaponDecorator(_weapon, fstAttachment);
-
-            if (fstAttachment && secAttachment)
+        IEnumerator FireWeapon() {
+            float firingRate = 1.0f / _weapon.Rate;
+            
+            while (_isFiring) {
+                yield return new WaitForSeconds(firingRate);
+                Debug.Log("fire");
+            }
+        }
+        
+        public void Reset() {
+            _weapon = new Weapon(weaponConfig);
+            _isDecorated = !_isDecorated;
+        }
+        
+        public void Decorate() {
+            if (mainAttachment && !secondaryAttachment)
                 _weapon = 
-                    new WeaponDecorator(new WeaponDecorator(_weapon, fstAttachment), secAttachment);
+                    new WeaponDecorator(_weapon, mainAttachment);
+
+            if (mainAttachment && secondaryAttachment)
+                _weapon = 
+                    new WeaponDecorator(
+                        new WeaponDecorator(
+                            _weapon, mainAttachment), secondaryAttachment);
+
+            _isDecorated = !_isDecorated;
         }
     }
 }

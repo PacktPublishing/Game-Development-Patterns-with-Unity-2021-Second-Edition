@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65ca73e4c694a4f439cb2ad32550518a, type: 3}
-  m_Name: Cooler
+  m_Name: Injector
   m_EditorClassIdentifier: 
   range: 0
-  duration: 0.2
-  strength: 0
-  cooldown: -0.1
-  attachmentName: Cooler
+  strength: 20
+  duration: 0
+  cooldown: 0
+  attachmentName: Plasma Injector
   attachmentPrefab: {fileID: 0}
-  attachmentDescription: Keeps weapon cool
+  attachmentDescription: Adds strength to the weapon

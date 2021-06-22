@@ -3,20 +3,20 @@ using System.Collections;
 
 namespace Chapter.Strategy
 {
-    public class FallbackManeuver : MonoBehaviour, IManeuverBehaviour
-    {
-        public void Maneuver(Drone drone)
-        {
+    public class FallbackManeuver : 
+        MonoBehaviour, IManeuverBehaviour {
+        
+        public void Maneuver(Drone drone) {
             StartCoroutine(Fallback(drone));
         }
 
         IEnumerator Fallback(Drone drone)
         {
             float time = 0;
-            float speed = drone.Speed;
+            float speed = drone.speed;
             Vector3 startPosition = drone.transform.position;
             Vector3 endPosition = startPosition;
-            endPosition.z = drone.FallbackDistance;
+            endPosition.z = drone.fallbackDistance;
 
             while (time < speed)
             {

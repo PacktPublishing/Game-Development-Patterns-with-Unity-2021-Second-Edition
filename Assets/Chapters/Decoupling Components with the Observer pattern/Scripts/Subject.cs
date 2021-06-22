@@ -8,17 +8,18 @@ namespace Chapter.Observer
         private readonly 
             ArrayList _observers = new ArrayList();
 
-        public void Attach(Observer observer)
+        protected void Attach(Observer observer)
         {
             _observers.Add(observer);
         }
 
-        public void Detach(Observer observer)
+        protected void Detach(Observer observer)
         {
+            Debug.Log("Detach!");
             _observers.Remove(observer);
         }
 
-        public void NotifyObservers()
+        protected void NotifyObservers()
         {
             foreach (Observer observer in _observers)
             {

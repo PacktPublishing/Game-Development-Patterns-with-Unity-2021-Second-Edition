@@ -2,44 +2,42 @@ using UnityEngine;
 
 namespace Chapter.Decorator
 {
-    [CreateAssetMenu(fileName = "NewAttachment", menuName = "Weapon/Attachment", order = 2)]
-    public class WeaponAttachment : ScriptableObject, IWeapon
-    {
+    [CreateAssetMenu(fileName = "NewWeaponAttachment", 
+        menuName = "Weapon/Attachment", order = 1)]
+    public class WeaponAttachment : ScriptableObject, IWeapon {
         [Range(0, 50)]
+        [Tooltip("Increase rate of firing per second")]
+        [SerializeField] public float rate;
+        
+        [Range(0, 50)]
+        [Tooltip("Increase weapon range")]
         [SerializeField] float range;
         
         [Range(0, 100)]
+        [Tooltip("Increase weapon strength")]
         [SerializeField] public float strength;
         
-        [Range(0, 3)]
-        [Tooltip("Extend the firing duration")]
-        [SerializeField] public float duration;
-        
-        [Range(0, -10f)]
-        [Tooltip("Reduce the time in takes to cooldown")]
+        [Range(0, -5)]
+        [Tooltip("Reduce cooldown duration")]
         [SerializeField] public float cooldown;
         
         public string attachmentName;
         public GameObject attachmentPrefab;
         public string attachmentDescription;
 
-        public float Range
-        {
+        public float Rate {
+            get { return rate;  }
+        }
+
+        public float Range {
             get { return range; }
         }
-
-        public float Duration
-        {
-            get { return duration;  }
-        }
-
-        public float Strength
-        {
+        
+        public float Strength {
             get { return strength;  }
         }
 
-        public float Cooldown
-        {
+        public float Cooldown {
             get { return cooldown; }
         }
     }
