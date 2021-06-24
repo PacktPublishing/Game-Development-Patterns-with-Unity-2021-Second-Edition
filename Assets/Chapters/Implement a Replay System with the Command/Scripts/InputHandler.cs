@@ -7,9 +7,9 @@ namespace Chapter.Command
         private Invoker _invoker;
         private bool _isReplaying;
         private bool _isRecording;
-        private Command _buttonA, _buttonD, _buttonW;
         private BikeController _bikeController;
-
+        private Command _buttonA, _buttonD, _buttonW;
+        
         void Start()
         {
             _invoker = gameObject.AddComponent<Invoker>();
@@ -22,39 +22,45 @@ namespace Chapter.Command
 
         void Update()
         {
-            if (!_isReplaying)
+            if (!_isReplaying && _isRecording)
             {
-                if (Input.GetKeyUp(KeyCode.A)) _invoker.ExecuteCommand(_buttonA);
+                if (Input.GetKeyUp(KeyCode.A)) 
+                    _invoker.ExecuteCommand(_buttonA);
                 
-                if (Input.GetKeyUp(KeyCode.D)) _invoker.ExecuteCommand(_buttonD);
+                if (Input.GetKeyUp(KeyCode.D)) 
+                    _invoker.ExecuteCommand(_buttonD);
                 
-                if (Input.GetKeyUp(KeyCode.W)) _invoker.ExecuteCommand(_buttonW);
-                
-                // Record Commands
-                if (Input.GetKeyUp(KeyCode.F1))
-                {
-                    _bikeController.ResetPosition();
-                    _isReplaying = false;
-                    _isRecording = !_isRecording;
-                    _invoker.Record();
-                }
+                if (Input.GetKeyUp(KeyCode.W)) 
+                    _invoker.ExecuteCommand(_buttonW);
             }
-
-            // Replay Commands
-            if (Input.GetKeyUp(KeyCode.F2))
+        }
+        
+        void OnGUI()
+        {
+            if (GUILayout.Button("Start Recording"))
+            {
+                _bikeController.ResetPosition();
+                _isReplaying = false;
+                _isRecording = true;
+                _invoker.Record();
+            }
+            
+            if (GUILayout.Button("Stop Recording"))
             {
                 _bikeController.ResetPosition();
                 _isRecording = false;
-                _isReplaying = !_isReplaying;
-                _invoker.Replay();
             }
-        }
 
-        void OnGUI()
-        {
-            GUI.color = Color.black;
-            GUI.Label(new Rect(10, 10, 500, 20), "Recording (F1 to record): " + _isRecording.ToString());
-            GUI.Label(new Rect(10, 30, 500, 20), "Replaying (F2 to replay): " + _isReplaying.ToString());
+            if (!_isRecording)
+            {
+                if (GUILayout.Button("Start Replay"))
+                {
+                    _bikeController.ResetPosition();
+                    _isRecording = false;
+                    _isReplaying = true;
+                    _invoker.Replay();
+                }
+            }
         }
     }
 }

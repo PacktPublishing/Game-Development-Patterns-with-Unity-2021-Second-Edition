@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Chapter.Decorator
 {
-    [CreateAssetMenu(fileName = "NewConfig", 
+    [CreateAssetMenu(fileName = "NewWeaponConfig", 
         menuName = "Weapon/Config", order = 1)]
     public class WeaponConfig : ScriptableObject, IWeapon
     {
@@ -18,7 +18,7 @@ namespace Chapter.Decorator
         [Tooltip("Weapon strength")]
         [SerializeField] private float strength;
         
-        [Range(0, 10f)]
+        [Range(0, 5)]
         [Tooltip("Cooldown duration")]
         [SerializeField] private float cooldown;
         

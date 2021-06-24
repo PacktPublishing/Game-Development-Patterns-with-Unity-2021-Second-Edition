@@ -16,7 +16,6 @@ namespace Chapter.Command
         public void ToggleTurbo()
         {
             _isTurboOn = !_isTurboOn;
-            Debug.Log("Turbo Active: " + _isTurboOn);
         }
     
         public void Turn(Direction direction)
