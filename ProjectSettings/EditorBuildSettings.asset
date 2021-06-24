@@ -6,27 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Chapters/Implementing a Game Manager with the Singleton/Singleton.unity
+    path: Assets/Chapters/Chapter04/Implementing a Game Manager with the Singleton/Singleton.unity
     guid: 343ac8ccaa51dc34b8b4a9d1e95359a4
   - enabled: 1
-    path: Assets/Chapters/Decoupling Components with the Observer pattern/Observer.unity
+    path: Assets/Chapters/Chapter09/Decoupling Components with the Observer pattern/Observer.unity
     guid: 4044770ccc15f7d478c274d14498f782
   - enabled: 1
-    path: Assets/Chapters/Implement a Replay System with the Command/Command.unity
+    path: Assets/Chapters/Chapter07/Implement a Replay System with the Command/Command.unity
     guid: f838f16e49a4146418191bbc300f82eb
   - enabled: 1
-    path: Assets/Chapters/Implementing a Drone with the Strategy pattern/Strategy.unity
+    path: Assets/Chapters/Chapter11/Implementing a Drone with the Strategy pattern/Strategy.unity
     guid: 09b24867816b91642b1ca551c280bab7
   - enabled: 1
-    path: Assets/Chapters/Concealing Complexity with a Facade/Facade.unity
+    path: Assets/Chapters/Chapter15/Concealing Complexity with a Facade/Facade.unity
     guid: 898e8766c576931468660a385fca67a4
   - enabled: 1
-    path: Assets/Chapters/Managing Game Events with Event Bus/EventBus.unity
+    path: Assets/Chapters/Chapter06/Managing Game Events with Event Bus/EventBus.unity
     guid: 71684936789de264c8755f431ef1f263
   - enabled: 1
-    path: Assets/Chapters/Using the Visitor to implement Power-ups/Visitor.unity
+    path: Assets/Chapters/Chapter10/Implementing Power-ups with the Visitor pattern/Visitor.unity
     guid: 2537816b73de9dc4f9b8f5cd0f15104b
   - enabled: 1
-    path: Assets/Chapters/Optimizing with the Object Pool/ObjectPool.unity
+    path: Assets/Chapters/Chapter08/Optimizing with the Object Pool/ObjectPool.unity
     guid: aa103b9352465064084b78e6ff608abd
   m_configObjects: {}
