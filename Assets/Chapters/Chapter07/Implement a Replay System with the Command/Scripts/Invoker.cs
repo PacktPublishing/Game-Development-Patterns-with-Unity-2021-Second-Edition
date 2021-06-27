@@ -48,7 +48,7 @@ namespace Chapter.Command
             
             if (_isReplaying)
             {
-                _replayTime += Time.deltaTime;
+                _replayTime += Time.fixedDeltaTime;
 
                 if (_recordedCommands.Any()) 
                 {
