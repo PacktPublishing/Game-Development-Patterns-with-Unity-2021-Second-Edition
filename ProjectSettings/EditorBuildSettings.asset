@@ -9,24 +9,36 @@ EditorBuildSettings:
     path: Assets/Chapters/Chapter04/Implementing a Game Manager with the Singleton/Singleton.unity
     guid: 343ac8ccaa51dc34b8b4a9d1e95359a4
   - enabled: 1
-    path: Assets/Chapters/Chapter09/Decoupling Components with the Observer pattern/Observer.unity
-    guid: 4044770ccc15f7d478c274d14498f782
-  - enabled: 1
-    path: Assets/Chapters/Chapter07/Implement a Replay System with the Command/Command.unity
-    guid: f838f16e49a4146418191bbc300f82eb
-  - enabled: 1
-    path: Assets/Chapters/Chapter11/Implementing a Drone with the Strategy pattern/Strategy.unity
-    guid: 09b24867816b91642b1ca551c280bab7
-  - enabled: 1
-    path: Assets/Chapters/Chapter15/Concealing Complexity with a Facade/Facade.unity
-    guid: 898e8766c576931468660a385fca67a4
+    path: Assets/Chapters/Chapter05/Managing Character States with the State pattern/State.unity
+    guid: 1aa09c18f24e84b45a06bb997cff1f8f
   - enabled: 1
     path: Assets/Chapters/Chapter06/Managing Game Events with Event Bus/EventBus.unity
     guid: 71684936789de264c8755f431ef1f263
   - enabled: 1
-    path: Assets/Chapters/Chapter10/Implementing Power-ups with the Visitor pattern/Visitor.unity
-    guid: 2537816b73de9dc4f9b8f5cd0f15104b
+    path: Assets/Chapters/Chapter07/Implement a Replay System with the Command/Command.unity
+    guid: f838f16e49a4146418191bbc300f82eb
   - enabled: 1
     path: Assets/Chapters/Chapter08/Optimizing with the Object Pool/ObjectPool.unity
     guid: aa103b9352465064084b78e6ff608abd
+  - enabled: 1
+    path: Assets/Chapters/Chapter09/Decoupling Components with the Observer pattern/Observer.unity
+    guid: 4044770ccc15f7d478c274d14498f782
+  - enabled: 1
+    path: Assets/Chapters/Chapter10/Implementing Power-ups with the Visitor pattern/Visitor.unity
+    guid: 2537816b73de9dc4f9b8f5cd0f15104b
+  - enabled: 1
+    path: Assets/Chapters/Chapter11/Implementing a Drone with the Strategy pattern/Strategy.unity
+    guid: 09b24867816b91642b1ca551c280bab7
+  - enabled: 1
+    path: Assets/Chapters/Chapter12/Using the Decorator to implement a Weapon System/Decorator.unity
+    guid: ce046422da608c245b0abb21875f6a3b
+  - enabled: 1
+    path: Assets/Chapters/Chapter14/Adapting Systems with an Adapter/Adapter.unity
+    guid: 3b266fe3450aeac4ebe0698f7d823aed
+  - enabled: 1
+    path: Assets/Chapters/Chapter15/Concealing Complexity with a Facade/Facade.unity
+    guid: 898e8766c576931468660a385fca67a4
+  - enabled: 1
+    path: Assets/Chapters/Chapter16/Managing Dependencies with the Service Locator/ServiceLocator.unity
+    guid: 3a2ec94f003a7eb4e9aa257d37ffdaf9
   m_configObjects: {}

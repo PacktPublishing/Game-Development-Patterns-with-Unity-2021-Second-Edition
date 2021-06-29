@@ -2,7 +2,7 @@
 
 namespace Pattern.Visitor
 {
-    [CreateAssetMenu(fileName = "PowerUp", menuName = "PowerUp", order = 1)]
+    [CreateAssetMenu(fileName = "PowerUp", menuName = "PowerUp")]
     public class PowerUp : ScriptableObject, IVisitor
     {
         public string powerupName;

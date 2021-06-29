@@ -2,7 +2,7 @@
 
 namespace Pattern.Visitor
 {
-    public class VisitorClient : MonoBehaviour
+    public class ClientVisitor : MonoBehaviour
     {
         public PowerUp enginePowerUp;
         public PowerUp shieldPowerUp;
@@ -13,7 +13,8 @@ namespace Pattern.Visitor
         void Start()
         {
             _bikeController = 
-                gameObject.AddComponent<BikeController>();
+                gameObject.
+                    AddComponent<BikeController>();
         }
 
         void OnGUI()
