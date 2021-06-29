@@ -1,41 +1,48 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace Chapter.Adapter
-{
-    public class InventorySystemAdapter
-    {
-        private readonly InventorySystem _inventorySystem;
+namespace Chapter.Adapter {
+    public class InventorySystemAdapter:
+        InventorySystem, IInventorySystem {
         
-        public InventorySystemAdapter(InventorySystem inventorySystem)
-        {
-            _inventorySystem = inventorySystem;
+        private List<InventoryItem> _cloudInventory;
+        
+        public void SyncInventories() {
+            var _cloudInventory = GetInventory();
+
+            Debug.Log(
+                "Synchronizing local drive and cloud inventories");
         }
         
-        public void AddItem(int itemID)
-        {
-            _inventorySystem.AddItem(itemID);
-
-            // TODO: Add item to local save file
+        public void AddItem(
+            InventoryItem item, SaveLocation location) {
             
-            Debug.Log("Adding item to local save file");
+            if (location == SaveLocation.Cloud)
+                AddItem(item);
+            
+            if (location == SaveLocation.Local)
+                Debug.Log(
+                    "Adding item to local drive");
+            
+            if (location == SaveLocation.Both)
+                Debug.Log(
+                    "Adding item to local drive and on the cloud");
         }
 
-        public void RemoveItem(InventorySystem inventorySystem, int itemID)
-        {
-            _inventorySystem.AddItem(itemID);
+        public void RemoveItem(
+            InventoryItem item, SaveLocation location) {
             
-            // TODO: Remove item from local save file
-            
-            Debug.Log("Removing item from local save file");
+            Debug.Log(
+                "Remove item from local/cloud/both");
         }
 
-        public void SyncInventory()
-        {
-            var list = _inventorySystem.GetInventoryList();
+        public List<InventoryItem> 
+            GetInventory(SaveLocation location) {
             
-            // TODO: Merge the cloud and local inventory
-            
-            Debug.Log("Synchronizing  inventories");
+            Debug.Log(
+                "Get inventory from local/cloud/both");
+
+            return new List<InventoryItem>();
         }
     }
 }

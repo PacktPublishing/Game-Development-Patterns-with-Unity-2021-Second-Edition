@@ -1,24 +1,28 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Chapter.Adapter
 {
     public class InventorySystem
     {
-        public void AddItem(int itemID)
+        public void AddItem(InventoryItem item)
         {
-            Debug.Log("Adding item to the cloud");
+            Debug.Log(
+                "Adding item to the cloud");
         }
 
-        public void RemoveItem(int itemID)
+        public void RemoveItem(InventoryItem item)
         {
-            Debug.Log("Removing item from the cloud");
+            Debug.Log(
+                "Removing item from the cloud");
         }
-
-        public List<int> GetInventoryList()
+        
+        public List<InventoryItem> GetInventory()
         {
-            Debug.Log("Returning item list stored in the cloud");
-            return new List<int>(); // returning empty list for testing purposes
+            Debug.Log(
+                "Returning an inventory list stored in the cloud");
+            
+            return new List<InventoryItem>();
         }
     }
 }

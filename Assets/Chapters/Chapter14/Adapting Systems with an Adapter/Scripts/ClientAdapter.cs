@@ -4,24 +4,25 @@ namespace Chapter.Adapter
 {
     public class ClientAdapter : MonoBehaviour
     {
+        public InventoryItem item;
+        
         private InventorySystem _inventorySystem;
-        private InventorySystemAdapter _inventorySystemAdapter;
-
+        private IInventorySystem _inventorySystemAdapter;
+        
         void Start()
         {
             _inventorySystem = new InventorySystem();
-            _inventorySystemAdapter = new InventorySystemAdapter(_inventorySystem);
+            _inventorySystemAdapter = new InventorySystemAdapter();
         }
 
         void OnGUI()
         {
-            GUILayout.Label("Output in console");
-
             if (GUILayout.Button("Add item (no adapter)"))
-                _inventorySystem.AddItem(89);
+                _inventorySystem.AddItem(item);
 
             if (GUILayout.Button("Add item (with adapter)"))
-                _inventorySystemAdapter.AddItem(89);
+                _inventorySystemAdapter.
+                    AddItem(item, SaveLocation.Both);
         }
     }
 }
