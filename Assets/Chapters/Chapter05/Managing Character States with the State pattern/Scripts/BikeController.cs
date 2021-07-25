@@ -6,9 +6,7 @@ namespace Chapter.State {
         public float maxSpeed = 2.0f;
         public float turnDistance = 2.0f;
         
-        public float CurrentSpeed {
-            get; set;
-        }
+        public float CurrentSpeed { get; set; }
         
         public Direction CurrentTurnDirection {
             get; private set;
@@ -25,12 +23,12 @@ namespace Chapter.State {
             
             _startState = 
                 gameObject.AddComponent<BikeStartState>();
-            
             _stopState = 
                 gameObject.AddComponent<BikeStopState>();
-            
             _turnState = 
                 gameObject.AddComponent<BikeTurnState>();
+            
+            _bikeStateContext.Transition(_stopState);
         }
 
         public void StartBike() {

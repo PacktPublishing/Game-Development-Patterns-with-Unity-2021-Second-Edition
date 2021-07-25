@@ -35,7 +35,7 @@ namespace Chapter.EventBus
         }
         
         void OnGUI() {
-            GUI.color = Color.blue;
+            GUI.color = Color.green;
             GUI.Label(
                 new Rect(125, 0, 100, 20), 
                 "COUNTDOWN: " + _currentTime);

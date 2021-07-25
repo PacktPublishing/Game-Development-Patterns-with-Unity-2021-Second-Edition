@@ -15,7 +15,6 @@ namespace Chapter.Observer
 
         protected void Detach(Observer observer)
         {
-            Debug.Log("Detach!");
             _observers.Remove(observer);
         }
 

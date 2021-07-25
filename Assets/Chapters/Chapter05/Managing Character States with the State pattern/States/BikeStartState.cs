@@ -11,7 +11,8 @@ namespace Chapter.State
             if (!_bikeController)
                 _bikeController = bikeController;
             
-            _bikeController.CurrentSpeed = _bikeController.maxSpeed;
+            _bikeController.CurrentSpeed = 
+                _bikeController.maxSpeed;
         }
         
         void Update()
@@ -22,7 +23,8 @@ namespace Chapter.State
                 {
                     _bikeController.transform.Translate(
                         Vector3.forward * (
-                            _bikeController.CurrentSpeed * Time.deltaTime));
+                            _bikeController.CurrentSpeed * 
+                            Time.deltaTime));
                 }
             }
         }

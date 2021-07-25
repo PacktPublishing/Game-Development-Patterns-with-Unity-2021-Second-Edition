@@ -6,23 +6,21 @@ namespace Chapter.EventBus
     {
         private bool _isDisplayOn;
 
-        void OnEnable()
-        {
-            RaceEventBus.Subscribe(RaceEventType.START, DisplayHUD);
+        void OnEnable() {
+            RaceEventBus.Subscribe(
+                RaceEventType.START, DisplayHUD);
         }
 
-        void OnDisable()
-        {
-            RaceEventBus.Unsubscribe(RaceEventType.START, DisplayHUD);
+        void OnDisable() {
+            RaceEventBus.Unsubscribe(
+                RaceEventType.START, DisplayHUD);
         }
         
-        private void DisplayHUD()
-        {
+        private void DisplayHUD() {
             _isDisplayOn = true;
         }
 
-        void OnGUI()
-        {
+        void OnGUI() {
             if (_isDisplayOn)
             {
                 if (GUILayout.Button("Stop Race"))

@@ -2,7 +2,11 @@ namespace Chapter.State
 {
     public class BikeStateContext
     {
-        private IBikeState _currentState;
+        public IBikeState CurrentState
+        {
+            get; set;
+        }
+        
         private readonly BikeController _bikeController;
 
         public BikeStateContext(BikeController bikeController)
@@ -10,20 +14,15 @@ namespace Chapter.State
             _bikeController = bikeController;
         }
 
-        public void SetState(IBikeState bikeState)
-        {
-            _currentState = bikeState;
-        }
-
         public void Transition()
         {
-            _currentState.Handle(_bikeController);
+            CurrentState.Handle(_bikeController);
         }
-
-        public void Transition(IBikeState bikeState)
+        
+        public void Transition(IBikeState state)
         {
-            _currentState = bikeState;
-            _currentState.Handle(_bikeController);
+            CurrentState = state;
+            CurrentState.Handle(_bikeController);
         }
     }
 }
