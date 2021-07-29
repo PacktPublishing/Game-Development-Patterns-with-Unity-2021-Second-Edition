@@ -1,38 +1,42 @@
 ﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+namespace FPP.Scripts.Core
 {
-    private static T _instance; 
-
-    public static T Instance
+    public class Singleton<T> : MonoBehaviour where T : Component
     {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = FindObjectOfType<T>();
+        private static T _instance;
 
+        public static T Instance
+        {
+            get
+            {
                 if (!_instance)
                 {
-                    GameObject obj = new GameObject();
-                    obj.name = typeof(T).Name;
-                    _instance = obj.AddComponent<T>();
-                }
-            }
-            return _instance;
-        }
-    }
+                    _instance = FindObjectOfType<T>();
 
-    public virtual void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this as T;
-            DontDestroyOnLoad(gameObject);
+                    if (!_instance)
+                    {
+                        GameObject obj = new GameObject();
+                        obj.name = typeof(T).Name;
+                        _instance = obj.AddComponent<T>();
+                    }
+                }
+
+                return _instance;
+            }
         }
-        else
+
+        public virtual void Awake()
         {
-            Destroy(gameObject);
+            if (_instance == null)
+            {
+                _instance = this as T;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
