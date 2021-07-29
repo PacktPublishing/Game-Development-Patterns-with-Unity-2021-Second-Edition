@@ -12,9 +12,9 @@ Unity has a particular coding model and architecture that requires knowledge of 
 This book covers the following exciting features: 
 * Structure your Unity code using industry-standard development patterns to make it look professional
 * Identify the right patterns for implementing specific game mechanics or features
-* Discover anti-patterns to avoid making common bad design choices
+* Develop configurable core game mechanics and ingredients that can be modified without writing a single line of code
 * Review practical OOP techniques and learn how they're used in the context of a Unity project
-* Optimize your code using Unity's ECS
+* Build unique game development systems such as a level editor
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1800200811) today!
 
