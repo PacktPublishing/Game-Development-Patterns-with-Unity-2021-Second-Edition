@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/FPP/Scenes/Main/MainMenu.unity
+    guid: f28c4d4ef57640b44a41f1765fbd211a
+  - enabled: 1
     path: Assets/Chapters/Chapter04/Implementing a Game Manager with the Singleton/Singleton.unity
     guid: 343ac8ccaa51dc34b8b4a9d1e95359a4
   - enabled: 1
