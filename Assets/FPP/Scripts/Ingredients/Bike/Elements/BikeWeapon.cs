@@ -1,6 +1,7 @@
 using UnityEngine;
+using FPP.Scripts.Weapons;
 
-namespace Nerdtron.BladeRacer.Weaponary
+namespace FPP.Scripts.Ingredients.Bike.Elements
 {
     public class BikeWeapon : MonoBehaviour
     {

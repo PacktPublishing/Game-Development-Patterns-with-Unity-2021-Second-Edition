@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using FPP.Scripts.Controllers;
 
 public class BikeSensor : MonoBehaviour
 {
@@ -25,20 +24,20 @@ public class BikeSensor : MonoBehaviour
         {
             _startPosition = transform.position;
             
-            Debug.DrawRay(_startPosition, GetForwardDirection(BikeController.Direction.Left) * sideDetectionDistance, Color.blue);
-            Debug.DrawRay(_startPosition, GetForwardDirection(BikeController.Direction.Right) * sideDetectionDistance, Color.blue);
-            Debug.DrawRay(_startPosition, GetForwardDirection(BikeController.Direction.Forward) * forwardDetectionDistance, Color.blue);
+            Debug.DrawRay(_startPosition, GetForwardDirection(BikeDirection.Left) * sideDetectionDistance, Color.blue);
+            Debug.DrawRay(_startPosition, GetForwardDirection(BikeDirection.Right) * sideDetectionDistance, Color.blue);
+            Debug.DrawRay(_startPosition, GetForwardDirection(BikeDirection.Forward) * forwardDetectionDistance, Color.blue);
         }
     }
     
-    public bool CheckCollision(BikeController.Direction direction)
+    public bool CheckCollision(BikeDirection direction)
     {
         if (Physics.Raycast(_startPosition, GetForwardDirection(direction), out _hit, sideDetectionDistance, _layer)) 
             return true;
         return false;
     }
 
-    private Vector3 GetForwardDirection(BikeController.Direction direction)
+    private Vector3 GetForwardDirection(BikeDirection direction)
     {
         return Quaternion.Euler(0.0f, sideDetectionAngle * (int) direction, 0f) * Vector3.forward;;
     }

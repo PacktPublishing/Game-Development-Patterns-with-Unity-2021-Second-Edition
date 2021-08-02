@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Nerdtron.BladeRacer.Weaponary
+namespace FPP.Scripts.Weapons
 {
     [CreateAssetMenu(fileName = "NewWeaponConfig", menuName = "Ingredients/Weapon/Configuration", order = 1)]
     public class WeaponConfiguration : ScriptableObject

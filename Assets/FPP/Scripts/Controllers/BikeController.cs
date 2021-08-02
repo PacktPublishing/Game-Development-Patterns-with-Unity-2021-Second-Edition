@@ -3,9 +3,9 @@ using System.Collections;
 using FPP.Scripts.Cameras;
 using FPP.Scripts.Patterns;
 using System.Collections.Generic;
-using Nerdtron.BladeRacer.Weaponary;
 using FPP.Scripts.Ingredients.Bike;
 using FPP.Scripts.Ingredients.Bike.Engine;
+using FPP.Scripts.Ingredients.Bike.Elements;
 
 namespace FPP.Scripts.Controllers
 {
@@ -16,14 +16,6 @@ namespace FPP.Scripts.Controllers
         public int currentSpeed;
         private int _currentRail = 1;
         public BikeConfiguration bike;
-        
-        // TODO: Pull out of the class
-        public enum Direction
-        {
-            Forward = 0,
-            Left = -1,
-            Right = 1
-        }
         
         public BikeSensor bikeSensor { get; private set; }
         public BikeShield bikeShield { get; private set; }
@@ -94,7 +86,6 @@ namespace FPP.Scripts.Controllers
             bikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
             bikeSensor = (BikeSensor) FindObjectOfType(typeof(BikeSensor));
             followCamera = (FollowCamera) FindObjectOfType(typeof(FollowCamera));
-            
             trackController = (TrackController) FindObjectOfType(typeof(TrackController));
             
             _hud = Instantiate(Resources.Load("HUD", typeof(GameObject))) as GameObject;
@@ -127,9 +118,9 @@ namespace FPP.Scripts.Controllers
             _bikeStateContext.Transition(_turboState);
         }
 
-        public void Turn(Direction direction)
+        public void Turn(BikeDirection direction)
         {
-            if (direction == Direction.Left)
+            if (direction == BikeDirection.Left)
             {
                 if (_currentRail != 1) // TODO: Ask the TrackController for the minTrack
                 {
@@ -138,7 +129,7 @@ namespace FPP.Scripts.Controllers
                 }
             }
 
-            if (direction == Direction.Right)
+            if (direction == BikeDirection.Right)
             {
                 if (_currentRail != 4) // TODO: Ask the TrackController for the maxTrack
                 {
@@ -154,7 +145,7 @@ namespace FPP.Scripts.Controllers
             Notify();
         }
         
-        public IEnumerator Turn(float duration, Direction direction)
+        public IEnumerator Turn(float duration, BikeDirection direction)
         {
             float time = 0;
             Vector3 startPosition = transform.position;

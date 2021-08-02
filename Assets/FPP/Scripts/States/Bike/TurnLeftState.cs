@@ -5,7 +5,7 @@ public class TurnLeftState : MonoBehaviour, IBikeState
 {
     public void Handle(BikeController bikeController)
     {
-        if (bikeController.bikeSensor.CheckCollision(BikeController.Direction.Left))
+        if (bikeController.bikeSensor.CheckCollision(BikeDirection.Left))
         {
 
             bikeController.Damage(DamageType.Collision);

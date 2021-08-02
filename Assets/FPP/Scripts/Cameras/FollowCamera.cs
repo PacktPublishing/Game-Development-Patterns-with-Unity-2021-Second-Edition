@@ -36,7 +36,7 @@ namespace FPP.Scripts.Cameras
                 ToggleTurboMode(controller.isTurboOn);
         }
         
-        public IEnumerator Turn(float duration, BikeController.Direction direction)
+        public IEnumerator Turn(float duration, BikeDirection direction)
         {
             float time = 0;
             

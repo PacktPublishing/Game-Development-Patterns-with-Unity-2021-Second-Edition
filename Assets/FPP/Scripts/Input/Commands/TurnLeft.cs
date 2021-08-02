@@ -23,7 +23,7 @@ namespace FPP.Scripts.Input.Commands
 
         private void Command(BikeController controller)
         {
-            controller.Turn(BikeController.Direction.Left);
+            controller.Turn(BikeDirection.Left);
         }
     }
 }

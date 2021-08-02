@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Nerdtron.BladeRacer.Weaponary
+namespace FPP.Scripts.Weapons
 { 
     public class WeaponDecorator : IWeapon
     {

@@ -13,17 +13,17 @@ namespace FPP.Scripts.Input.Commands
 
         public override void Execute()
         {
-            _controller.Turn(BikeController.Direction.Right);
+            _controller.Turn(BikeDirection.Right);
         }
 
         public override void Replay(BikeController controller)
         {
-            controller.Turn(BikeController.Direction.Right);
+            controller.Turn(BikeDirection.Right);
         }
 
         private void Command(BikeController controller)
         {
-            controller.Turn(BikeController.Direction.Right);
+            controller.Turn(BikeDirection.Right);
         }
     }
 }

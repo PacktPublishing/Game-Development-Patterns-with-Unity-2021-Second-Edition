@@ -54,8 +54,8 @@ public class Drone : MonoBehaviour
         _line.endWidth = 0.1f;
         _line.useWorldSpace = true;
         _line.material = new Material(Shader.Find("Sprites/Default"));
-        _line.SetColors(Color.red, Color.red);
-        
+        _line.startColor = Color.red;
+
         _laserDirection = transform.TransformDirection(Vector3.back) * _laserDistance;
         _laserDirection = Quaternion.Euler(_laserAngle, 0.0f, 0f) * _laserDirection;
         _target = new GameObject("Target",  typeof(BoxCollider));
