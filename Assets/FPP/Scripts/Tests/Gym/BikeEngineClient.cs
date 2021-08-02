@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using FPP.Scripts.Ingredients.Bike.Engine;
 
-namespace FPP.Scripts.Tests.Gym
+namespace Nerdtron.BladeRacer.Test.Gym
 {
     public class BikeEngineClient : MonoBehaviour
     {

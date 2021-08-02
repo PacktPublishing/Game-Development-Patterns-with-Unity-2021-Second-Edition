@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FPP.Scripts.Core
+namespace BladeRacer.Scripts.Core
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {

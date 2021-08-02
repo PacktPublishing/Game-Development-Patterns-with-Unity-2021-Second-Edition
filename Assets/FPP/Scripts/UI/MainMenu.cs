@@ -1,18 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace FPP.Scripts.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenu : MonoBehaviour
     {
-        
-    }
+        public string versionPrefix;
+        public TextAsset versionFile;
+        public TMP_Text versionNumber;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            DisplayVersion();
+        }
+
+        public void Play()
+        {
+            SceneManager.LoadScene("Track");
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
+
+        private void DisplayVersion()
+        {
+            versionNumber.text = versionPrefix + versionFile.text;
+        }
     }
 }
