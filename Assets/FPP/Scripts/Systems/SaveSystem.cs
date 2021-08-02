@@ -23,10 +23,10 @@ namespace FPP.Scripts.Systems
             {
                 FileStream dataStream = new FileStream(_filePath, FileMode.Open);
                 BinaryFormatter converter = new BinaryFormatter();
-                Player saveData = converter.Deserialize(dataStream) as Player;
+                Player playerData = converter.Deserialize(dataStream) as Player;
 
                 dataStream.Close();
-                return saveData;
+                return playerData;
             }
 
             return null;

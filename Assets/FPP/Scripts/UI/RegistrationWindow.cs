@@ -11,11 +11,13 @@ namespace FPP.Scripts.UI
         {
             SaveSystem saveSystem = new SaveSystem();
             Player player = saveSystem.LoadPlayer();
-
+            
             if (player == null)
             {
                 player = new Player();
-                player.playerName = playerName.text;
+                player.playerName = playerName.text; // TODO: If player enters an empty field, just set the default player name
+                
+                // TODO: Generate UID after the player enter name
                 
                 saveSystem.SavePlayer(player);
             }
