@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class Radio : MonoBehaviour
-{
-    public Text radioLabel;
-    private float channel = 108.7f;
+namespace FPP.Scripts.Audio
+{ 
+    public class Radio : MonoBehaviour
+    {
+        private void GetAvailableRadioChannels()
+        {
+            // TODO: Get a list of available radio channels from the backend
+        }
 
-	void Start ()
-    {
-        this.radioLabel.text = this.channel.ToString();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        this.ChangeDial(scroll);
-    }
+        public void TurnOnRadio()
+        {
+            // TODO: Play random radio channel
+        }
 
-    void ChangeDial(float level)
-    {
-        this.channel = this.channel - level;
-        this.radioLabel.text = this.channel.ToString("###0.0") + " FM";
+        public void TurnOffRadio()
+        {
+            // TODO: Stop audio
+        }
+
+        public void TurnDial()
+        {
+            // TODO: Depending on input direction, switch radio channels
+        }
     }
 }

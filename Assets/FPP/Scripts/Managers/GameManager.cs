@@ -43,9 +43,11 @@ namespace FPP.Scripts.Managers
             TimeSpan timeDifference = 
                 _sessionEndTime.Subtract(_sessionStartTime);
 
-            _player.lastSessionDuration = timeDifference;
-            
-            _saveSystem.SavePlayer(_player);
+            if (_player != null)
+            {
+                _player.lastSessionDuration = timeDifference;
+                _saveSystem.SavePlayer(_player);
+            }
         }
     }
 }

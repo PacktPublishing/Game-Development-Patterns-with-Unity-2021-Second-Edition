@@ -28,8 +28,13 @@ namespace FPP.Scripts.Systems
                 dataStream.Close();
                 return playerData;
             }
-
             return null;
+        }
+
+        public void DeleteSave()
+        {
+            if (File.Exists(_filePath)) 
+                File.Delete(_filePath);
         }
     }
 }
