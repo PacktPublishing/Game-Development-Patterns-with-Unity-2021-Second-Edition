@@ -1,6 +1,8 @@
-﻿using UnityEngine.SceneManagement;
+﻿using FPP.Scripts.Systems;
+using FPP.Scripts.Patterns;
+using UnityEngine.SceneManagement;
 
-namespace Nerdtron.BladeRacer.Manager
+namespace FPP.Scripts.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
@@ -11,10 +13,13 @@ namespace Nerdtron.BladeRacer.Manager
 
         private void InitGame()
         {
-            Player player = new Player();
-            // TODO: Check if player has a save file, if not move him to the registration scene
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SaveSystem saveSystem = new SaveSystem();
+            Player player = saveSystem.LoadPlayer();
+
+            if (player == null)
+                SceneManager.LoadScene("Registration");
+            else
+                SceneManager.LoadScene("MainMenu");
         }
     }
 }

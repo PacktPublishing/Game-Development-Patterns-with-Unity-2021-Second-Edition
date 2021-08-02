@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Nerdtron.BladeRacer.Core
+namespace FPP.Scripts.Systems
 {
     public class SaveSystem
     {
@@ -16,7 +16,7 @@ namespace Nerdtron.BladeRacer.Core
             converter.Serialize(dataStream, player);
             dataStream.Close();
         }
-
+        
         public Player LoadPlayer()
         {
             if (File.Exists(_filePath))
