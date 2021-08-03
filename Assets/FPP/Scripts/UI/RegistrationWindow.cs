@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using FPP.Scripts.Core;
@@ -8,6 +9,8 @@ namespace FPP.Scripts.UI
 { 
     public class RegistrationWindow : MonoBehaviour
     {
+        [SerializeField] private string defaultPlayerName;
+        
         public void RegisterPlayer(InputField playerName)
         {
             SaveSystem saveSystem = new SaveSystem();
@@ -16,10 +19,12 @@ namespace FPP.Scripts.UI
             if (player == null)
             {
                 player = new Player();
-                player.playerName = playerName.text; // TODO: If player enters an empty field, just set the default player name
-                
-                // TODO: Generate UID after the player enter name
-                
+
+                if (String.IsNullOrEmpty(playerName.text))
+                    player.playerName = defaultPlayerName;
+                else
+                    player.playerName = playerName.text;
+
                 saveSystem.SavePlayer(player);
             }
             
