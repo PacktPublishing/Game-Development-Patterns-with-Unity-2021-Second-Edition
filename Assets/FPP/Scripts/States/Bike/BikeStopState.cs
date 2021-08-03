@@ -14,7 +14,7 @@ namespace FPP.Scripts.States.Bike
 
             if (_bikeController)
             {
-                _bikeController.currentSpeed = 0; // TODO: Speed should be controlled by the BikeEngine
+                _bikeController.currentSpeed = 0; // TODO: The bike's current speed should be controlled by it's engine
                 _bikeController.Notify();
             }
             else
