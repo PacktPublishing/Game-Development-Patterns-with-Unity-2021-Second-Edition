@@ -28,7 +28,7 @@ namespace FPP.Scripts.Controllers
         private GameObject _hud;
         private HUDController _hudController;
         private BikeStateContext _bikeStateContext;
-        private List<IBikeElement> _elements = new List<IBikeElement>();
+        private readonly List<IBikeElement> _elements = new ();
 
         private Animator _animator;
 
@@ -39,6 +39,7 @@ namespace FPP.Scripts.Controllers
             InitBikeComponents();
             
             _bikeStateContext = new BikeStateContext(this);
+            
             _brakeState = gameObject.AddComponent<BrakeState>();
             _turboState = gameObject.AddComponent<TurboState>();
             _destroyState = gameObject.AddComponent<DestroyState>();

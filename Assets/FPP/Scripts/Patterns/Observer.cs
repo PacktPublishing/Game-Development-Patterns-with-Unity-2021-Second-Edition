@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public abstract class Observer : MonoBehaviour
+namespace FPP.Scripts.Patterns
 {
-    public abstract void Notify(Subject subject);
+    public abstract class Observer : MonoBehaviour
+    {
+        public abstract void Notify(Subject subject);
+    }
 }

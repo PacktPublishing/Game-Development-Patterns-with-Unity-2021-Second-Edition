@@ -1,4 +1,7 @@
-public interface IObserver
+namespace FPP.Scripts.Patterns
 {
-    void Notify(Subject subject);
+    public interface IObserver
+    {
+        void Notify(Subject subject);
+    }
 }

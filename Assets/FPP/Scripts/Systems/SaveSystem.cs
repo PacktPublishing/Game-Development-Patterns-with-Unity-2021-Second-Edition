@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using FPP.Scripts.Core;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FPP.Scripts.Systems

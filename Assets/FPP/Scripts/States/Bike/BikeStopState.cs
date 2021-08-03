@@ -1,23 +1,26 @@
 using UnityEngine;
 using FPP.Scripts.Controllers;
 
-public class BikeStopState : StateMachineBehaviour
+namespace FPP.Scripts.States.Bike
 {
-    private BikeController _bikeController;
-    
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class BikeStopState : StateMachineBehaviour
     {
-        if (!_bikeController) 
-            _bikeController = animator.GetComponent<BikeController>();
+        private BikeController _bikeController;
 
-        if (_bikeController)
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _bikeController.currentSpeed = 0; // TODO: Speed should be controlled by the BikeEngine
-            _bikeController.Notify();
-        }
-        else
-        {
-            Debug.LogError("Missing controller!");
+            if (!_bikeController)
+                _bikeController = animator.GetComponent<BikeController>();
+
+            if (_bikeController)
+            {
+                _bikeController.currentSpeed = 0; // TODO: Speed should be controlled by the BikeEngine
+                _bikeController.Notify();
+            }
+            else
+            {
+                Debug.LogError("Missing controller!");
+            }
         }
     }
 }

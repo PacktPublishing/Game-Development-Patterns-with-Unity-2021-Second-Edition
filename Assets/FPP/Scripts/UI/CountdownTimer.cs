@@ -3,30 +3,33 @@ using UnityEngine.UI;
 using System.Collections;
 using FPP.Scripts.Patterns;
 
-public class CountdownTimer : MonoBehaviour
+namespace FPP.Scripts.UI
 {
-    [SerializeField] private Text textField;
-    [SerializeField] private float duration;
-    [SerializeField] private string startMessage;
-    
-    public void StartTimer()
+    public class CountdownTimer : MonoBehaviour
     {
-        StartCoroutine(StartCountdown());        
-    }
+        [SerializeField] private Text textField;
+        [SerializeField] private float duration;
+        [SerializeField] private string startMessage;
 
-    private IEnumerator StartCountdown()
-    {
-        while(duration > 0)
+        public void StartTimer()
         {
-            textField.text = duration.ToString();
-            yield return new WaitForSeconds(1f);
-            duration--;
+            StartCoroutine(StartCountdown());
         }
 
-        textField.text = startMessage;
-        
-        yield return new WaitForSeconds(0.5f);
-        RaceEventBus.Publish(RaceEventType.START);
-        Destroy(gameObject);
+        private IEnumerator StartCountdown()
+        {
+            while (duration > 0)
+            {
+                textField.text = duration.ToString();
+                yield return new WaitForSeconds(1f);
+                duration--;
+            }
+
+            textField.text = startMessage;
+
+            yield return new WaitForSeconds(0.5f);
+            RaceEventBus.Publish(RaceEventType.START);
+            Destroy(gameObject);
+        }
     }
 }

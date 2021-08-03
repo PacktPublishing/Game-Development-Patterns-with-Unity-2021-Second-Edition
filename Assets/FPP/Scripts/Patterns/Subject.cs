@@ -1,26 +1,29 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class Subject : MonoBehaviour
+namespace FPP.Scripts.Patterns
 {
-    private ArrayList observers = new ArrayList();
-
-    public void Attach(Observer observer)
+    public abstract class Subject : MonoBehaviour
     {
-        observers.Add(observer);
-    }
+        private ArrayList observers = new ArrayList();
 
-    public void Detach(Observer observer)
-    {
-        observers.Remove(observer);
-    }
-
-    public void Notify()
-    {
-        foreach (Observer observer in observers)
+        public void Attach(Observer observer)
         {
-            if (observer) 
-                observer.Notify(this);
+            observers.Add(observer);
+        }
+
+        public void Detach(Observer observer)
+        {
+            observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            foreach (Observer observer in observers)
+            {
+                if (observer)
+                    observer.Notify(this);
+            }
         }
     }
 }
