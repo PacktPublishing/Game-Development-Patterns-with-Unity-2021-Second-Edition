@@ -1,4 +1,5 @@
 using UnityEngine;
+using FPP.Scripts.Enums;
 using FPP.Scripts.Cameras;
 using FPP.Scripts.Controllers;
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using FPP.Scripts.Enums;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
 namespace FPP.Scripts.Patterns

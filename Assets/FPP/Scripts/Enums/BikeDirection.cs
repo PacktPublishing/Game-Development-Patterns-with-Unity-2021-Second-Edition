@@ -1,6 +1,9 @@
-public enum BikeDirection
+namespace FPP.Scripts.Enums
 {
-    Forward = 0,
-    Left = -1,
-    Right = 1
+    public enum BikeDirection
+    {
+        Forward = 0,
+        Left = -1,
+        Right = 1
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Linq;
+using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
 using System.Collections.Generic;
 

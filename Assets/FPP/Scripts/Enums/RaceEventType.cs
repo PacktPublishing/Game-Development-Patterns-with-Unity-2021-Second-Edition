@@ -1,4 +1,13 @@
-﻿public enum RaceEventType
+﻿namespace FPP.Scripts.Enums
 {
-    COUNTDOWN, START, FINISH, QUIT, PAUSE, RESTART, REPLAY
+    public enum RaceEventType
+    {
+        COUNTDOWN,
+        START,
+        FINISH,
+        QUIT,
+        PAUSE,
+        RESTART,
+        REPLAY
+    }
 }

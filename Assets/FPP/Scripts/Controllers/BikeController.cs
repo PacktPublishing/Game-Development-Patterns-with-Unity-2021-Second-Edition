@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Cameras;
 using FPP.Scripts.Patterns;

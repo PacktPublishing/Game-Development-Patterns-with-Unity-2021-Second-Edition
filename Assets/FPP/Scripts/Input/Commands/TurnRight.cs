@@ -1,4 +1,5 @@
-﻿using FPP.Scripts.Controllers;
+﻿using FPP.Scripts.Enums;
+using FPP.Scripts.Controllers;
 
 namespace FPP.Scripts.Input.Commands
 {

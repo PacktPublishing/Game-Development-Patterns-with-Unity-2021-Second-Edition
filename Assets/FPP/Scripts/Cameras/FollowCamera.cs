@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Patterns;
 using FPP.Scripts.Controllers;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using FPP.Scripts.Enums;
 
 public class BikeSensor : MonoBehaviour
 {

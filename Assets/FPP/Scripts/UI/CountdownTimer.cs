@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Patterns;
 
