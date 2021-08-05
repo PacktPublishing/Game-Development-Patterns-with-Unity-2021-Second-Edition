@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace FPP.Scripts.Ingredients.Enemies.Drones
+namespace FPP.Scripts.Ingredients.Enemies.Drone.Strategies
 {
     public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
     {
         private Animator _animator;
         
-        public void Maneuver(Drone drone)
+        public void Maneuver(DroneController drone)
         {
             _animator = gameObject.GetComponent<Animator>();
             

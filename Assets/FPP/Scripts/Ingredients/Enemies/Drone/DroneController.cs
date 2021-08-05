@@ -3,10 +3,11 @@ using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Controllers;
 using System.Collections.Generic;
+using FPP.Scripts.Ingredients.Enemies.Drone.Strategies;
 
-namespace FPP.Scripts.Ingredients.Enemies.Drones
+namespace FPP.Scripts.Ingredients.Enemies.Drone
 {
-    public class Drone : MonoBehaviour
+    public class DroneController : MonoBehaviour
     {
         private readonly List<IManeuverBehaviour> 
             _strategyComponents = new();
