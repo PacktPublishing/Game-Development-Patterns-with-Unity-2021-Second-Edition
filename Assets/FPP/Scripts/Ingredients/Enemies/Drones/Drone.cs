@@ -8,51 +8,54 @@ namespace FPP.Scripts.Ingredients.Enemies.Drones
 {
     public class Drone : MonoBehaviour
     {
-        public float Speed = 1.0f;
-        public float MaxHeight = 5.0f;
-        public float MinHeight = 1.5f;
-        public float WeavingDistance = 1.5f;
-        public IManeuverBehaviour strategy;
+        private readonly List<IManeuverBehaviour> 
+            _strategyComponents = new();
 
         private bool _isActived;
         private LineRenderer _line;
         private GameObject _target;
         private IEnumerator _activate;
 
-        // Sonar
+        [Header("Sonar")]
         private RaycastHit _sonarHit;
         private Vector3 _sonarDirection;
         [SerializeField] private float _sonarDistance = 20.0f;
 
-        // Laser
+        [Header("Laser")]
         private RaycastHit _laserHit;
         private Vector3 _laserDirection;
+        [SerializeField] private GameObject model;
         [SerializeField] private float _laserAngle = -45.0f;
         [SerializeField] private float _laserDistance = 15.0f;
-
+        
         void Start()
         {
             _sonarDirection = transform.TransformDirection(Vector3.back) * _sonarDistance;
+            
             Activate();
         }
 
         public void ApplyStrategy()
         {
-            strategy.Maneuver(this);
+            _strategyComponents.Add(gameObject.AddComponent<WeavingManeuver>());
+            _strategyComponents.Add(gameObject.AddComponent<BoppingManeuver>());
+
+            int index = Random.Range(0, _strategyComponents.Count);
+            
+            _strategyComponents[index].Maneuver(this);
         }
 
         private void Activate()
         {
-            strategy = gameObject.AddComponent<BoppingManeuver>();
-            ApplyStrategy();
-
             _isActived = true;
+            
             DrawLaser();
+            ApplyStrategy();
         }
 
         private void DrawLaser()
         {
-            _line = gameObject.AddComponent<LineRenderer>();
+            _line = model.AddComponent<LineRenderer>();
             _line.startWidth = 0.1f;
             _line.endWidth = 0.1f;
             _line.useWorldSpace = true;
@@ -83,21 +86,20 @@ namespace FPP.Scripts.Ingredients.Enemies.Drones
                     }
                 }
             }
-
-            // Laser
+            
             if (_isActived)
             {
                 List<Vector3> pos = new List<Vector3>();
-                pos.Add(transform.position);
+                pos.Add(model.transform.position);
                 pos.Add(_target.transform.position);
                 _line.SetPositions(pos.ToArray());
 
                 Debug.DrawRay(transform.position, _laserDirection, Color.blue);
-                if (Physics.Raycast(transform.position, _laserDirection, out _laserHit, _laserDistance))
+                if (Physics.Raycast(model.transform.position, _laserDirection, out _laserHit, _laserDistance))
                 {
                     if (_laserHit.collider.GetComponent<BikeController>())
                     {
-                        Debug.DrawRay(transform.position, _laserDirection, Color.green);
+                        Debug.DrawRay(model.transform.position, _laserDirection, Color.green);
                         _laserHit.collider.GetComponent<BikeController>().Damage(DamageType.Laser);
                     }
                 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101278617767187559}
   - component: {fileID: 2101278617767187552}
+  - component: {fileID: 4153019948341297121}
   m_Layer: 0
   m_Name: PlaceholderDrone
   m_TagString: Untagged
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660391901807431364}
   m_Father: {fileID: 0}
@@ -51,6 +53,26 @@ MonoBehaviour:
   _sonarDistance: 100
   _laserAngle: -45
   _laserDistance: 15
+  model: {fileID: 171697824893146238}
+--- !u!95 &4153019948341297121
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101278617767187563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 666506c386a5eaa45948a663e7f55c19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1054008970177128751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,7 +108,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: daf49917b08ba934c8175ed5cf27f1fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daf49917b08ba934c8175ed5cf27f1fd,
         type: 3}
@@ -135,6 +157,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daf49917b08ba934c8175ed5cf27f1fd, type: 3}
+--- !u!1 &171697824893146238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: daf49917b08ba934c8175ed5cf27f1fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1054008970177128751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &660391901807431364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: daf49917b08ba934c8175ed5cf27f1fd,
