@@ -3,6 +3,8 @@ using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Controllers;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
+using FPP.Scripts.Ingredients.Enemies.Drone.Components;
 using FPP.Scripts.Ingredients.Enemies.Drone.Strategies;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone
@@ -16,29 +18,26 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
         private LineRenderer _line;
         private GameObject _target;
         private IEnumerator _activate;
-
-        // TODO: Move this segment into the DroneSensor class
-        [Header("Sonar")]
-        private RaycastHit _sonarHit;
-        private Vector3 _sonarDirection;
-        [SerializeField] private float _sonarDistance = 20.0f;
+        
+        [Header("Sensor")]
+        public float sensorDistance = 20.0f;
+        private DroneSensor _droneSensor;
 
         // TODO: Move this segment into the DroneWeapon class
-        [Header("Laser")]
+        [Header("Weapon")]
         private RaycastHit _laserHit;
         private Vector3 _laserDirection;
         [SerializeField] private GameObject model;
         [SerializeField] private float _laserAngle = -45.0f;
         [SerializeField] private float _laserDistance = 15.0f;
-        
-        void Start()
+
+        void Awake()
         {
-            _sonarDirection = transform.TransformDirection(Vector3.back) * _sonarDistance;
-            
-            Activate();
+            _droneSensor = GetComponentInChildren<DroneSensor>();
+            _droneSensor.DroneController = this;
         }
 
-        public void ApplyStrategy()
+        public void ApplyAttackStrategy()
         {
             _strategyComponents.Add(gameObject.AddComponent<WeavingManeuver>());
             _strategyComponents.Add(gameObject.AddComponent<BoppingManeuver>());
@@ -48,18 +47,19 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
             _strategyComponents[index].Maneuver(this);
         }
 
-        private void Activate()
+        public void Activate()
         {
-            _isActived = true;
-            
+            // TODO: Encapsulate this in an animation state class
             DrawLaser();
-            ApplyStrategy();
+            ApplyAttackStrategy();
+            
+            _isActived = true;
         }
 
         // TODO: Move this segment into the DroneWeapon class
         private void DrawLaser()
         {
-            _line = model.AddComponent<LineRenderer>();
+            _line = gameObject.AddComponent<LineRenderer>();
             _line.startWidth = 0.1f;
             _line.endWidth = 0.1f;
             _line.useWorldSpace = true;
@@ -77,21 +77,6 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
 
         void Update()
         {
-            // TODO: Move this segment into the DroneSensor class
-            if (!_isActived)
-            {
-                Vector3 _sonarOrigin = transform.position;
-                _sonarOrigin.y = 0.5f;
-                Debug.DrawRay(_sonarOrigin, _sonarDirection, Color.red);
-                if (Physics.Raycast(_sonarOrigin, _sonarDirection, out _sonarHit, _sonarDistance))
-                {
-                    if (_sonarHit.collider.GetComponent<BikeController>())
-                    {
-                        Activate();
-                    }
-                }
-            }
-            
             // TODO: Move this segment into the DroneWeapon classs
             if (_isActived)
             {
