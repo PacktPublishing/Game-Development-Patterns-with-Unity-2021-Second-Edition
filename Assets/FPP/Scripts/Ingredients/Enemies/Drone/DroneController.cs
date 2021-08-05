@@ -17,11 +17,13 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
         private GameObject _target;
         private IEnumerator _activate;
 
+        // TODO: Move this segment into the DroneSensor class
         [Header("Sonar")]
         private RaycastHit _sonarHit;
         private Vector3 _sonarDirection;
         [SerializeField] private float _sonarDistance = 20.0f;
 
+        // TODO: Move this segment into the DroneWeapon class
         [Header("Laser")]
         private RaycastHit _laserHit;
         private Vector3 _laserDirection;
@@ -54,6 +56,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
             ApplyStrategy();
         }
 
+        // TODO: Move this segment into the DroneWeapon class
         private void DrawLaser()
         {
             _line = model.AddComponent<LineRenderer>();
@@ -74,6 +77,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
 
         void Update()
         {
+            // TODO: Move this segment into the DroneSensor class
             if (!_isActived)
             {
                 Vector3 _sonarOrigin = transform.position;
@@ -88,6 +92,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
                 }
             }
             
+            // TODO: Move this segment into the DroneWeapon classs
             if (_isActived)
             {
                 List<Vector3> pos = new List<Vector3>();

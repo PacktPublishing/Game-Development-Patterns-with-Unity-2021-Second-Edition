@@ -19,7 +19,7 @@ namespace FPP.Scripts.UI
         
         void Start()
         {
-            DisplayVersion();
+            DisplayBuildNumber();
             DisplayPlayerInfo();
         }
 
@@ -33,7 +33,7 @@ namespace FPP.Scripts.UI
             Application.Quit();
         }
 
-        private void DisplayVersion()
+        private void DisplayBuildNumber()
         {
             versionNumber.text = versionPrefix + versionFile.text;
         }
@@ -46,7 +46,7 @@ namespace FPP.Scripts.UI
             if (player != null)
             {
                 playerName.text = player.playerName;
-                sessionDuration.text = player.lastSessionDuration.ToString();
+                sessionDuration.text = player.lastSessionDuration.ToString(); // TODO: format the string to present HH:MM:SS
             }
         }
     }

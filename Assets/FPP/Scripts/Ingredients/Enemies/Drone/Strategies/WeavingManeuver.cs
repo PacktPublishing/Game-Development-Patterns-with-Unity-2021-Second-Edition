@@ -8,7 +8,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Strategies
 
         public void Maneuver(DroneController drone)
         {
-            _animator = gameObject.GetComponent<Animator>();
+            _animator = gameObject.GetComponent<Animator>(); // TODO: Get Animator from DroneController instead of doing a GetComponent()
             
             if (_animator)
                 _animator.SetTrigger("Weave");
