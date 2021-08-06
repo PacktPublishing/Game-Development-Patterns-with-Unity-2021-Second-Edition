@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101278617767187563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d799b1eb0ab2449821b834e36a4f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensorDistance: 20
+  sensorDistance: 50
   model: {fileID: 171697824893146238}
   _laserAngle: -45
   _laserDistance: 15
@@ -93,14 +93,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5646266274004078787}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.00122449, z: 0.0016326538}
-  m_LocalScale: {x: 0.00081632636, y: 0.00081632665, z: 0.00081632636}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 660391901807431364}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &8092776411922379469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033fb5604fbbaef409b1d6cc94169e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSensorOn: 1
+  isSensorOn: 0
 --- !u!1001 &1054008970177128751
 PrefabInstance:
   m_ObjectHideFlags: 0

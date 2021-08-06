@@ -6,7 +6,6 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
     public class DroneSensor : MonoBehaviour
     {
         public bool isSensorOn;
-        
         public DroneController DroneController { get; set; }
         
         private RaycastHit _sensorHit;

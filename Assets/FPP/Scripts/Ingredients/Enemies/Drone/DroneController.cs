@@ -11,13 +11,13 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
 {
     public class DroneController : MonoBehaviour
     {
-        private readonly List<IManeuverBehaviour> 
-            _strategyComponents = new();
+        public Animator Animator { get; set; }
 
         private bool _isActived;
         private LineRenderer _line;
         private GameObject _target;
-        private IEnumerator _activate;
+        private readonly List<IManeuverBehaviour> 
+            _strategyComponents = new();
         
         [Header("Sensor")]
         public float sensorDistance = 20.0f;
@@ -33,11 +33,27 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
 
         void Awake()
         {
-            _droneSensor = GetComponentInChildren<DroneSensor>();
-            _droneSensor.DroneController = this;
+            Animator = gameObject.GetComponent<Animator>();
+            
+            ActivateSensor();
         }
 
-        public void ApplyAttackStrategy()
+        private void ActivateSensor()
+        {
+            _droneSensor = GetComponentInChildren<DroneSensor>();
+
+            if (_droneSensor)
+            {
+                _droneSensor.DroneController = this;
+                _droneSensor.isSensorOn = true;
+            }
+            else
+            {
+                Debug.LogError("Drone sensor component not found!");
+            }
+        }
+        
+        private void ApplyAttackStrategy()
         {
             _strategyComponents.Add(gameObject.AddComponent<WeavingManeuver>());
             _strategyComponents.Add(gameObject.AddComponent<BoppingManeuver>());
@@ -49,6 +65,8 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
 
         public void Activate()
         {
+            Animator.SetTrigger("Activate");
+                
             // TODO: Encapsulate this in an animation state class
             DrawLaser();
             ApplyAttackStrategy();

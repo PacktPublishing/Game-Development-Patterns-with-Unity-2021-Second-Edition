@@ -2,16 +2,12 @@ using UnityEngine;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone.Strategies
 {
-    public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour
+    public class BoppingManeuver : MonoBehaviour, IManeuverBehaviour // TODO: This needs to be converted from a strategy class to a animation state class
     {
-        private Animator _animator;
-        
-        public void Maneuver(DroneController drone)
+        public void Maneuver(DroneController droneController)
         {
-            _animator = gameObject.GetComponent<Animator>(); // TODO: Get Animator from DroneController instead of doing a GetComponent()
-            
-            if (_animator)
-                _animator.SetTrigger("Bopple");
+            if (droneController.Animator)
+                droneController.Animator.SetTrigger("Bopple");
             else
                 Debug.LogError("Animator not found!");
         }

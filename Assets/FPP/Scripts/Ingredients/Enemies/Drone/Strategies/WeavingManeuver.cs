@@ -2,18 +2,14 @@ using UnityEngine;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone.Strategies
 {
-    public class WeavingManeuver : MonoBehaviour, IManeuverBehaviour
+    public class WeavingManeuver : MonoBehaviour, IManeuverBehaviour // TODO: This needs to be converted from a strategy class to a animation state class
     {
-        private Animator _animator;
-
-        public void Maneuver(DroneController drone)
+        public void Maneuver(DroneController droneController)
         {
-            _animator = gameObject.GetComponent<Animator>(); // TODO: Get Animator from DroneController instead of doing a GetComponent()
-            
-            if (_animator)
-                _animator.SetTrigger("Weave");
+            if (droneController.Animator)
+                droneController.Animator.SetTrigger("Weave");
             else
-                Debug.LogError("Animator not found!");
+                Debug.LogError("Drone animator missing!");
         }
     }
 }
