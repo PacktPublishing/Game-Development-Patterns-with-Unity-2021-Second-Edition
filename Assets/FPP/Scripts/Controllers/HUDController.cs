@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using FPP.Scripts.UI;
 using FPP.Scripts.Enums;
-using System.Collections;
 using FPP.Scripts.Patterns;
 
 namespace FPP.Scripts.Controllers
@@ -18,12 +17,13 @@ namespace FPP.Scripts.Controllers
         [SerializeField] private GameObject restartMenu;
         [SerializeField] private GameObject countdownTimer;
         [SerializeField] private float shieldWarningThreshold;
+        
+        private BikeController _bikeController;
 
-        private int newSpeed;
-
-        private void Start()
+        void Update()
         {
-            StartCoroutine(UpdateSpeedMeter());
+            if (_bikeController) 
+                speedField.text = _bikeController.currentSpeed.ToString();
         }
 
         void OnEnable()
@@ -84,32 +84,13 @@ namespace FPP.Scripts.Controllers
                 DisplayWarning("Warning: Shield below " + shieldWarningThreshold + "%");
 
             if (level <= 0.0f)
-                statusField.text = "GAME OVER"; 
+                statusField.text = "GAME OVER";
         }
-
-        // TODO: I should be using FixedUpdate instead to calculate the acceleration curve
-        private IEnumerator UpdateSpeedMeter()
-        {
-            int currentSpeed = 0;
-            while (true)
-            {
-                while (currentSpeed != newSpeed)
-                {
-                    yield return new WaitForSeconds(0.001f);
-                    if (currentSpeed > newSpeed) currentSpeed--;
-                    if (currentSpeed < newSpeed) currentSpeed++;
-                    speedField.text = currentSpeed.ToString();
-                }
-
-                yield return null;
-            }
-        }
-
+        
         public override void Notify(Subject subject)
         {
-            BikeController controller = subject.GetComponent<BikeController>();
-            UpdateShieldMeter(controller.bikeShield.strength);
-            newSpeed = controller.currentSpeed;
+            if (_bikeController)
+                _bikeController = subject.GetComponent<BikeController>();
         }
 
         public void RestartRace()

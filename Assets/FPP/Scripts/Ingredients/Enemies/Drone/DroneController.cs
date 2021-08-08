@@ -9,12 +9,13 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
     public class DroneController : MonoBehaviour
     {
         [Header("Sensor")]
-        public float sensorDistance = 20.0f;
+        public float sensorDistance;
 
-        [Header("Weapon")]
-        public float laserAngle = -45.0f;
-        public float laserDistance = 15.0f;
-
+        [Header("Weapon")] 
+        public float beamAngle;
+        public float beamDistance;
+        public float weaponStrength;
+        
         public Animator Animator { get; set; }
         
         private GameObject _target;
@@ -50,11 +51,11 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
             if (_droneWeapon)
             {
                 _droneWeapon.DroneController = this;
-                _droneWeapon.ActivateWeapon();
+                _droneWeapon.ActivateWeapon(weaponStrength);
             }
         }
         
-        private void ApplyAttackStrategy()
+        private void ApplyAttackStrategy() // TODO: The appplication of strategies should not be random as it will cause issues with the replay system
         {
             _strategyComponents.Add(gameObject.AddComponent<WeavingManeuver>());
             _strategyComponents.Add(gameObject.AddComponent<BoppingManeuver>());

@@ -70,13 +70,15 @@ namespace FPP.Scripts.Controllers
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StopBike);
         }
         
-        public void Damage(DamageType type) // TODO: Implement a DamageState
+        public void Damage(float amount, DamageType type) // TODO: Implement a DamageState
         {
             if (type == DamageType.Laser)
-                followCamera.Distort();
+                if (followCamera) 
+                    followCamera.Distort();
 
-            if (bikeShield.Damage((int) type) <= 0)
-                _bikeStateContext.Transition(_destroyState);
+            if (bikeShield) 
+                if (bikeShield.Damage((int) type) <= 0) 
+                    _bikeStateContext.Transition(_destroyState);
 
             Notify();
         }

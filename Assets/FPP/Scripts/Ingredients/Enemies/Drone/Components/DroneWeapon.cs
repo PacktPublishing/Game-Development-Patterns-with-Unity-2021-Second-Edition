@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using FPP.Scripts.Controllers;
-using FPP.Scripts.Enums;
 using UnityEngine;
+using FPP.Scripts.Enums;
+using FPP.Scripts.Controllers;
+using System.Collections.Generic;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
 {
@@ -10,13 +10,16 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
         public bool isBeamOn;
         public DroneController DroneController { get; set; }
 
+        private float _strength;
         private GameObject _target;
         private LineRenderer _line;
-        private RaycastHit _laserHit;
-        private Vector3 _laserDirection;
+        private RaycastHit _beamHit;
+        private Vector3 _beamDirection;
 
-        public void ActivateWeapon()
+        public void ActivateWeapon(float strength)
         {
+            _strength = strength;
+            
             _line = gameObject.AddComponent<LineRenderer>();
             _line.startWidth = 0.1f;
             _line.endWidth = 0.1f;
@@ -24,14 +27,14 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
             _line.material = new Material(Shader.Find("Sprites/Default"));
             _line.startColor = Color.red;
 
-            _laserDirection = transform.TransformDirection(Vector3.back) * DroneController.laserDistance;
-            _laserDirection = Quaternion.Euler(DroneController.laserAngle, 0.0f, 0f) * _laserDirection;
+            _beamDirection = transform.TransformDirection(Vector3.back) * DroneController.beamDistance;
+            _beamDirection = Quaternion.Euler(DroneController.beamAngle, 0.0f, 0f) * _beamDirection;
 
             _target = new GameObject("Target", typeof(BoxCollider));
             _target.transform.SetParent(transform);
 
-            Vector3 pos = Quaternion.AngleAxis(DroneController.laserAngle, Vector3.right) * Vector3.back *
-                          DroneController.laserDistance;
+            Vector3 pos = Quaternion.AngleAxis(DroneController.beamAngle, Vector3.right) * Vector3.back *
+                          DroneController.beamDistance;
             _target.transform.localPosition = pos;
 
             isBeamOn = true;
@@ -46,13 +49,14 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
                 pos.Add(_target.transform.position);
                 _line.SetPositions(pos.ToArray());
 
-                Debug.DrawRay(transform.position, _laserDirection, Color.blue);
-                if (Physics.Raycast(transform.position, _laserDirection, out _laserHit, DroneController.laserDistance))
+                Debug.DrawRay(transform.position, _beamDirection, Color.blue);
+                
+                if (Physics.Raycast(transform.position, _beamDirection, out _beamHit, DroneController.beamDistance))
                 {
-                    if (_laserHit.collider.GetComponent<BikeController>())
+                    if (_beamHit.collider.GetComponent<BikeController>())
                     {
-                        Debug.DrawRay(transform.position, _laserDirection, Color.green);
-                        _laserHit.collider.GetComponent<BikeController>().Damage(DamageType.Laser);
+                        Debug.DrawRay(transform.position, _beamDirection, Color.green);
+                        _beamHit.collider.GetComponent<BikeController>().Damage(_strength, DamageType.Laser);
                     }
                 }
             }

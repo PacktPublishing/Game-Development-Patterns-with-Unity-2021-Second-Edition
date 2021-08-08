@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensorDistance: 50
-  laserAngle: -45
-  laserDistance: 15
+  beamAngle: -45
+  beamDistance: 15
+  weaponStrength: 20
 --- !u!95 &4153019948341297121
 Animator:
   serializedVersion: 3
