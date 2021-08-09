@@ -4,6 +4,7 @@ using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
 using System.Collections.Generic;
 using FPP.Scripts.Ingredients.Bike;
+using FPP.Scripts.Ingredients.Track;
 
 namespace FPP.Scripts.Controllers
 {
@@ -20,7 +21,7 @@ namespace FPP.Scripts.Controllers
         
         [Tooltip("List of race tracks")] 
         [SerializeField]
-        private Track track;
+        private RaceTrack track;
         
         [Tooltip("Initial amount of segment to load at start")] 
         [SerializeField]
@@ -104,9 +105,9 @@ namespace FPP.Scripts.Controllers
 
                     segment.transform.position = _currentPosition;
                     
-                    segment.AddComponent<Segment>(); 
+                    segment.AddComponent<TrackSegment>(); 
                     
-                    segment.GetComponent<Segment>().
+                    segment.GetComponent<TrackSegment>().
                             trackController = this;
                     
                     _prevSeg = segment.transform;
