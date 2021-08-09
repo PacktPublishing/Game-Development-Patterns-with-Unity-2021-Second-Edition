@@ -56,7 +56,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
                     if (_beamHit.collider.GetComponent<BikeController>())
                     {
                         Debug.DrawRay(transform.position, _beamDirection, Color.green);
-                        _beamHit.collider.GetComponent<BikeController>().Damage(_strength, DamageType.Laser);
+                        _beamHit.collider.GetComponent<BikeController>().TakeDamage(_strength, DamageType.Laser);
                     }
                 }
             }

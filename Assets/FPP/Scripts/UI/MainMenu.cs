@@ -25,7 +25,7 @@ namespace FPP.Scripts.UI
 
         public void Play()
         {
-            SceneManager.LoadScene("Track");
+            SceneManager.LoadScene("RaceTrack");
         }
 
         public void Exit()

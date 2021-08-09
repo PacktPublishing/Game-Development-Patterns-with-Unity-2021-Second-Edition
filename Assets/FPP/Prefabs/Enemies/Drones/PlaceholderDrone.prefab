@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d799b1eb0ab2449821b834e36a4f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensorDistance: 300
+  sensorDistance: 500
   beamAngle: -45
   beamDistance: 15
   weaponStrength: 20

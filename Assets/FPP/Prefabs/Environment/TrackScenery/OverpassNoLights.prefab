@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4985999183674102404}
   m_Layer: 0
-  m_Name: Overpass
+  m_Name: OverpassNoLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

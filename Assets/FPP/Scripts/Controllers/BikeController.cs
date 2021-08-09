@@ -3,6 +3,7 @@ using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Cameras;
 using FPP.Scripts.Patterns;
+using FPP.Scripts.Interfaces;
 using FPP.Scripts.Controllers;
 using System.Collections.Generic;
 using FPP.Scripts.Ingredients.Bike.Engine;
@@ -10,7 +11,7 @@ using FPP.Scripts.Ingredients.Bike.Elements;
 
 namespace FPP.Scripts.Ingredients.Bike
 {
-    public class BikeController : Subject, IBikeElement
+    public class BikeController : Subject, IBikeElement, IDamageable, IDestructible
     {
         public bool isTurboOn;
         public int currentRail;
@@ -67,19 +68,23 @@ namespace FPP.Scripts.Ingredients.Bike
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StopBike);
         }
         
-        public void Damage(float amount, DamageType type) 
+        public void TakeDamage(float amount, DamageType type)
         {
             // TODO: Implement a damage state class and encapsulate the following code:
-            
             if (type == DamageType.Laser)
                 if (FollowCamera) 
                     FollowCamera.Distort();
 
             if (BikeShield) 
-                if (BikeShield.Damage((int) type) <= 0) 
-                    _bikeStateContext.Transition(_destroyState);
-
+                if (BikeShield.Damage((int) type) <= 0)
+                    Destruct();
+            
             Notify();
+        }
+        
+        public void Destruct()
+        {
+            _bikeStateContext.Transition(_destroyState);
         }
 
         private void InitBikeComponents()

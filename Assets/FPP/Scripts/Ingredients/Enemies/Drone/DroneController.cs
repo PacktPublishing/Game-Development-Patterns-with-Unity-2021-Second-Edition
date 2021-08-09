@@ -1,4 +1,6 @@
 using UnityEngine;
+using FPP.Scripts.Enums;
+using FPP.Scripts.Interfaces;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using FPP.Scripts.Ingredients.Enemies.Drone.Components;
@@ -6,7 +8,7 @@ using FPP.Scripts.Ingredients.Enemies.Drone.Strategies;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone
 {
-    public class DroneController : MonoBehaviour
+    public class DroneController : MonoBehaviour, IDamageable, IDestructible
     {
         [Header("Sensor")]
         public float sensorDistance;
@@ -71,6 +73,16 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
             ApplyAttackStrategy();
             
             Animator.SetTrigger("Activate");
+        }
+
+        public void TakeDamage(float amount, DamageType type)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Destruct()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

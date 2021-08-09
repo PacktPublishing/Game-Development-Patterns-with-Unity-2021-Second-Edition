@@ -88,7 +88,7 @@ namespace FPP.Scripts.Input
                     ScreenCapture.CaptureScreenshot(Random.Range(0, 10000) + ".png", 4);
 
                 if (UnityEngine.Input.GetKeyDown(KeyCode.F3))
-                    _bikeController.Damage(20, DamageType.Laser);
+                    _bikeController.TakeDamage(20, DamageType.Laser);
             }
         }
     }

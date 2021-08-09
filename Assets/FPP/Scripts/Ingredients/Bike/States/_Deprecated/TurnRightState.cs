@@ -11,7 +11,7 @@ public class TurnRightState : MonoBehaviour, IBikeState
         if (bikeController.BikeSensor.CheckCollision(BikeDirection.Right))
         {
 
-            bikeController.Damage(0, DamageType.Collision);
+            bikeController.TakeDamage(0, DamageType.Collision);
         }
         else
         {

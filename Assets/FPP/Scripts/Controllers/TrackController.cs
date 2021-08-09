@@ -17,7 +17,7 @@ namespace FPP.Scripts.Controllers
         private GameObject _trackParent;
         private List<GameObject> _segments;
         private Stack<GameObject> _segStack;
-        private Vector3 _currentPosition = new Vector3(0, 0, 0);
+        private Vector3 _currentPosition = new (0, 0, 0);
         
         [Tooltip("List of race tracks")] 
         [SerializeField]
@@ -58,22 +58,17 @@ namespace FPP.Scripts.Controllers
 
         void Update()
         {
-            _segParent.transform.Translate(
-                Vector3.back * (_trackSpeed * Time.deltaTime));
+            _segParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
         }
 
         private void InitTrack()
         {
             Destroy(_trackParent);
             
-            _trackParent = 
-                Instantiate(
-                    Resources.Load("Track", typeof(GameObject))) 
-                    as GameObject;
+            _trackParent = Instantiate(Resources.Load("RaceTrack", typeof(GameObject))) as GameObject;
             
             if (_trackParent)
-                _segParent = 
-                    _trackParent.transform.Find("Segments");
+                _segParent = _trackParent.transform.Find("Segments");
             
             _prevSeg = null;
             

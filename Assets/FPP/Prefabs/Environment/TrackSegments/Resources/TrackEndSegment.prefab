@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5723997863374052354}
   - component: {fileID: 7085021573190980157}
   m_Layer: 0
-  m_Name: Finish
+  m_Name: TrackEndSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

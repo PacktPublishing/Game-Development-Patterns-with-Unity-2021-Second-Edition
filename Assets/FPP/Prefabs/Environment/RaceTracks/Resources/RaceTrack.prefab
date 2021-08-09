@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4499281963094794082}
   m_Layer: 0
-  m_Name: Track
+  m_Name: RaceTrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
