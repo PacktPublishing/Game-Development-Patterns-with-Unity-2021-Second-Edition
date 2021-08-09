@@ -3,12 +3,12 @@ using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Cameras;
 using FPP.Scripts.Patterns;
+using FPP.Scripts.Controllers;
 using System.Collections.Generic;
-using FPP.Scripts.Ingredients.Bike;
 using FPP.Scripts.Ingredients.Bike.Engine;
 using FPP.Scripts.Ingredients.Bike.Elements;
 
-namespace FPP.Scripts.Controllers
+namespace FPP.Scripts.Ingredients.Bike
 {
     public class BikeController : Subject, IBikeElement
     {
@@ -18,29 +18,26 @@ namespace FPP.Scripts.Controllers
         private int _currentRail = 1;
         public BikeConfiguration bike;
         
-        public BikeSensor bikeSensor { get; private set; }
-        public BikeShield bikeShield { get; private set; }
-        public BikeWeapon bikeWeapon { get; private set; }
-        public BikeEngine bikeEngine { get; private set; }
-
-        public FollowCamera followCamera { get; private set; }
-        public TrackController trackController { get; private set; }
+        public BikeSensor BikeSensor { get; private set; }
+        public BikeShield BikeShield { get; private set; }
+        public BikeWeapon BikeWeapon { get; private set; }
+        public BikeEngine BikeEngine { get; private set; }
+        public FollowCamera FollowCamera { get; private set; }
+        public TrackController TrackController { get; private set; }
 
         private GameObject _hud;
+        private Animator _animator;
         private HUDController _hudController;
         private BikeStateContext _bikeStateContext;
         private readonly List<IBikeElement> _elements = new ();
-
-        private Animator _animator;
-
-        private IBikeState _brakeState, _stopState, _turboState, _destroyState;
+        private IBikeState _brakeState, _stopState, _turboState, _destroyState; // TODO: Deprecated state classes, to be removed
         
         void Awake()
         {
             InitBikeComponents();
             
+            // TODO: The following states are deprecated, to remove
             _bikeStateContext = new BikeStateContext(this);
-            
             _brakeState = gameObject.AddComponent<BrakeState>();
             _turboState = gameObject.AddComponent<TurboState>();
             _destroyState = gameObject.AddComponent<DestroyState>();
@@ -48,9 +45,9 @@ namespace FPP.Scripts.Controllers
         
         void OnEnable()
         {
-            if (followCamera) Attach(followCamera);
+            if (FollowCamera) Attach(FollowCamera);
             if (_hudController) Attach(_hudController);
-            if (trackController) Attach(trackController);
+            if (TrackController) Attach(TrackController);
 
             RaceEventBus.Subscribe(RaceEventType.FINISH, Brake);
             RaceEventBus.Subscribe(RaceEventType.START, StartBike);
@@ -60,9 +57,9 @@ namespace FPP.Scripts.Controllers
 
         void OnDisable()
         {
-            if (followCamera) Detach(followCamera);
+            if (FollowCamera) Detach(FollowCamera);
             if (_hudController) Detach(_hudController);
-            if (trackController) Detach(trackController);
+            if (TrackController) Detach(TrackController);
 
             RaceEventBus.Unsubscribe(RaceEventType.FINISH, Brake);
             RaceEventBus.Unsubscribe(RaceEventType.START, StartBike);
@@ -70,14 +67,16 @@ namespace FPP.Scripts.Controllers
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StopBike);
         }
         
-        public void Damage(float amount, DamageType type) // TODO: Implement a DamageState
+        public void Damage(float amount, DamageType type) 
         {
+            // TODO: Implement a damage state class and encapsulate the following code:
+            
             if (type == DamageType.Laser)
-                if (followCamera) 
-                    followCamera.Distort();
+                if (FollowCamera) 
+                    FollowCamera.Distort();
 
-            if (bikeShield) 
-                if (bikeShield.Damage((int) type) <= 0) 
+            if (BikeShield) 
+                if (BikeShield.Damage((int) type) <= 0) 
                     _bikeStateContext.Transition(_destroyState);
 
             Notify();
@@ -85,19 +84,22 @@ namespace FPP.Scripts.Controllers
 
         private void InitBikeComponents()
         {
-            bikeEngine = (BikeEngine) FindObjectOfType(typeof(BikeEngine));
-            bikeShield = (BikeShield) FindObjectOfType(typeof(BikeShield));
-            bikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
-            bikeSensor = (BikeSensor) FindObjectOfType(typeof(BikeSensor));
-            followCamera = (FollowCamera) FindObjectOfType(typeof(FollowCamera));
-            trackController = (TrackController) FindObjectOfType(typeof(TrackController));
+            BikeEngine = (BikeEngine) FindObjectOfType(typeof(BikeEngine));
+            BikeShield = (BikeShield) FindObjectOfType(typeof(BikeShield));
+            BikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
+            BikeSensor = (BikeSensor) FindObjectOfType(typeof(BikeSensor));
+            FollowCamera = (FollowCamera) FindObjectOfType(typeof(FollowCamera));
+            TrackController = (TrackController) FindObjectOfType(typeof(TrackController));
             
             _hud = Instantiate(Resources.Load("HUD", typeof(GameObject))) as GameObject;
             
             if (_hud) 
                 _hudController = _hud.GetComponent<HUDController>();
             
-            _elements.Add(bikeShield);
+            if (!BikeShield)
+                Debug.LogError("No bikeshield");
+            
+            _elements.Add(BikeShield);
             _animator = gameObject.GetComponent<Animator>();
         }
 
@@ -119,7 +121,7 @@ namespace FPP.Scripts.Controllers
 
         public void ToggleTurbo()
         {
-            _bikeStateContext.Transition(_turboState);
+            _bikeStateContext.Transition(_turboState); // TODO: Deprecated state class, to be removed
         }
 
         public void Turn(BikeDirection direction)
@@ -145,12 +147,14 @@ namespace FPP.Scripts.Controllers
         
         public void Fire()
         {
-            bikeWeapon.Fire();
+            BikeWeapon.Fire();
             Notify();
         }
         
         public IEnumerator Turn(float duration, BikeDirection direction)
         {
+            // TODO: The following transformation should be removed and handled by the animation system
+            
             float time = 0;
             Vector3 startPosition = transform.position;
             Vector3 endPosition = new Vector3(startPosition.x + 1.5f * (int)direction, startPosition.y, startPosition.z);
@@ -176,6 +180,7 @@ namespace FPP.Scripts.Controllers
             {
                 element.Accept(visitor);
             }
+            
             Notify();
         }
     }

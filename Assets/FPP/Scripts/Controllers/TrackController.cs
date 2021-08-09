@@ -3,6 +3,7 @@ using System.Linq;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
 using System.Collections.Generic;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Controllers
 {

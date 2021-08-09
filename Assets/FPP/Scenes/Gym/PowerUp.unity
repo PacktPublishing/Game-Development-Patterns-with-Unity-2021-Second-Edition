@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 1800333471}
   - component: {fileID: 1800333470}
   - component: {fileID: 1800333474}
+  - component: {fileID: 1800333475}
   m_Layer: 0
   m_Name: BikeController
   m_TagString: Untagged
@@ -639,3 +640,19 @@ MonoBehaviour:
   currentRail: 0
   currentSpeed: 0
   bike: {fileID: 0}
+--- !u!54 &1800333475
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800333469}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

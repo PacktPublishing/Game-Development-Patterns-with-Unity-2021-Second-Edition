@@ -1,5 +1,5 @@
 using UnityEngine;
-using FPP.Scripts.Controllers;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
 {

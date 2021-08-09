@@ -1,5 +1,5 @@
 using UnityEngine;
-using FPP.Scripts.Controllers;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.States.Bike
 {
@@ -14,7 +14,7 @@ namespace FPP.Scripts.States.Bike
 
             if (_bikeController)
             {
-                _bikeController.bikeEngine.TurnOn();
+                _bikeController.BikeEngine.TurnOn();
                 
                 _bikeController.currentSpeed =
                     _bikeController.bike.defaultSpeed; // TODO: Speed should be controlled by the BikeEngine

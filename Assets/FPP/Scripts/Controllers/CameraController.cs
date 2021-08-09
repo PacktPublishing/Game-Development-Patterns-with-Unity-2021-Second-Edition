@@ -1,6 +1,7 @@
 using UnityEngine;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Controllers
 {

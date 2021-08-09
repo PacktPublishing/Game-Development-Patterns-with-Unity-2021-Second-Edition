@@ -1,7 +1,7 @@
 using UnityEngine;
 using FPP.Scripts.Enums;
-using FPP.Scripts.Controllers;
 using System.Collections.Generic;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
 {

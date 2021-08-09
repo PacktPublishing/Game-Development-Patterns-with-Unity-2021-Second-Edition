@@ -1,7 +1,7 @@
 using UnityEngine;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Cameras;
-using FPP.Scripts.Controllers;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.States.Bike
 {
@@ -20,7 +20,7 @@ namespace FPP.Scripts.States.Bike
                 _bikeController = animator.GetComponent<BikeController>();
 
             if (!_followCamera)
-                _followCamera = _bikeController.followCamera;
+                _followCamera = _bikeController.FollowCamera;
 
             if (_bikeController && _followCamera)
             {

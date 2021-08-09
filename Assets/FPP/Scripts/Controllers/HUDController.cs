@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using FPP.Scripts.UI;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Controllers
 { 
@@ -75,22 +76,25 @@ namespace FPP.Scripts.Controllers
             warningField.text = message;
         }
 
-        private void UpdateShieldMeter(float level)
+        private void UpdateShieldHealthMeter(float healthAmount)
         {
             // TODO: Removed hard coded strings and manage with localization system
-            shieldField.text = level.ToString();
+            shieldField.text = healthAmount.ToString();
 
-            if (level < shieldWarningThreshold)
+            if (healthAmount < shieldWarningThreshold)
                 DisplayWarning("Warning: Shield below " + shieldWarningThreshold + "%");
 
-            if (level <= 0.0f)
+            if (healthAmount <= 0.0f)
                 statusField.text = "GAME OVER";
         }
         
         public override void Notify(Subject subject)
         {
-            if (_bikeController)
+            if (!_bikeController)
                 _bikeController = subject.GetComponent<BikeController>();
+            
+            if (_bikeController)
+                UpdateShieldHealthMeter(_bikeController.BikeShield.strength);
         }
 
         public void RestartRace()

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
-using FPP.Scripts.Controllers;
 using FPP.Scripts.Input.Commands;
+using FPP.Scripts.Ingredients.Bike;
 
 namespace FPP.Scripts.Input
 {

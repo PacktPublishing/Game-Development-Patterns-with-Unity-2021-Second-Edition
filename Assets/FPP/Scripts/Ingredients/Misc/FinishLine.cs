@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
-using FPP.Scripts.Controllers;
+using FPP.Scripts.Ingredients.Bike;
 
 public class FinishLine : MonoBehaviour
 {
