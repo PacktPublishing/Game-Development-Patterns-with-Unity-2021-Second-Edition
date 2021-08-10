@@ -28,10 +28,14 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
         void Awake()
         {
             Animator = gameObject.GetComponent<Animator>();
-            ActivateSensor();
         }
 
-        private void ActivateSensor()
+        void Start()
+        {
+            Activate();
+        }
+
+        private void ActivateSensor() // The drone sensor is deprecated at the moment
         {
             _droneSensor = GetComponentInChildren<DroneSensor>();
 

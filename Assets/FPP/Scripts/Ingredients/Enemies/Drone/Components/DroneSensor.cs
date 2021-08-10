@@ -14,7 +14,8 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone.Components
         
         void Start()
         {
-            _sensorDirection = transform.TransformDirection(Vector3.forward) * DroneController.sensorDistance;
+            if (DroneController) 
+                _sensorDirection = transform.TransformDirection(Vector3.forward) * DroneController.sensorDistance;
         }
 
         void Update()

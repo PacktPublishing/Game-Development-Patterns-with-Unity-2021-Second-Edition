@@ -16,5 +16,6 @@ MonoBehaviour:
   bikePrefab: {fileID: 0}
   defaultSpeed: 300
   maxSpeed: 600
-  turboBoost: 30
+  turboBoost: 50
   turboDuration: 3
+  secondsToTopSpeed: 0

@@ -93,7 +93,7 @@ namespace FPP.Scripts.Controllers
             if (!_bikeController)
                 _bikeController = subject.GetComponent<BikeController>();
             
-            if (_bikeController)
+            if (_bikeController.BikeShield)
                 UpdateShieldHealthMeter(_bikeController.BikeShield.strength);
         }
 

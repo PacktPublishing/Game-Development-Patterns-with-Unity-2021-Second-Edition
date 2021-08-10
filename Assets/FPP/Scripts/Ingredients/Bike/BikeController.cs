@@ -100,9 +100,6 @@ namespace FPP.Scripts.Ingredients.Bike
             if (_hud) 
                 _hudController = _hud.GetComponent<HUDController>();
             
-            if (!BikeShield)
-                Debug.LogError("No bikeshield");
-            
             _elements.Add(BikeShield);
             _animator = gameObject.GetComponent<Animator>();
         }
