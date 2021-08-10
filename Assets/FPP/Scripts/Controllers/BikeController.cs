@@ -31,7 +31,7 @@ namespace FPP.Scripts.Ingredients.Bike
         private HUDController _hudController;
         private BikeStateContext _bikeStateContext;
         private readonly List<IBikeElement> _elements = new ();
-        private IBikeState _brakeState, _stopState, _turboState, _destroyState; // TODO: Deprecated state classes, to be removed
+        private IBikeState _turboState, _destroyState; // TODO: Deprecated state classes, to be removed
         
         void Awake()
         {
@@ -39,7 +39,6 @@ namespace FPP.Scripts.Ingredients.Bike
             
             // TODO: The following states are deprecated, to remove
             _bikeStateContext = new BikeStateContext(this);
-            _brakeState = gameObject.AddComponent<BrakeState>();
             _turboState = gameObject.AddComponent<TurboState>();
             _destroyState = gameObject.AddComponent<DestroyState>();
         }
@@ -120,8 +119,7 @@ namespace FPP.Scripts.Ingredients.Bike
 
         public void Brake()
         {
-            _bikeStateContext.Transition(_brakeState);
-            _animator.SetBool("isMoving", false);
+            _animator.SetTrigger("Brake");
         }
 
         public void ToggleTurbo()

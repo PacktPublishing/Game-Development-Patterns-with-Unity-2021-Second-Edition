@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6186488662137478499}
   m_Father: {fileID: 0}
@@ -52,6 +53,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5723997863374052354}
     m_Modifications:
+    - target: {fileID: 1143051152781871766, guid: 7cbf73901e44dae44944c97c1bb60d36,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3004562471124252396, guid: 7cbf73901e44dae44944c97c1bb60d36,
         type: 3}
       propertyPath: m_RootOrder
