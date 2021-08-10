@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using FPP.Scripts.Core;
 using FPP.Scripts.Systems;
@@ -16,7 +17,16 @@ namespace FPP.Scripts.UI
         public string versionPrefix;
         public TextAsset versionFile;
         public TMP_Text versionNumber;
-        
+
+        private Player _player;
+        private SaveSystem _saveSystem;
+
+        void Awake()
+        {
+            _saveSystem = new SaveSystem();
+            _player = _saveSystem.LoadPlayer();
+        }
+
         void Start()
         {
             DisplayBuildNumber();
@@ -33,6 +43,12 @@ namespace FPP.Scripts.UI
             Application.Quit();
         }
 
+        public void Reset()
+        {
+            _saveSystem.DeleteSave();
+            SceneManager.LoadScene("Init");
+        }
+
         private void DisplayBuildNumber()
         {
             versionNumber.text = versionPrefix + versionFile.text;
@@ -40,13 +56,10 @@ namespace FPP.Scripts.UI
 
         private void DisplayPlayerInfo()
         {
-            SaveSystem saveSystem = new SaveSystem();
-            Player player = saveSystem.LoadPlayer();
-
-            if (player != null)
+            if (_player != null)
             {
-                playerName.text = player.playerName;
-                sessionDuration.text = player.lastSessionDuration.ToString(); // TODO: format the string to present HH:MM:SS
+                playerName.text = _player.playerName;
+                sessionDuration.text = _player.lastSessionDuration.ToString(); // TODO: format the string to present HH:MM:SS
             }
         }
     }
