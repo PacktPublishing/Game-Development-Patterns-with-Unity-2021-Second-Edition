@@ -48,13 +48,5 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
                     BikeEngine.TurnOff();
             }
         }
-
-        void OnGUI()
-        {
-            GUI.color = Color.green;
-            GUI.Label(
-                new Rect(10, 20, 500, 20),
-                "Temperature: " + BikeEngine.currentTemp);
-        }
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
-using FPP.Scripts.Ingredients.Bike;
 
-namespace FPP.Scripts.States.Bike
+namespace FPP.Scripts.Ingredients.Bike.States
 {
     public class BikeStopState : StateMachineBehaviour
     {
@@ -14,12 +13,16 @@ namespace FPP.Scripts.States.Bike
 
             if (_bikeController)
             {
-                _bikeController.currentSpeed = 0; // TODO: The bike's current speed should be controlled by it's engine
+                if (_bikeController.BikeEngine) 
+                    _bikeController.BikeEngine.TurnOff();
+                
+                _bikeController.currentSpeed = 0; // TODO: Implement a deceleration curve
+
                 _bikeController.Notify();
             }
             else
             {
-                Debug.LogError("Missing controller!");
+                Debug.LogError("Missing bike controller!");
             }
         }
     }

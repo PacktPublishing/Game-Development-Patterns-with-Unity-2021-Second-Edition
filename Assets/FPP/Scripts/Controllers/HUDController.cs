@@ -9,22 +9,42 @@ namespace FPP.Scripts.Controllers
 { 
     public class HUDController : Observer
     {
-        [SerializeField] private Text speedField;
         [SerializeField] private Text statusField;
+        
+        [Header("Bike")]
+        [SerializeField] private Text speedField;
         [SerializeField] private Text shieldField;
+       
+        [Header("Warning")]
         [SerializeField] private Text warningField;
-        [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private GameObject raceTimer;
-        [SerializeField] private GameObject restartMenu;
-        [SerializeField] private GameObject countdownTimer;
         [SerializeField] private float shieldWarningThreshold;
+        
+        [Header("Timer")]
+        [SerializeField] private GameObject raceTimer;
+        [SerializeField] private GameObject countdownTimer;
+        
+        [Header("Menu")]
+        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject restartMenu;
+        
+        [Header("Engine")]
+        [SerializeField] private Text fuel;
+        [SerializeField] private Text temperature;
         
         private BikeController _bikeController;
 
         void Update()
         {
-            if (_bikeController) 
+            if (_bikeController)
+            {
                 speedField.text = _bikeController.currentSpeed.ToString();
+                
+                if (_bikeController.BikeEngine)
+                {
+                    fuel.text = _bikeController.BikeEngine.fuelAmount.ToString();
+                    temperature.text = _bikeController.BikeEngine.currentTemp.ToString();
+                }
+            }
         }
 
         void OnEnable()

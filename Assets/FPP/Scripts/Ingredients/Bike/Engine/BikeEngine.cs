@@ -53,13 +53,5 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
             if (_isEngineOn)
                 _turboCharger.ToggleTurbo(_coolingSystem);
         }
-
-        void OnGUI()
-        {
-            GUI.color = Color.green;
-            GUI.Label(
-                new Rect(10, 0, 500, 20),
-                "Engine Running: " + _isEngineOn);
-        }
     }
 }

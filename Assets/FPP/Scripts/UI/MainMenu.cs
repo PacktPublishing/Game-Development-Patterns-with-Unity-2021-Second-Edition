@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using FPP.Scripts.Core;
 using FPP.Scripts.Systems;
@@ -29,8 +28,8 @@ namespace FPP.Scripts.UI
 
         void Start()
         {
-            DisplayBuildNumber();
             DisplayPlayerInfo();
+            DisplayVersionNumber();
         }
 
         public void Play()
@@ -46,10 +45,10 @@ namespace FPP.Scripts.UI
         public void Reset()
         {
             _saveSystem.DeleteSave();
-            SceneManager.LoadScene("Init");
+            SceneManager.LoadScene("Registration");
         }
 
-        private void DisplayBuildNumber()
+        private void DisplayVersionNumber()
         {
             versionNumber.text = versionPrefix + versionFile.text;
         }

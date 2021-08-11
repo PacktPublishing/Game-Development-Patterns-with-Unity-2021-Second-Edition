@@ -27,13 +27,5 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
                 }
             }
         }
-
-        void OnGUI()
-        {
-            GUI.color = Color.green;
-            GUI.Label(
-                new Rect(10, 40, 500, 20),
-                "Fuel: " + BikeEngine.fuelAmount);
-        }
     }
 }

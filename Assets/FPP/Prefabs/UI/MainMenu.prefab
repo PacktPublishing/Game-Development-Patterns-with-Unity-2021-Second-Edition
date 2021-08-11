@@ -741,7 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: {fileID: 8881201787147771338}
   sessionDuration: {fileID: 1490612407338730303}
-  versionPrefix: 'Build: '
+  versionPrefix: 'Version: '
   versionFile: {fileID: 4900000, guid: f9f52dff58597624c8d621ecae235ebb, type: 3}
   versionNumber: {fileID: 2088193984577822727}
 --- !u!1 &6378256678528849721

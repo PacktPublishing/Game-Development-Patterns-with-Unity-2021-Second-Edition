@@ -28,13 +28,5 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
             _isTurboOn = false;
             _coolingSystem.PauseCooling();
         }
-
-        void OnGUI()
-        {
-            GUI.color = Color.green;
-            GUI.Label(
-                new Rect(10, 60, 500, 20),
-                "Turbo Activated: " + _isTurboOn);
-        }
     }
 }

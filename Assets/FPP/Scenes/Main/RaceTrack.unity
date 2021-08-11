@@ -98,8 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: a10205a34fb89854a892241f5fde6765,
-    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a10205a34fb89854a892241f5fde6765, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -131,127 +130,99 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: track
       value: 
-      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
-        type: 2}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16, type: 2}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: raceTrack
       value: 
-      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
-        type: 2}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16, type: 2}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: trackSize
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: incrSegAmount
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: initSegAmount
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: speedDampener
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: incrSegmentAmount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: initSegmentAmount
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: tracks.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: tracks.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
-        type: 2}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16, type: 2}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: raceTracks.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: raceTracks.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
-        type: 2}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+      objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16, type: 2}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794082, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4499281963094794083, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
-        type: 3}
+    - target: {fileID: 4499281963094794083, guid: 1407f4cc4ad5225448c209e8ca9a7e94, type: 3}
       propertyPath: m_Name
       value: TrackController
       objectReference: {fileID: 0}
