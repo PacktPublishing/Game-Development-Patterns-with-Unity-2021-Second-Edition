@@ -3,7 +3,7 @@ using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
 using FPP.Scripts.Ingredients.Bike;
 
-namespace FPP.Scripts.Controllers
+namespace FPP.Scripts.Cameras
 {
     public class CameraController : Observer
     {
