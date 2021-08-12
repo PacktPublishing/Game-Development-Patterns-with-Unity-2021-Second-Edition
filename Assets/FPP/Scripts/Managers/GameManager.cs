@@ -1,7 +1,9 @@
 ﻿using System;
+using UnityEngine;
 using FPP.Scripts.Core;
 using FPP.Scripts.Systems;
 using FPP.Scripts.Patterns;
+using FPP.Scripts.Services;
 using UnityEngine.SceneManagement;
 
 namespace FPP.Scripts.Managers
@@ -13,14 +15,11 @@ namespace FPP.Scripts.Managers
         
         private DateTime _sessionStartTime;
         private DateTime _sessionEndTime;
-
+        
         void Start()
         {
-            InitGame();
-        }
-
-        private void InitGame()
-        {
+            RegisterGlobalServices();
+            
             _sessionStartTime = DateTime.Now;
             
             _saveSystem = new SaveSystem();
@@ -31,10 +30,17 @@ namespace FPP.Scripts.Managers
             else
                 SceneManager.LoadScene("MainMenu");
         }
-
-        private void GetDailyChallenges()
+        
+        private void RegisterGlobalServices()
         {
-            // TODO: Implement call to endpoint to get daily challenges from the backend
+            IDailyChallengeService dailyChallengeService;
+            
+            if (Debug.isDebugBuild) 
+                dailyChallengeService = new Services.Mocks.DailyChallengeService();
+            else
+                dailyChallengeService = new DailyChallengeService();
+            
+            ServiceLocator.RegisterService(dailyChallengeService);
         }
         
         void OnApplicationQuit() 
