@@ -13,11 +13,13 @@ namespace FPP.Scripts.Ingredients.Bike
 {
     public class BikeController : Subject, IBikeElement, IDamageable, IDestructible
     {
-        public bool isTurboOn;
-        public int currentRail;
+        public bool isTurboOn; // TODO: The status of the turbo charger should be exposed by the bike engine
+        public int currentRail; // TODO: Duplicate properties, to be removed
         public int currentSpeed;
-        private int _currentRail = 1;
-        public BikeConfiguration bike;
+        private int _currentRail = 1; // TODO: The track controller should manage and return which track is active
+
+        // TODO: The bike spawner, should build and configure the player's bike based on the settings declared in the bike's blueprint
+        public BikeBlueprint bikeBlueprint; 
         
         public BikeSensor BikeSensor { get; private set; }
         public BikeShield BikeShield { get; private set; }
@@ -37,8 +39,7 @@ namespace FPP.Scripts.Ingredients.Bike
         {
             InitBikeComponents();
             
-            // TODO: The following states are deprecated, to remove
-            _bikeStateContext = new BikeStateContext(this);
+            _bikeStateContext = new BikeStateContext(this); // TODO: The following states are deprecated, to remove
             _turboState = gameObject.AddComponent<TurboState>();
             _destroyState = gameObject.AddComponent<DestroyState>();
         }
@@ -124,9 +125,10 @@ namespace FPP.Scripts.Ingredients.Bike
             _bikeStateContext.Transition(_turboState); // TODO: Deprecated state class, to be removed
         }
 
+        // TODO: The bike controller should ask the track controller for the next available track based on the direction it's moving
         public void Turn(BikeDirection direction)
         {
-            if (direction == BikeDirection.Left)
+            if (direction == BikeDirection.Left) // TODO: Pass the expected direction to the track controller
             {
                 if (_currentRail != 1) // TODO: Ask the TrackController for the minTrack
                 {
