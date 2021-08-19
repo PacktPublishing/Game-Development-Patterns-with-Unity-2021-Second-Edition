@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FPP.Scripts.Weapons
+namespace FPP.Scripts.Weaponry
 {
     public interface IWeapon
     {

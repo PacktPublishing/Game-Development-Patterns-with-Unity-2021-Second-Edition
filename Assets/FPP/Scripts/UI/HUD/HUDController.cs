@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using FPP.Scripts.UI;
 using FPP.Scripts.Enums;
 using FPP.Scripts.Patterns;
 using FPP.Scripts.Ingredients.Bike;
 
-namespace FPP.Scripts.Controllers
+namespace FPP.Scripts.UI.HUD
 { 
     public class HUDController : Observer
     {

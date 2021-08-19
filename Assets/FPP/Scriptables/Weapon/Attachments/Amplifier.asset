@@ -16,5 +16,6 @@ MonoBehaviour:
   fireTime: 0
   strength: 30
   cooldown: 0
-  attachmentPrefab: {fileID: 0}
+  attachmentPrefab: {fileID: 6371917962555204680, guid: fc9351b64805ce044aea5f33d1e929c3,
+    type: 3}
   attachmentDescription: Amplifies the strength of the weapon

@@ -4,7 +4,7 @@ using FPP.Scripts.Enums;
 using System.Collections;
 using FPP.Scripts.Patterns;
 
-namespace FPP.Scripts.UI
+namespace FPP.Scripts.UI.HUD
 {
     public class CountdownTimer : MonoBehaviour
     {

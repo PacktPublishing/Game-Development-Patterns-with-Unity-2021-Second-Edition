@@ -1,5 +1,5 @@
 using UnityEngine;
-using FPP.Scripts.Weapons;
+using FPP.Scripts.Weaponry;
 
 namespace FPP.Scripts.Ingredients.Bike.Elements
 {

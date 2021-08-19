@@ -1,4 +1,6 @@
 ﻿using System;
+using FPP.Scripts.Interfaces;
+using System.Collections.Generic;
 
 namespace FPP.Scripts.Core
 {
@@ -9,7 +11,6 @@ namespace FPP.Scripts.Core
         public string playerName;
         public string playerUid; // TODO: Implement a UID generator
         public TimeSpan lastSessionDuration;
-        
-        // TODO: Add inventory support (attachments, blueprints ...)
+        public List<IInventoryItem> inventory;
     }
 }

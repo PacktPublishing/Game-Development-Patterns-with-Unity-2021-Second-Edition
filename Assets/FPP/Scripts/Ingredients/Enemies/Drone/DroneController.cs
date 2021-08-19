@@ -65,6 +65,7 @@ namespace FPP.Scripts.Ingredients.Enemies.Drone
         {
             _strategyComponents.Add(gameObject.AddComponent<WeavingManeuver>());
             _strategyComponents.Add(gameObject.AddComponent<BoppingManeuver>());
+            _strategyComponents.Add(gameObject.AddComponent<FallbackManeuver>());
 
             int index = Random.Range(0, _strategyComponents.Count);
             

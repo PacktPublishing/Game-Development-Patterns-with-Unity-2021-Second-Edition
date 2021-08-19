@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FPP.Scripts.Weapons
+namespace FPP.Scripts.Weaponry
 {
     [CreateAssetMenu(fileName = "NewWeaponConfig", menuName = "Ingredients/Weapon/Configuration", order = 1)]
     public class WeaponConfiguration : ScriptableObject

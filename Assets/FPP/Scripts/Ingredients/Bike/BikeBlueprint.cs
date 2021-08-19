@@ -1,10 +1,14 @@
 using UnityEngine;
+using FPP.Scripts.Enums;
+using FPP.Scripts.Interfaces;
 
 namespace FPP.Scripts.Ingredients.Bike
 {
     [CreateAssetMenu(fileName = "NewBikeBlueprint", menuName = "Ingredients/Bike/Blueprint", order = 2)]
-    public class BikeBlueprint : ScriptableObject
+    public class BikeBlueprint : ScriptableObject, IInventoryItem
     {
+        public decimal itemPrice;
+        public float itemPrice2;
         public string blueprintName;
         
         [Header("Assets")]
@@ -22,5 +26,15 @@ namespace FPP.Scripts.Ingredients.Bike
         public int turboBoost;
         [Range(0.0f, 60.0f)] [Tooltip("Turbo boost duration in seconds")]
         public int turboDuration;
+
+        public ItemType GetItemType()
+        {
+            return ItemType.Blueprint;
+        }
+
+        public decimal GetItemPrice()
+        {
+            return itemPrice;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace FPP.Scripts.UI
+namespace FPP.Scripts.UI.HUD
 {
     public class RaceTimer : MonoBehaviour
     {
