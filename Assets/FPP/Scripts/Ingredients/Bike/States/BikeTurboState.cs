@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FPP.Scripts.Ingredients.Bike.States
 {
-    public class BikeStopState : StateMachineBehaviour
+    public class BikeTurboState : StateMachineBehaviour
     {
         private BikeController _bikeController;
 
@@ -13,14 +13,12 @@ namespace FPP.Scripts.Ingredients.Bike.States
 
             if (_bikeController)
             {
-                if (_bikeController.BikeEngine) 
-                    _bikeController.BikeEngine.TurnOff();
-                
+                _bikeController.BikeEngine.ToggleTurbo();
                 _bikeController.Notify();
             }
             else
             {
-                Debug.LogError("Missing bike controller!");
+                Debug.LogError("Missing controller!");
             }
         }
     }

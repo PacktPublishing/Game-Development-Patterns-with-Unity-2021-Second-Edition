@@ -22,9 +22,12 @@ namespace FPP.Scripts.Ingredients.Bike
         public int secondsToTopSpeed;
 
         [Header("Turbo")]
-        [Range(0.0f, 100.0f)] [Tooltip("Turbo speed boost in percentage")]
+        [Range(0.0f, 100.0f)] 
+        [Tooltip("Turbo speed boost in percentage")]
         public int turboBoost;
-        [Range(0.0f, 60.0f)] [Tooltip("Turbo boost duration in seconds")]
+        
+        [Range(0.0f, 60.0f)] 
+        [Tooltip("Turbo boost duration in seconds")]
         public int turboDuration;
 
         public ItemType GetItemType()

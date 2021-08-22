@@ -14,13 +14,11 @@ namespace FPP.Scripts.Ingredients.Bike
 {
     public class BikeController : Subject, IBikeElement, IDamageable, IDestructible
     {
-        public bool isTurboOn; // TODO: The status of the turbo charger should be exposed by the bike engine
         public int currentRail; // TODO: Duplicate properties, to be removed
-        public int currentSpeed;
-        private int _currentRail = 1; // TODO: The track controller should manage and return which track is active
 
-        // TODO: The bike spawner, should build and configure the player's bike based on the settings declared in the bike's blueprint
-        public BikeBlueprint bikeBlueprint; 
+        private int _currentRail = 1; // TODO: The track controller should manage and return which track is active
+        
+        public BikeBlueprint bikeBlueprint; // TODO: The bike spawner, should build and configure the player's bike based on the settings declared in the bike's blueprint
         
         public BikeSensor BikeSensor { get; private set; }
         public BikeShield BikeShield { get; private set; }
@@ -28,21 +26,16 @@ namespace FPP.Scripts.Ingredients.Bike
         public BikeEngine BikeEngine { get; private set; }
         public FollowCamera FollowCamera { get; private set; }
         public TrackController TrackController { get; private set; }
+        public int CurrentSpeed { get { return BikeEngine.CurrentSpeed; } }
 
         private GameObject _hud;
         private Animator _animator;
         private HUDController _hudController;
-        private BikeStateContext _bikeStateContext;
         private readonly List<IBikeElement> _elements = new ();
-        private IBikeState _turboState, _destroyState; // TODO: Deprecated state classes, to be removed
-        
+
         void Awake()
         {
             InitBikeComponents();
-            
-            _bikeStateContext = new BikeStateContext(this); // TODO: The following states are deprecated, to remove
-            _turboState = gameObject.AddComponent<TurboState>();
-            _destroyState = gameObject.AddComponent<DestroyState>();
         }
         
         void OnEnable()
@@ -85,12 +78,14 @@ namespace FPP.Scripts.Ingredients.Bike
         
         public void Destruct()
         {
-            _bikeStateContext.Transition(_destroyState);
+            // TODO: Add destroy state
         }
 
         private void InitBikeComponents()
         {
             BikeEngine = (BikeEngine) FindObjectOfType(typeof(BikeEngine));
+            BikeEngine.BikeController = this; // TODO: To decouple
+            
             BikeShield = (BikeShield) FindObjectOfType(typeof(BikeShield));
             BikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
             BikeSensor = (BikeSensor) FindObjectOfType(typeof(BikeSensor));
@@ -98,11 +93,11 @@ namespace FPP.Scripts.Ingredients.Bike
             TrackController = (TrackController) FindObjectOfType(typeof(TrackController));
             
             _hud = Instantiate(Resources.Load("HUD", typeof(GameObject))) as GameObject;
-            
             if (_hud) 
                 _hudController = _hud.GetComponent<HUDController>();
             
             _elements.Add(BikeShield);
+            
             _animator = gameObject.GetComponent<Animator>();
         }
 
@@ -115,15 +110,15 @@ namespace FPP.Scripts.Ingredients.Bike
         {
             _animator.SetBool("isMoving", false);
         }
-
+        
+        public void ToggleTurbo()
+        {
+            _animator.SetTrigger("Turbo");
+        }
+        
         public void Brake()
         {
             _animator.SetTrigger("Brake");
-        }
-
-        public void ToggleTurbo()
-        {
-            _bikeStateContext.Transition(_turboState); // TODO: Deprecated state class, to be removed
         }
 
         // TODO: The bike controller should ask the track controller for the next available track based on the direction it's moving

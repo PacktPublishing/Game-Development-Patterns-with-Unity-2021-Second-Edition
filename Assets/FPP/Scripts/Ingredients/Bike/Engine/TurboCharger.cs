@@ -6,27 +6,29 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
     public class TurboCharger : MonoBehaviour
     {
         public BikeEngine BikeEngine { get; set; }
-
-        private bool _isTurboOn;
+        public bool IsTurboOn { get; private set; }
+        
         private CoolingSystem _coolingSystem;
 
         public void ToggleTurbo(CoolingSystem coolingSystem)
         {
             _coolingSystem = coolingSystem;
-
-            if (!_isTurboOn)
+           
+            if (BikeEngine.IsEngineOn) 
                 StartCoroutine(TurboCharge());
         }
 
         IEnumerator TurboCharge()
         {
-            _isTurboOn = true;
+            IsTurboOn = true;
             _coolingSystem.PauseCooling();
+            BikeEngine.CurrentSpeed = BikeEngine.CurrentSpeed + (BikeEngine.CurrentSpeed * BikeEngine.TurboBoostAmount / 100);
 
-            yield return new WaitForSeconds(BikeEngine.turboDuration);
+            yield return new WaitForSeconds(BikeEngine.TurboDuration);
 
-            _isTurboOn = false;
+            IsTurboOn = false;
             _coolingSystem.PauseCooling();
+            BikeEngine.CurrentSpeed = BikeEngine.DefaultSpeed;
         }
     }
 }

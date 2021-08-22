@@ -8,12 +8,12 @@ namespace FPP.Scripts.Cameras
 {
     public class FollowCamera : Observer
     {
-        [SerializeField] private CameraLaserHit cameraLaserHit;
-        [SerializeField] private CameraTurboBlur cameraTurboBlur;
-
         private bool _isRotation;
         private int _currentDirection;
-
+        
+        [SerializeField] private CameraLaserHit cameraLaserHit;
+        [SerializeField] private CameraTurboBlur cameraTurboBlur;
+        
         private void ToggleTurboMode(bool isOn)
         {
             cameraTurboBlur.enabled = isOn;
@@ -35,7 +35,7 @@ namespace FPP.Scripts.Cameras
         {
             BikeController controller = subject.GetComponent<BikeController>();
             if (controller)
-                ToggleTurboMode(controller.isTurboOn);
+                ToggleTurboMode(controller.BikeEngine.IsTurboOn);
         }
         
         public IEnumerator Turn(float duration, BikeDirection direction)

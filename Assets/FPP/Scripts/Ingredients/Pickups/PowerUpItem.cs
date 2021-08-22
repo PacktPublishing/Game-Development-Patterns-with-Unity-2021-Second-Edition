@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FPP.Scripts.Ingredients.Misc
+namespace FPP.Scripts.Ingredients.Pickups
 {
     [CreateAssetMenu(fileName = "NewPowerUp", menuName = "Ingredients/PowerUp", order = 1)]
     public class PowerUpItem : ScriptableObject, IVisitor

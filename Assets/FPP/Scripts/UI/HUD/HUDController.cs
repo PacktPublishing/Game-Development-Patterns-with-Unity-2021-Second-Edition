@@ -36,7 +36,7 @@ namespace FPP.Scripts.UI.HUD
         {
             if (_bikeController)
             {
-                speedField.text = _bikeController.currentSpeed.ToString();
+                speedField.text = _bikeController.CurrentSpeed.ToString();
                 
                 if (_bikeController.BikeEngine)
                 {

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using FPP.Scripts.Ingredients.Bike;
 
-namespace FPP.Scripts.Ingredients.Misc
+namespace FPP.Scripts.Ingredients.Pickups
 {
     public class PowerUp : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace FPP.Scripts.Ingredients.Misc
             }
             else
             {
-                Debug.LogError("Missing powerup item!");
+                Debug.LogError("Missing powerup item");
             }
         }
 

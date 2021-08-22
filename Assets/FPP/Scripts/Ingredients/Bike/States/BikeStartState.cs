@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FPP.Scripts.Ingredients.Bike.States
 {
-    public class BikeRaceState : StateMachineBehaviour
+    public class BikeStartState : StateMachineBehaviour
     {
         private BikeController _bikeController;
 
@@ -14,10 +14,6 @@ namespace FPP.Scripts.Ingredients.Bike.States
             if (_bikeController)
             {
                 _bikeController.BikeEngine.TurnOn();
-                
-                _bikeController.currentSpeed = 
-                    _bikeController.bikeBlueprint.defaultSpeed; // TODO: Speed should be controlled by the BikeEngine
-                
                 _bikeController.Notify();
             }
             else

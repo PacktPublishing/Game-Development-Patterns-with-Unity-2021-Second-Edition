@@ -119,7 +119,7 @@ namespace FPP.Scripts.Controllers
         {
             BikeController controller = subject.GetComponent<BikeController>();
             if (controller)
-                _trackSpeed = controller.currentSpeed - (controller.currentSpeed * speedDampener / 100);
+                _trackSpeed = controller.CurrentSpeed - (controller.CurrentSpeed * speedDampener / 100);
         }
     }
 }
