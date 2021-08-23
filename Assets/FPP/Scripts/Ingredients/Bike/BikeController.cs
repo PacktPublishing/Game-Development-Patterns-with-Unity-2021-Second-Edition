@@ -18,15 +18,29 @@ namespace FPP.Scripts.Ingredients.Bike
 
         private int _currentRail = 1; // TODO: The track controller should manage and return which track is active
         
-        public BikeBlueprint bikeBlueprint; // TODO: The bike spawner, should build and configure the player's bike based on the settings declared in the bike's blueprint
+        public BikeBlueprint bikeBlueprint;
         
+        public int SpeedPenalty { private get; set; }
         public BikeSensor BikeSensor { get; private set; }
         public BikeShield BikeShield { get; private set; }
         public BikeWeapon BikeWeapon { get; private set; }
         public BikeEngine BikeEngine { get; private set; }
         public FollowCamera FollowCamera { get; private set; }
         public TrackController TrackController { get; private set; }
-        public int CurrentSpeed { get { return BikeEngine.CurrentSpeed; } }
+        
+        public int CurrentSpeed {
+            get
+            {
+                if (SpeedPenalty > 0 && SpeedPenalty < BikeEngine.CurrentSpeed)
+                {
+                    return BikeEngine.CurrentSpeed - SpeedPenalty;
+                }
+                else
+                {
+                    return BikeEngine.CurrentSpeed;
+                }
+            }
+        }
 
         private GameObject _hud;
         private Animator _animator;
@@ -62,9 +76,10 @@ namespace FPP.Scripts.Ingredients.Bike
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StopBike);
         }
         
-        public void TakeDamage(float amount, DamageType type)
+        public void TakeDamage(float amount, DamageType type) // TODO: Implement a damage state class and encapsulate the following code:
         {
-            // TODO: Implement a damage state class and encapsulate the following code:
+            SpeedPenalty = Mathf.RoundToInt(amount); // For this iteration, speed penalty is equal to the damage taken
+            
             if (type == DamageType.Laser)
                 if (FollowCamera) 
                     FollowCamera.Distort();
@@ -178,7 +193,6 @@ namespace FPP.Scripts.Ingredients.Bike
             {
                 element.Accept(visitor);
             }
-            
             Notify();
         }
     }

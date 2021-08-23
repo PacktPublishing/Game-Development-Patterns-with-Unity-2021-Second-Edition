@@ -15,7 +15,7 @@ namespace FPP.Scripts.Ingredients.Bike.States
             {
                 if (_bikeController.BikeEngine) 
                     _bikeController.BikeEngine.TurnOff();
-                
+
                 _bikeController.Notify();
             }
             else
