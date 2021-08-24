@@ -19,7 +19,7 @@ namespace FPP.Scripts.Ingredients.Bike.Elements
             throw new System.NotImplementedException();
         }
 
-        public decimal GetItemPrice()
+        public float GetItemValue()
         {
             throw new System.NotImplementedException();
         }

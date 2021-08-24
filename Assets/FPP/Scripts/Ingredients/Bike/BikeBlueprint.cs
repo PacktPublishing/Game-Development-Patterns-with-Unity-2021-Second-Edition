@@ -7,8 +7,7 @@ namespace FPP.Scripts.Ingredients.Bike
     [CreateAssetMenu(fileName = "NewBikeBlueprint", menuName = "Ingredients/Bike/Blueprint", order = 2)]
     public class BikeBlueprint : ScriptableObject, IInventoryItem
     {
-        public decimal itemPrice;
-        public float itemPrice2;
+        public float itemValue;
         public string blueprintName;
         
         [Header("Assets")]
@@ -18,7 +17,8 @@ namespace FPP.Scripts.Ingredients.Bike
         [Header("Speed")]
         public int defaultSpeed;
         public int maxSpeed;
-        [Range(0.0f, 60.0f)] [Tooltip("Amounts of seconds it takes to reach top speed")]
+        [Range(0.0f, 60.0f)] 
+        [Tooltip("Amounts of seconds it takes to reach top speed")]
         public int secondsToTopSpeed;
 
         [Header("Turbo")]
@@ -35,9 +35,9 @@ namespace FPP.Scripts.Ingredients.Bike
             return ItemType.Blueprint;
         }
 
-        public decimal GetItemPrice()
+        public float GetItemValue()
         {
-            return itemPrice;
+            return itemValue;
         }
     }
 }

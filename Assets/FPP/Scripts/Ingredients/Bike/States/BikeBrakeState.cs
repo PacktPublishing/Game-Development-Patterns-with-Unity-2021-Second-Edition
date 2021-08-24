@@ -1,7 +1,6 @@
 using UnityEngine;
-using FPP.Scripts.Ingredients.Bike;
 
-namespace FPP.Scripts.States.Bike
+namespace FPP.Scripts.Ingredients.Bike.States
 {
     public class BikeBrakeState : StateMachineBehaviour
     {
@@ -14,11 +13,15 @@ namespace FPP.Scripts.States.Bike
 
             if (_bikeController)
             {
+                if (_bikeController.BikeEngine) 
+                    _bikeController.BikeEngine.TurnOff();
+                
                 _bikeController.StopBike();
+                _bikeController.Notify();
             }
             else
             {
-                Debug.LogError("Missing controller!");
+                Debug.LogError("Missing bike controller!");
             }
         }
     }

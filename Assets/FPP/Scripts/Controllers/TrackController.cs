@@ -23,6 +23,12 @@ namespace FPP.Scripts.Controllers
         [SerializeField]
         private RaceTrack track;
         
+        [Tooltip("Dampen the speed of the track")] 
+        [Range(0.0f, 100.0f)] 
+        [SerializeField]
+        private float speedDampener;
+        
+        [Header("Segments")]
         [Tooltip("Initial amount of segment to load at start")] 
         [SerializeField]
         private int initSegAmount;
@@ -31,11 +37,6 @@ namespace FPP.Scripts.Controllers
         [SerializeField]
         private int incrSegAmount;
         
-        [Tooltip("Dampen the speed of the track")] 
-        [Range(0.0f, 100.0f)] 
-        [SerializeField]
-        private float speedDampener;
-
         private void OnEnable()
         {
             RaceEventBus.Subscribe(RaceEventType.RESTART, InitTrack);

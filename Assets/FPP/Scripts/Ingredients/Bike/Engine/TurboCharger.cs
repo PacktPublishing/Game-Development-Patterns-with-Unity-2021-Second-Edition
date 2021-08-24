@@ -21,14 +21,20 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
         IEnumerator TurboCharge()
         {
             IsTurboOn = true;
+            
             _coolingSystem.PauseCooling();
-            BikeEngine.CurrentSpeed = BikeEngine.CurrentSpeed + (BikeEngine.CurrentSpeed * BikeEngine.TurboBoostAmount / 100);
+            
+            BikeEngine.CurrentSpeed = 
+                BikeEngine.CurrentSpeed + (BikeEngine.CurrentSpeed * BikeEngine.TurboBoostAmount / 100);
 
             yield return new WaitForSeconds(BikeEngine.TurboDuration);
 
             IsTurboOn = false;
+            
             _coolingSystem.PauseCooling();
-            BikeEngine.CurrentSpeed = BikeEngine.DefaultSpeed;
+            
+            if (BikeEngine.IsEngineOn) 
+                BikeEngine.CurrentSpeed = BikeEngine.DefaultSpeed;
         }
     }
 }

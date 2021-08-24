@@ -5,6 +5,6 @@ namespace FPP.Scripts.Interfaces
     public interface IInventoryItem
     {
         public ItemType GetItemType();
-        public decimal GetItemPrice();
+        public float GetItemValue();
     }
 }

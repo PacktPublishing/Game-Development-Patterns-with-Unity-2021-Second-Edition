@@ -26,12 +26,12 @@ namespace FPP.Scripts.Systems
             _player.inventory.Remove(item);
         }
 
-        public decimal GetTotalValueOfInventory()
+        public float GetTotalValueOfInventory()
         {
-            decimal totalValue = 0;
+            float totalValue = 0;
 
             foreach (IInventoryItem item in _player.inventory)
-                totalValue += item.GetItemPrice();
+                totalValue += item.GetItemValue();
             
             return totalValue;
         }

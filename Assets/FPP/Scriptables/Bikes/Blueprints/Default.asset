@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67a5d94113ba95459e8f5b5a626eea5, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
+  itemValue: 0
   blueprintName: Default
   bikePrefab: {fileID: 0}
   blueprintTexture: {fileID: 0}
   defaultSpeed: 300
   maxSpeed: 600
   secondsToTopSpeed: 0
-  turboBoost: 50
-  turboDuration: 3
+  turboBoost: 30
+  turboDuration: 2
