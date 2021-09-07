@@ -19,9 +19,17 @@ namespace FPP.Scripts.Managers
         void Start()
         {
             RegisterGlobalServices();
-            
+            LoadPlayer();
+            StartSessionTimer();
+        }
+
+        private void StartSessionTimer()
+        {
             _sessionStartTime = DateTime.Now;
-            
+        }
+
+        private void LoadPlayer()
+        {
             _saveSystem = new SaveSystem();
             _player = _saveSystem.LoadPlayer();
             
