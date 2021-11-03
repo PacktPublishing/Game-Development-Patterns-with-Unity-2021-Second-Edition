@@ -5,7 +5,7 @@ using FPP.Scripts.Core;
 using FPP.Scripts.Systems;
 using UnityEngine.SceneManagement;
 
-namespace FPP.Scripts.UI
+namespace FPP.Scripts.UI.Window
 { 
     public class RegistrationWindow : MonoBehaviour
     {

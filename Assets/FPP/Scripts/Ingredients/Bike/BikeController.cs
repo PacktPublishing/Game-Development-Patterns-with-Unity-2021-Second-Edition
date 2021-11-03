@@ -99,7 +99,9 @@ namespace FPP.Scripts.Ingredients.Bike
         private void InitBikeComponents()
         {
             BikeEngine = (BikeEngine) FindObjectOfType(typeof(BikeEngine));
-            BikeEngine.BikeController = this; // TODO: To decouple
+            
+            if (BikeEngine)
+                BikeEngine.BikeController = this; // TODO: To decouple
             
             BikeShield = (BikeShield) FindObjectOfType(typeof(BikeShield));
             BikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
@@ -136,12 +138,12 @@ namespace FPP.Scripts.Ingredients.Bike
             _animator.SetTrigger("Brake");
         }
 
-        // TODO: The bike controller should ask the track controller for the next available track based on the direction it's moving
-        public void Turn(BikeDirection direction)
+
+        public void Turn(BikeDirection direction) // TODO: The bike controller should ask the track controller for the next available track based on the direction it's moving, refactor this entire method
         {
-            if (direction == BikeDirection.Left) // TODO: Pass the expected direction to the track controller
+            if (direction == BikeDirection.Left) 
             {
-                if (_currentRail != 1) // TODO: Ask the TrackController for the minTrack
+                if (_currentRail != 1) 
                 {
                     _currentRail -= 1;
                     _animator.SetTrigger("TurnLeft");
@@ -150,7 +152,7 @@ namespace FPP.Scripts.Ingredients.Bike
 
             if (direction == BikeDirection.Right)
             {
-                if (_currentRail != 4) // TODO: Ask the TrackController for the maxTrack
+                if (_currentRail != 4) 
                 {
                     _currentRail += 1;
                     _animator.SetTrigger("TurnRight");
@@ -164,10 +166,8 @@ namespace FPP.Scripts.Ingredients.Bike
             Notify();
         }
         
-        public IEnumerator Turn(float duration, BikeDirection direction)
+        public IEnumerator Turn(float duration, BikeDirection direction) // TODO: The following transformation should be removed and handled by the animation system
         {
-            // TODO: The following transformation should be removed and handled by the animation system
-            
             float time = 0;
             Vector3 startPosition = transform.position;
             Vector3 endPosition = new Vector3(startPosition.x + 1.5f * (int)direction, startPosition.y, startPosition.z);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2def8b25deb5125469deadee6b12cad3, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
+  timeOfDay: 2
   segmentLength: 500
   segments:
   - {fileID: 8892792883152437417, guid: 967d42d4939f8ee488058a564abc3fbc, type: 3}

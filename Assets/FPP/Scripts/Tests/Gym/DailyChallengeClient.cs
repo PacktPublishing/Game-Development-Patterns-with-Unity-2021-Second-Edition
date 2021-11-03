@@ -1,14 +1,15 @@
 using UnityEngine;
-using FPP.Scripts.Patterns;
 using FPP.Scripts.Services;
 
 namespace FPP.Scripts.Tests.Gym
 {
     public class DailyChallengeClient : MonoBehaviour
     {
+        private IDailyChallengeService _dailyChallengeService; 
         void Start()
         {
-            ServiceLocator.GetService<IDailyChallengeService>().GetDailyChallenges();
+            _dailyChallengeService = new Services.Mocks.DailyChallengeService();
+            _dailyChallengeService.GetDailyChallenges();
         }
     }
 }

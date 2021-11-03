@@ -4,7 +4,7 @@ using FPP.Scripts.Core;
 using FPP.Scripts.Systems;
 using UnityEngine.SceneManagement;
 
-namespace FPP.Scripts.UI
+namespace FPP.Scripts.UI.Menu
 {
     public class MainMenu : MonoBehaviour
     {

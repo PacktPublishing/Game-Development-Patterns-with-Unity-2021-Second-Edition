@@ -180,6 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
         type: 3}
+      propertyPath: initialSegmentAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
+        type: 3}
       propertyPath: tracks.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
@@ -188,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: raceTracks.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
+        type: 3}
+      propertyPath: incrementalSegmentAmount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
         type: 3}

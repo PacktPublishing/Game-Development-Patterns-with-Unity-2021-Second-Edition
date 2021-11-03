@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-namespace FPP.Scripts.UI
+namespace FPP.Scripts.UI.Screen
 {
     public class LoadingScreen : MonoBehaviour
     {

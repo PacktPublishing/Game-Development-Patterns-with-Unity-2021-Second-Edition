@@ -11,12 +11,12 @@ namespace FPP.Scripts.Controllers
     public class TrackController : Observer
     {
         private float _trackSpeed;
-        private Transform _prevSeg;
         private bool _isTrackLoaded;
-        private Transform _segParent;
         private GameObject _trackParent;
+        private Transform _segmentParent;
         private List<GameObject> _segments;
-        private Stack<GameObject> _segStack;
+        private Transform _previousSegment;
+        private Stack<GameObject> _segmentStack;
         private Vector3 _currentPosition = new (0, 0, 0);
         
         [Tooltip("List of race tracks")] 
@@ -28,14 +28,13 @@ namespace FPP.Scripts.Controllers
         [SerializeField]
         private float speedDampener;
         
-        [Header("Segments")]
         [Tooltip("Initial amount of segment to load at start")] 
         [SerializeField]
-        private int initSegAmount;
+        private int initialSegmentAmount;
 
         [Tooltip("Amount of incremental segments to load at run")] 
         [SerializeField]
-        private int incrSegAmount;
+        private int incrementalSegmentAmount;
         
         private void OnEnable()
         {
@@ -59,7 +58,7 @@ namespace FPP.Scripts.Controllers
 
         void Update()
         {
-            _segParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
+            _segmentParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
         }
 
         private void InitTrack()
@@ -68,14 +67,14 @@ namespace FPP.Scripts.Controllers
             
             _trackParent = Instantiate(Resources.Load("RaceTrack", typeof(GameObject))) as GameObject;
             
-            if (_trackParent)
-                _segParent = _trackParent.transform.Find("Segments");
+            if (_trackParent != null) 
+                _segmentParent = _trackParent.transform.Find("Segments");
             
-            _prevSeg = null;
+            _previousSegment = null;
             
-            _segStack = new Stack<GameObject>(_segments);
+            _segmentStack = new Stack<GameObject>(_segments);
             
-            LoadSegment(initSegAmount);
+            LoadSegment(initialSegmentAmount);
             
             RaceEventBus.Publish(RaceEventType.COUNTDOWN);
         }
@@ -84,36 +83,30 @@ namespace FPP.Scripts.Controllers
         {
             for (int i = 0; i < amount; i++)
             {
-                if (_segStack.Count > 0)
+                if (_segmentStack.Count > 0)
                 {
-                    GameObject segment = 
-                        Instantiate(
-                            _segStack.Pop(), _segParent.transform);
+                    GameObject segment = Instantiate(_segmentStack.Pop(), _segmentParent.transform);
 
-                    if (!_prevSeg) 
+                    if (!_previousSegment) 
                         _currentPosition.z = 0;
                     
-                    if (_prevSeg)
-                        _currentPosition.z =
-                            _prevSeg.position.z 
-                            + 
-                            track.segmentLength;
+                    if (_previousSegment)
+                        _currentPosition.z = _previousSegment.position.z + track.segmentLength;
 
                     segment.transform.position = _currentPosition;
                     
                     segment.AddComponent<TrackSegment>(); 
                     
-                    segment.GetComponent<TrackSegment>().
-                            trackController = this;
+                    segment.GetComponent<TrackSegment>().trackController = this;
                     
-                    _prevSeg = segment.transform;
+                    _previousSegment = segment.transform;
                 }
             }
         }
 
         public void LoadNextSegment()
         {
-            LoadSegment(incrSegAmount);
+            LoadSegment(incrementalSegmentAmount);
         }
 
         public override void Notify(Subject subject)
