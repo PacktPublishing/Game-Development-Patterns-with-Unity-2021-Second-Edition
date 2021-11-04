@@ -12,24 +12,26 @@ namespace FPP.Scripts.Input
         private bool _isReplaying;
         private float _replayTime;
         private float _recordingTime;
-        private SortedList<float, Command> _recordedCommands = new SortedList<float, Command>();
+        private readonly SortedList<float, Command> _recordedCommands = new ();
 
         void OnEnable()
         {
             RaceEventBus.Subscribe(RaceEventType.START, Record);
-            RaceEventBus.Subscribe(RaceEventType.FINISH, SaveReplay);
+            RaceEventBus.Subscribe(RaceEventType.REPLAY, Replay);
         }
 
         void OnDisable()
         {
             RaceEventBus.Unsubscribe(RaceEventType.START, Record);
-            RaceEventBus.Unsubscribe(RaceEventType.FINISH, SaveReplay);
+            RaceEventBus.Unsubscribe(RaceEventType.REPLAY, Replay);
         }
 
         public void ExecuteCommand(Command command)
         {
             command.Execute();
-            if (_isRecording) _recordedCommands.Add(_recordingTime, command);
+           
+            if (_isRecording) 
+                _recordedCommands.Add(_recordingTime, command);
         }
 
         public void Record()
@@ -44,13 +46,7 @@ namespace FPP.Scripts.Input
             _isReplaying = !_isReplaying;
             _recordedCommands.Reverse();
         }
-
-        public void SaveReplay()
-        {
-            //byte[] bytes = SerializationUtility.SerializeValue(_recordedCommands, DataFormat.Binary);
-            //File.WriteAllBytes(Application.dataPath + "/replay.bin", bytes);
-        }
-
+        
         void FixedUpdate()
         {
             if (_isRecording)
@@ -59,6 +55,7 @@ namespace FPP.Scripts.Input
             if (_isReplaying)
             {
                 _replayTime += Time.deltaTime;
+                
                 if (_recordedCommands.Any())
                 {
                     if (Mathf.Approximately(_replayTime, _recordedCommands.Keys[0]))

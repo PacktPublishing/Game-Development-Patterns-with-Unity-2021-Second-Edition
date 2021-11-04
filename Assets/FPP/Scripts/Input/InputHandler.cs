@@ -39,12 +39,14 @@ namespace FPP.Scripts.Input
         {
             RaceEventBus.Subscribe(RaceEventType.START, ToggleInputLock);
             RaceEventBus.Subscribe(RaceEventType.FINISH, ToggleInputLock);
+            RaceEventBus.Subscribe(RaceEventType.RESTART, ToggleInputLock);
         }
 
         void OnDisable()
         {
             RaceEventBus.Unsubscribe(RaceEventType.START, ToggleInputLock);
             RaceEventBus.Unsubscribe(RaceEventType.FINISH, ToggleInputLock);
+            RaceEventBus.Unsubscribe(RaceEventType.RESTART, ToggleInputLock);
         }
 
         private void ToggleInputLock()

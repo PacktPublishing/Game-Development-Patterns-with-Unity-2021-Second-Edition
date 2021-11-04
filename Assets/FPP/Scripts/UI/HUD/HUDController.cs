@@ -120,5 +120,10 @@ namespace FPP.Scripts.UI.HUD
         {
             RaceEventBus.Publish(RaceEventType.RESTART);
         }
+        
+        public void StartReplay()
+        {
+            RaceEventBus.Publish(RaceEventType.REPLAY);
+        }
     }
 }
