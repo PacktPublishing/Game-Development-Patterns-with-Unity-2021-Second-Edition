@@ -12,8 +12,9 @@ namespace FPP.Scripts.Input
         private bool _isReplaying;
         private float _replayTime;
         private float _recordingTime;
-        private readonly SortedList<float, Command> _recordedCommands = new ();
-
+        private SortedList<float, Command> _recordBackup;
+        private SortedList<float, Command> _recordedCommands = new ();
+        
         void OnEnable()
         {
             RaceEventBus.Subscribe(RaceEventType.START, Record);
@@ -40,11 +41,21 @@ namespace FPP.Scripts.Input
             _isRecording = !_isRecording;
         }
 
-        public void Replay()
+        public void Replay() 
         {
             _replayTime = 0.0f;
-            _isReplaying = !_isReplaying;
-            _recordedCommands.Reverse();
+            _isReplaying = true;
+            
+            // For the FPP, we will not integrate serialization, so this is just a placeholder implementation
+            if (_recordBackup != null)
+            {
+                _recordedCommands = new(_recordBackup);
+            }
+            else
+            {
+                _recordedCommands.Reverse();
+                _recordBackup = new(_recordedCommands);
+            }
         }
         
         void FixedUpdate()

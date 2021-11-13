@@ -50,6 +50,7 @@ namespace FPP.Scripts.UI.HUD
         {
             RaceEventBus.Subscribe(RaceEventType.START, StartTimer);
             RaceEventBus.Subscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            RaceEventBus.Subscribe(RaceEventType.REPLAY, DisplayReplayMenu);
             RaceEventBus.Subscribe(RaceEventType.FINISH, DisplayRestartMenu);
             RaceEventBus.Subscribe(RaceEventType.COUNTDOWN, DisplayCountdownTimer);
         }
@@ -58,6 +59,7 @@ namespace FPP.Scripts.UI.HUD
         {
             RaceEventBus.Unsubscribe(RaceEventType.START, StartTimer);
             RaceEventBus.Unsubscribe(RaceEventType.PAUSE, DisplayPauseMenu);
+            RaceEventBus.Unsubscribe(RaceEventType.REPLAY, DisplayReplayMenu);
             RaceEventBus.Unsubscribe(RaceEventType.FINISH, DisplayRestartMenu);
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, DisplayCountdownTimer);
         }
@@ -65,6 +67,12 @@ namespace FPP.Scripts.UI.HUD
         private void StartTimer()
         {
             raceTimer.GetComponent<RaceTimer>().StartTimer();
+        }
+
+        private void DisplayReplayMenu() // TODO: Hide timer during replay
+        {
+            restartMenu.SetActive(false);
+            statusField.text = "REPLAY";
         }
 
         private void DisplayPauseMenu()

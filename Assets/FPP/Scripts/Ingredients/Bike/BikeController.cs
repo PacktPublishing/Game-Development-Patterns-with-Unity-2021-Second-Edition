@@ -60,6 +60,7 @@ namespace FPP.Scripts.Ingredients.Bike
 
             RaceEventBus.Subscribe(RaceEventType.FINISH, Brake);
             RaceEventBus.Subscribe(RaceEventType.START, StartBike);
+            RaceEventBus.Subscribe(RaceEventType.REPLAY, ResetBike);
             RaceEventBus.Subscribe(RaceEventType.RESTART, StopBike);
             RaceEventBus.Subscribe(RaceEventType.COUNTDOWN, StopBike);
         }
@@ -72,6 +73,7 @@ namespace FPP.Scripts.Ingredients.Bike
 
             RaceEventBus.Unsubscribe(RaceEventType.FINISH, Brake);
             RaceEventBus.Unsubscribe(RaceEventType.START, StartBike);
+            RaceEventBus.Unsubscribe(RaceEventType.REPLAY, ResetBike);
             RaceEventBus.Unsubscribe(RaceEventType.RESTART, StopBike);
             RaceEventBus.Unsubscribe(RaceEventType.COUNTDOWN, StopBike);
         }
@@ -118,6 +120,13 @@ namespace FPP.Scripts.Ingredients.Bike
             _animator = gameObject.GetComponent<Animator>();
         }
 
+        private void ResetBike() // TODO: Add animation state to reset bike to initial state
+        {
+            _currentRail = 1;
+            _animator.SetBool("isMoving", true);
+
+        }
+        
         public void StartBike()
         {
             _animator.SetBool("isMoving", true);

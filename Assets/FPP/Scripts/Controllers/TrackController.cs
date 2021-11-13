@@ -10,6 +10,7 @@ namespace FPP.Scripts.Controllers
 {
     public class TrackController : Observer
     {
+        private bool _isReplaying;
         private float _trackSpeed;
         private bool _isTrackLoaded;
         private GameObject _trackParent;
@@ -38,12 +39,14 @@ namespace FPP.Scripts.Controllers
         
         private void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.RESTART, InitTrack);
+            RaceEventBus.Subscribe(RaceEventType.REPLAY, ReplayTrack);
+            RaceEventBus.Subscribe(RaceEventType.RESTART, RestartTrack);
         }
 
         private void OnDisable()
         {
-            RaceEventBus.Unsubscribe(RaceEventType.RESTART, InitTrack);
+            RaceEventBus.Unsubscribe(RaceEventType.REPLAY, ReplayTrack);
+            RaceEventBus.Unsubscribe(RaceEventType.RESTART, RestartTrack);
         }
 
         void Awake()
@@ -61,22 +64,42 @@ namespace FPP.Scripts.Controllers
             _segmentParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
         }
 
+        private void ReplayTrack()
+        {
+            _isReplaying = true;
+            InitTrack();
+        }
+        
+        private void RestartTrack()
+        {
+            _isReplaying = false;
+            InitTrack();
+        }
+
         private void InitTrack()
         {
-            Destroy(_trackParent);
-            
-            _trackParent = Instantiate(Resources.Load("RaceTrack", typeof(GameObject))) as GameObject;
-            
-            if (_trackParent != null) 
-                _segmentParent = _trackParent.transform.Find("Segments");
-            
+            if (!_isReplaying)
+            {
+                Destroy(_trackParent);
+
+                _trackParent = Instantiate(Resources.Load("BaseTrack", typeof(GameObject))) as GameObject;
+
+                if (_trackParent != null)
+                    _segmentParent = _trackParent.transform.Find("Segments");
+            }
+            else
+            {
+                _trackParent.GetComponent<BaseTrack>().ResetBikeToSpawnPoint();
+            }
+
             _previousSegment = null;
             
             _segmentStack = new Stack<GameObject>(_segments);
             
             LoadSegment(initialSegmentAmount);
             
-            RaceEventBus.Publish(RaceEventType.COUNTDOWN);
+            if (!_isReplaying)
+                RaceEventBus.Publish(RaceEventType.COUNTDOWN);
         }
 
         private void LoadSegment(int amount)
@@ -111,9 +134,10 @@ namespace FPP.Scripts.Controllers
 
         public override void Notify(Subject subject)
         {
-            BikeController controller = subject.GetComponent<BikeController>();
-            if (controller)
-                _trackSpeed = controller.CurrentSpeed - (controller.CurrentSpeed * speedDampener / 100);
+            BikeController bikeController = subject.GetComponent<BikeController>();
+            
+            if (bikeController)
+                _trackSpeed = bikeController.CurrentSpeed - (bikeController.CurrentSpeed * speedDampener / 100);
         }
     }
 }

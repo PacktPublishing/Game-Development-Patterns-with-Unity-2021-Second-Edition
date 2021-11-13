@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using FPP.Scripts.Core;
 using FPP.Scripts.Interfaces;
+using System.Collections.Generic;
 
 namespace FPP.Scripts.Systems
 {

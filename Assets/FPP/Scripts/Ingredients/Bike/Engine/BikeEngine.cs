@@ -12,18 +12,57 @@ namespace FPP.Scripts.Ingredients.Bike.Engine
         public float minTemp = 50.0f;
         public float maxTemp = 65.0f;
         public float tempRate = 5.0f;
+        [HideInInspector]
         public float currentTemp;
 
-        public int CurrentSpeed { get; set; }
-        public bool IsEngineOn { get; private set; }
-        public BikeController BikeController { get; set; }
+        [HideInInspector]
+        public int CurrentSpeed;
         
-        // TODO: Refactor this properties, because they not to safe to call directly
-        // TODO: Consider using the visitor pattern to update engine's properties
-        public bool IsTurboOn { get { return _turboCharger.IsTurboOn; } }
-        public int DefaultSpeed { get { return BikeController.bikeBlueprint.defaultSpeed; } }
-        public int TurboBoostAmount { get { return BikeController.bikeBlueprint.turboBoost; } }
-        public float TurboDuration { get { return BikeController.bikeBlueprint.turboDuration; } }
+        [HideInInspector]
+        public BikeController BikeController;
+        
+        public bool IsEngineOn { get; private set; }
+        
+        public bool IsTurboOn // TODO: Refactor this properties, because they not to safe to call directly
+        {
+            get
+            {
+                return _turboCharger.IsTurboOn;
+            }
+        }
+
+        public int DefaultSpeed  // TODO: Consider using the visitor pattern to update engine's properties
+        {
+            get
+            {
+                if (BikeController)
+                    return BikeController.bikeBlueprint.defaultSpeed;
+
+                return 0;
+            }
+        }
+
+        public int TurboBoostAmount
+        {
+            get
+            {
+                if (BikeController)
+                    return BikeController.bikeBlueprint.turboBoost;
+                
+                return 0;
+            }
+        }
+
+        public float TurboDuration
+        {
+            get
+            {
+                if (BikeController)
+                    return BikeController.bikeBlueprint.turboDuration;
+
+                return 0;
+            }
+        }
 
         private FuelPump _fuelPump;
         private TurboCharger _turboCharger;

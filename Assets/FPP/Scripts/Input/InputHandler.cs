@@ -37,8 +37,9 @@ namespace FPP.Scripts.Input
 
         void OnEnable()
         {
-            RaceEventBus.Subscribe(RaceEventType.START, ToggleInputLock);
-            RaceEventBus.Subscribe(RaceEventType.FINISH, ToggleInputLock);
+            // TODO: Toggling the input lock is causing unexpected when switching between top-level race states, replace with explicit input lock states
+            RaceEventBus.Subscribe(RaceEventType.START, ToggleInputLock); 
+            RaceEventBus.Subscribe(RaceEventType.FINISH, ToggleInputLock); 
             RaceEventBus.Subscribe(RaceEventType.RESTART, ToggleInputLock);
         }
 

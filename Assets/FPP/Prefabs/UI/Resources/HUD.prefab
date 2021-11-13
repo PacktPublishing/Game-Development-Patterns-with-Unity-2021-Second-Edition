@@ -1148,7 +1148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Restart Race
+  m_Text: 'Retry Race
 
 '
 --- !u!1 &5042220298580081695
@@ -2680,6 +2680,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Start Replay
+  m_Text: 'View Replay
 
 '
