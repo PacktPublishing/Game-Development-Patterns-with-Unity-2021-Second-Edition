@@ -17,7 +17,7 @@ namespace FPP.Scripts.Ingredients.Pickups
 
         public void Visit(BikeShield bikeShield)
         {
-            bikeShield.strength += shieldBoost;
+            bikeShield.currentStrength += shieldBoost;
         }
     }
 }

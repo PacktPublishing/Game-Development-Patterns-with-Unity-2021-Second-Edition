@@ -121,7 +121,7 @@ namespace FPP.Scripts.UI.HUD
                 _bikeController = subject.GetComponent<BikeController>();
             
             if (_bikeController.BikeShield)
-                UpdateShieldHealthMeter(_bikeController.BikeShield.strength);
+                UpdateShieldHealthMeter(_bikeController.BikeShield.currentStrength);
         }
 
         public void RestartRace()

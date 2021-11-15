@@ -1,13 +1,24 @@
 using UnityEngine;
 
 public class BikeShield : MonoBehaviour, IBikeElement
-{ 
-    public int strength = 100;
+{
+    public int currentStrength;
+    private const int DefaultStrength = 100; // Percentage points
 
-    public float Damage(int damage)
+    void Awake()
     {
-        strength -= damage;
-        return strength;
+        currentStrength = DefaultStrength;
+    }
+
+    public float TakeDamage(int damage)
+    {
+        currentStrength -= damage;
+        return currentStrength;
+    }
+
+    public void ResetShieldStrength()
+    {
+        currentStrength = DefaultStrength;
     }
     
     public void Accept(IVisitor visitor)

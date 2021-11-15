@@ -87,7 +87,7 @@ namespace FPP.Scripts.Ingredients.Bike
                     FollowCamera.Distort();
 
             if (BikeShield) 
-                if (BikeShield.Damage((int) type) <= 0)
+                if (BikeShield.TakeDamage((int) type) <= 0)
                     Destruct();
             
             Notify();
@@ -95,7 +95,7 @@ namespace FPP.Scripts.Ingredients.Bike
         
         public void Destruct()
         {
-            // TODO: Add destroy state
+            // TODO: Add destruct state
         }
 
         private void InitBikeComponents()
@@ -103,7 +103,7 @@ namespace FPP.Scripts.Ingredients.Bike
             BikeEngine = (BikeEngine) FindObjectOfType(typeof(BikeEngine));
             
             if (BikeEngine)
-                BikeEngine.BikeController = this; // TODO: To decouple
+                BikeEngine.BikeController = this; // TODO: Let's decouple this two components for explicitely referencing each other
             
             BikeShield = (BikeShield) FindObjectOfType(typeof(BikeShield));
             BikeWeapon = (BikeWeapon) FindObjectOfType(typeof(BikeWeapon));
@@ -122,9 +122,11 @@ namespace FPP.Scripts.Ingredients.Bike
 
         private void ResetBike() // TODO: Add animation state to reset bike to initial state
         {
-            _currentRail = 1;
-            _animator.SetBool("isMoving", true);
-
+            _currentRail = 1; // TODO: It's the track controller's responsability to reset the current rail, not the bike controller, needs to be refactored.
+            
+            _animator.SetTrigger("Reset");
+            
+            StartBike(); // TODO: Temporary hack, the reset should not start the bike, but we will use this state to start the replay temporarily.
         }
         
         public void StartBike()
