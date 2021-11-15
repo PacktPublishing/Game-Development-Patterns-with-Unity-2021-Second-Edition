@@ -14,10 +14,6 @@ namespace FPP.Scripts.Ingredients.Bike
 {
     public class BikeController : Subject, IBikeElement, IDamageable, IDestructible
     {
-        public int currentRail; // TODO: Duplicate properties, to be removed
-
-        private int _currentRail = 1; // TODO: The track controller should manage and return which track is active
-        
         public BikeBlueprint bikeBlueprint;
         
         public int SpeedPenalty { private get; set; }
@@ -122,10 +118,7 @@ namespace FPP.Scripts.Ingredients.Bike
 
         private void ResetBike() // TODO: Add animation state to reset bike to initial state
         {
-            _currentRail = 1; // TODO: It's the track controller's responsability to reset the current rail, not the bike controller, needs to be refactored.
-            
             _animator.SetTrigger("Reset");
-            
             StartBike(); // TODO: Temporary hack, the reset should not start the bike, but we will use this state to start the replay temporarily.
         }
         
@@ -148,26 +141,16 @@ namespace FPP.Scripts.Ingredients.Bike
         {
             _animator.SetTrigger("Brake");
         }
-
-
-        public void Turn(BikeDirection direction) // TODO: The bike controller should ask the track controller for the next available track based on the direction it's moving, refactor this entire method
+        
+        public void Turn(BikeDirection direction)
         {
-            if (direction == BikeDirection.Left) 
+            if (TrackController.IsNextRailAvailable(direction))
             {
-                if (_currentRail != 1) 
-                {
-                    _currentRail -= 1;
+                if (direction == BikeDirection.Left)
                     _animator.SetTrigger("TurnLeft");
-                }
-            }
 
-            if (direction == BikeDirection.Right)
-            {
-                if (_currentRail != 4) 
-                {
-                    _currentRail += 1;
+                if (direction == BikeDirection.Right)
                     _animator.SetTrigger("TurnRight");
-                }
             }
         }
         

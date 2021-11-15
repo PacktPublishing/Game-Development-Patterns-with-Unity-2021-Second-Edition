@@ -13,6 +13,7 @@ namespace FPP.Scripts.Controllers
         private bool _isReplaying;
         private float _trackSpeed;
         private bool _isTrackLoaded;
+        private int _currentActiveRail;
         private GameObject _trackParent;
         private Transform _segmentParent;
         private List<GameObject> _segments;
@@ -23,6 +24,14 @@ namespace FPP.Scripts.Controllers
         [Tooltip("List of race tracks")] 
         [SerializeField]
         private RaceTrack track;
+        
+        [Tooltip("Number of rails per track")] 
+        [SerializeField]
+        private int railAmount; // TODO: This should be customizable thru a property in RaceTrack scriptable objects.
+        
+        [Tooltip("Starting line rail number")] 
+        [SerializeField]
+        private int startingRail;
         
         [Tooltip("Dampen the speed of the track")] 
         [Range(0.0f, 100.0f)] 
@@ -56,6 +65,7 @@ namespace FPP.Scripts.Controllers
 
         void Start()
         {
+            _currentActiveRail = startingRail;
             InitTrack();
         }
 
@@ -64,15 +74,44 @@ namespace FPP.Scripts.Controllers
             _segmentParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
         }
 
-        private void ReplayTrack()
+        public bool IsNextRailAvailable(BikeDirection direction) // TODO: Remove conditions and use bike direction enums values to evaluate rail availability. 
         {
+            if (direction == BikeDirection.Left)
+            {
+                if (_currentActiveRail != 1)
+                {
+                    _currentActiveRail -= 1;
+                    return true;
+                }
+            }
+            
+            if (direction == BikeDirection.Right)
+            {
+                if (_currentActiveRail != railAmount) 
+                {
+                    _currentActiveRail += 1;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void ReplayTrack() // TODO: Rename this method, it's not clear the difference between restart and replay.
+        {
+            _currentActiveRail = startingRail;
+            
             _isReplaying = true;
+
             InitTrack();
         }
         
         private void RestartTrack()
         {
+            _currentActiveRail = startingRail;
+            
             _isReplaying = false;
+            
             InitTrack();
         }
 

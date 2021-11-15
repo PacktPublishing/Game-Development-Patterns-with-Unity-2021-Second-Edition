@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 4481348048287804564}
   - component: {fileID: 4481348048287804567}
   - component: {fileID: 4481348048287804566}
-  - component: {fileID: 4481348048287804554}
-  - component: {fileID: 5297642787710662961}
   m_Layer: 0
   m_Name: Rail3
   m_TagString: Untagged
@@ -100,32 +98,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4481348048287804554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348048287804561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51125648e257bc48966735561f96a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railNumber: 3
---- !u!65 &5297642787710662961
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348048287804561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &4481348048675466293
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,8 +110,6 @@ GameObject:
   - component: {fileID: 4481348048675466280}
   - component: {fileID: 4481348048675466283}
   - component: {fileID: 4481348048675466282}
-  - component: {fileID: 4481348048675466286}
-  - component: {fileID: 4525433137907979706}
   m_Layer: 0
   m_Name: Rail4
   m_TagString: Untagged
@@ -226,32 +196,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4481348048675466286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348048675466293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51125648e257bc48966735561f96a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railNumber: 4
---- !u!65 &4525433137907979706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348048675466293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &4481348049846539358
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,8 +208,6 @@ GameObject:
   - component: {fileID: 4481348049846539357}
   - component: {fileID: 4481348049846539356}
   - component: {fileID: 4481348049846539359}
-  - component: {fileID: 4481348049846539347}
-  - component: {fileID: 6529582880611241902}
   m_Layer: 0
   m_Name: Rail2
   m_TagString: Untagged
@@ -352,32 +294,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4481348049846539347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348049846539358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51125648e257bc48966735561f96a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railNumber: 2
---- !u!65 &6529582880611241902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348049846539358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &4481348050248824134
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,8 +306,6 @@ GameObject:
   - component: {fileID: 4481348050248824133}
   - component: {fileID: 4481348050248824132}
   - component: {fileID: 4481348050248824135}
-  - component: {fileID: 4481348050248824187}
-  - component: {fileID: 3822930487854551982}
   m_Layer: 0
   m_Name: Rail1
   m_TagString: Untagged
@@ -478,32 +392,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4481348050248824187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348050248824134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51125648e257bc48966735561f96a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railNumber: 1
---- !u!65 &3822930487854551982
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4481348050248824134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &4845175206753273236
 GameObject:
   m_ObjectHideFlags: 0

@@ -139,6 +139,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
         type: 3}
+      propertyPath: StartRail
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
+        type: 3}
       propertyPath: raceTrack
       value: 
       objectReference: {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16,
@@ -147,6 +152,16 @@ PrefabInstance:
         type: 3}
       propertyPath: trackSize
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
+        type: 3}
+      propertyPath: railAmount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
+        type: 3}
+      propertyPath: startingRail
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4499281963094794081, guid: 1407f4cc4ad5225448c209e8ca9a7e94,
         type: 3}
