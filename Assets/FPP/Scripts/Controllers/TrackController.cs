@@ -14,6 +14,7 @@ namespace FPP.Scripts.Controllers
         private float _trackSpeed;
         private bool _isTrackLoaded;
         private int _currentActiveRail;
+        private int _currentTrackIndex;
         private GameObject _trackParent;
         private Transform _segmentParent;
         private List<GameObject> _segments;
@@ -21,9 +22,9 @@ namespace FPP.Scripts.Controllers
         private Stack<GameObject> _segmentStack;
         private Vector3 _currentPosition = new (0, 0, 0);
         
-        [Tooltip("List of race tracks")] 
+        [Tooltip("List of race tracks")]
         [SerializeField]
-        private RaceTrack track;
+        public List<RaceTrack> tracks = new();
         
         [Tooltip("Number of rails per track")] 
         [SerializeField]
@@ -58,20 +59,20 @@ namespace FPP.Scripts.Controllers
             RaceEventBus.Unsubscribe(RaceEventType.RESTART, RestartTrack);
         }
 
-        void Awake()
+        private void Awake()
         {
-            _segments = Enumerable.Reverse(track.segments).ToList();
+            ReserveTrackSegments();
         }
 
-        void Start()
+       private void Start()
         {
             _currentActiveRail = startingRail;
-            InitTrack();
         }
 
-        void Update()
+        private void Update()
         {
-            _segmentParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
+            if (_segmentParent)
+                _segmentParent.transform.Translate(Vector3.back * (_trackSpeed * Time.deltaTime));
         }
 
         public bool IsNextRailAvailable(BikeDirection direction) // TODO: Remove conditions and use bike direction enums values to evaluate rail availability. 
@@ -97,13 +98,31 @@ namespace FPP.Scripts.Controllers
             return false;
         }
 
+        public void LoadNextTrack(int trackIndex)
+        {
+            _currentActiveRail = startingRail;
+            
+            _isReplaying = false;
+
+            _currentTrackIndex = 1;
+
+            ReserveTrackSegments();
+            
+            InitTrack(trackIndex);
+        }
+
+        private void ReserveTrackSegments()
+        {
+            _segments = Enumerable.Reverse(tracks[_currentTrackIndex].segments).ToList();
+        }
+
         private void ReplayTrack() // TODO: Rename this method, it's not clear the difference between restart and replay.
         {
             _currentActiveRail = startingRail;
             
             _isReplaying = true;
 
-            InitTrack();
+            InitTrack(_currentTrackIndex);
         }
         
         private void RestartTrack()
@@ -112,11 +131,13 @@ namespace FPP.Scripts.Controllers
             
             _isReplaying = false;
             
-            InitTrack();
+            InitTrack(_currentTrackIndex);
         }
 
-        private void InitTrack()
+        public void InitTrack(int trackIndex)
         {
+            _currentTrackIndex = trackIndex;
+            
             if (!_isReplaying)
             {
                 Destroy(_trackParent);
@@ -153,7 +174,7 @@ namespace FPP.Scripts.Controllers
                         _currentPosition.z = 0;
                     
                     if (_previousSegment)
-                        _currentPosition.z = _previousSegment.position.z + track.segmentLength;
+                        _currentPosition.z = _previousSegment.position.z + tracks[_currentTrackIndex].segmentLength;
 
                     segment.transform.position = _currentPosition;
                     

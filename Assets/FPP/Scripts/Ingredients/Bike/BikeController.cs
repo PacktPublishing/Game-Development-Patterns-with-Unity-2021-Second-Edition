@@ -31,10 +31,8 @@ namespace FPP.Scripts.Ingredients.Bike
                 {
                     return BikeEngine.CurrentSpeed - SpeedPenalty;
                 }
-                else
-                {
-                    return BikeEngine.CurrentSpeed;
-                }
+
+                return BikeEngine.CurrentSpeed;
             }
         }
 

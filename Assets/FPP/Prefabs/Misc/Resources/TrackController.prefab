@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a36ad68ff3ef7940b0e54f324a36e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Track: {fileID: 4499281963094794083, guid: 177f8e31b20c93a44a590c163238a9cc, type: 3}
-  m_Obstacles: {fileID: 0}
-  m_TurboSpeed: 80
-  m_DefaultSpeed: 40
+  tracks:
+  - {fileID: 11400000, guid: 52bb87bf712336641b08a72054241a16, type: 2}
+  - {fileID: 11400000, guid: 986632af4b5a13a48b11d375887a34e7, type: 2}
+  railAmount: 4
+  startingRail: 1
+  speedDampener: 27
+  initialSegmentAmount: 3
+  incrementalSegmentAmount: 2

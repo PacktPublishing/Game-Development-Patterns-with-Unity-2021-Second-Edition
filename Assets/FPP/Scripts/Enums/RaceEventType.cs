@@ -4,10 +4,11 @@
     {
         COUNTDOWN,
         START,
-        FINISH,
-        QUIT,
-        PAUSE,
+        FINISH, 
+        QUIT, 
+        PAUSE, 
         RESTART,
-        REPLAY
+        REPLAY,
+        END
     }
 }

@@ -4,6 +4,7 @@ using FPP.Scripts.Systems;
 
 namespace FPP.Scripts.Tools
 {
+#if UNITY_EDITOR
     public class Sidekick : EditorWindow
     {
         [MenuItem("BladeRacer/Sidekick")]
@@ -23,4 +24,5 @@ namespace FPP.Scripts.Tools
             }
         }
     }
+#endif
 }

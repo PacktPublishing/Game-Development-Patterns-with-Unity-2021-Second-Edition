@@ -133,5 +133,10 @@ namespace FPP.Scripts.UI.HUD
         {
             RaceEventBus.Publish(RaceEventType.REPLAY);
         }
+
+        public void EndRace()
+        {
+            RaceEventBus.Publish(RaceEventType.END);
+        }
     }
 }

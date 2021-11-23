@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2def8b25deb5125469deadee6b12cad3, type: 3}
+  m_Name: Drones
+  m_EditorClassIdentifier: 
+  timeOfDay: 2
+  segmentLength: 500
+  segments:
+  - {fileID: 592042884711140194, guid: 3d6dcc5aa3aa066429dba244734a8271, type: 3}
+  - {fileID: 592042884711140194, guid: 3d6dcc5aa3aa066429dba244734a8271, type: 3}
+  - {fileID: 592042884711140194, guid: 3d6dcc5aa3aa066429dba244734a8271, type: 3}
+  - {fileID: 1218411944215954466, guid: cb6b87ae4f3079b4c99faa2abafcd5d0, type: 3}
