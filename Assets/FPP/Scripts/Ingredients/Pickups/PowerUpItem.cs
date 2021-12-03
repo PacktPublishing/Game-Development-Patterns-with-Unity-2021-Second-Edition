@@ -1,4 +1,5 @@
 using UnityEngine;
+using FPP.Scripts.Ingredients.Bike.Elements;
 
 namespace FPP.Scripts.Ingredients.Pickups
 {
@@ -17,7 +18,11 @@ namespace FPP.Scripts.Ingredients.Pickups
 
         public void Visit(BikeShield bikeShield)
         {
-            bikeShield.currentStrength += shieldBoost;
+            var newShieldStrength = bikeShield.currentStrength + shieldBoost;
+
+            bikeShield.currentStrength = (newShieldStrength < bikeShield.maxStrength) 
+                ? bikeShield.currentStrength = newShieldStrength
+                : bikeShield.currentStrength = bikeShield.maxStrength;
         }
     }
 }

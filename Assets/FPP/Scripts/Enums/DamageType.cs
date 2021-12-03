@@ -2,8 +2,8 @@ namespace FPP.Scripts.Enums
 { 
     public enum DamageType
     {
-        None,
-        Laser,
-        Collision,
+        None = 0,
+        Laser = 5,
+        Collision = 10,
     }
 }

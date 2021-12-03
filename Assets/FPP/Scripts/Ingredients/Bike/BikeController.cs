@@ -81,7 +81,7 @@ namespace FPP.Scripts.Ingredients.Bike
                     FollowCamera.Distort();
 
             if (BikeShield) 
-                if (BikeShield.TakeDamage((int) type) <= 0)
+                if (BikeShield.TakeDamage(Mathf.RoundToInt(amount)) <= 0)
                     Destruct();
             
             Notify();
@@ -142,14 +142,12 @@ namespace FPP.Scripts.Ingredients.Bike
         
         public void Turn(BikeDirection direction)
         {
-            if (TrackController.IsNextRailAvailable(direction))
-            {
+
                 if (direction == BikeDirection.Left)
                     _animator.SetTrigger("TurnLeft");
 
                 if (direction == BikeDirection.Right)
                     _animator.SetTrigger("TurnRight");
-            }
         }
         
         public void Fire()

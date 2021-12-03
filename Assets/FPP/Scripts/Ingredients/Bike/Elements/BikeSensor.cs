@@ -31,7 +31,7 @@ public class BikeSensor : MonoBehaviour
         }
     }
     
-    public bool CheckCollision(BikeDirection direction)
+    public bool IsSensingCollision(BikeDirection direction)
     {
         if (Physics.Raycast(_startPosition, GetForwardDirection(direction), out _hit, sideDetectionDistance, _layer)) 
             return true;

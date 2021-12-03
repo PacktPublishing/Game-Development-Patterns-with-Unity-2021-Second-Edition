@@ -10,9 +10,9 @@ namespace FPP.Scripts.Controllers
 {
     public class TrackController : Observer
     {
-        private bool _isReplaying;
         private float _trackSpeed;
         private bool _isTrackLoaded;
+        private bool _isReplayEnabled;
         private int _currentActiveRail;
         private int _currentTrackIndex;
         private GameObject _trackParent;
@@ -23,7 +23,6 @@ namespace FPP.Scripts.Controllers
         private Vector3 _currentPosition = new (0, 0, 0);
         
         [Tooltip("List of race tracks")]
-        [SerializeField]
         public List<RaceTrack> tracks = new();
         
         [Tooltip("Number of rails per track")] 
@@ -47,28 +46,6 @@ namespace FPP.Scripts.Controllers
         [SerializeField]
         private int incrementalSegmentAmount;
         
-        private void OnEnable()
-        {
-            RaceEventBus.Subscribe(RaceEventType.REPLAY, ReplayTrack);
-            RaceEventBus.Subscribe(RaceEventType.RESTART, RestartTrack);
-        }
-
-        private void OnDisable()
-        {
-            RaceEventBus.Unsubscribe(RaceEventType.REPLAY, ReplayTrack);
-            RaceEventBus.Unsubscribe(RaceEventType.RESTART, RestartTrack);
-        }
-
-        private void Awake()
-        {
-            ReserveTrackSegments();
-        }
-
-       private void Start()
-        {
-            _currentActiveRail = startingRail;
-        }
-
         private void Update()
         {
             if (_segmentParent)
@@ -98,47 +75,29 @@ namespace FPP.Scripts.Controllers
             return false;
         }
 
-        public void LoadNextTrack(int trackIndex)
+        public void SpawnTrack(int trackIndex, bool isReplayEnabled)
         {
             _currentActiveRail = startingRail;
             
-            _isReplaying = false;
-
-            _currentTrackIndex = 1;
-
-            ReserveTrackSegments();
+            _isReplayEnabled = isReplayEnabled;
             
-            InitTrack(trackIndex);
-        }
+            if (_currentTrackIndex <= trackIndex)
+            {
+                _currentTrackIndex = trackIndex;
+                ReserveTrackSegments(_currentTrackIndex);
+            }
 
-        private void ReserveTrackSegments()
-        {
-            _segments = Enumerable.Reverse(tracks[_currentTrackIndex].segments).ToList();
-        }
-
-        private void ReplayTrack() // TODO: Rename this method, it's not clear the difference between restart and replay.
-        {
-            _currentActiveRail = startingRail;
-            
-            _isReplaying = true;
-
-            InitTrack(_currentTrackIndex);
+            SpawnTrack();
         }
         
-        private void RestartTrack()
+        private void ReserveTrackSegments(int trackIndex)
         {
-            _currentActiveRail = startingRail;
-            
-            _isReplaying = false;
-            
-            InitTrack(_currentTrackIndex);
+            _segments = Enumerable.Reverse(tracks[trackIndex].segments).ToList();
         }
-
-        public void InitTrack(int trackIndex)
+        
+        private void SpawnTrack()
         {
-            _currentTrackIndex = trackIndex;
-            
-            if (!_isReplaying)
+            if (!_isReplayEnabled)
             {
                 Destroy(_trackParent);
 
@@ -156,13 +115,13 @@ namespace FPP.Scripts.Controllers
             
             _segmentStack = new Stack<GameObject>(_segments);
             
-            LoadSegment(initialSegmentAmount);
+            SpawnSegment(initialSegmentAmount);
             
-            if (!_isReplaying)
+            if (!_isReplayEnabled)
                 RaceEventBus.Publish(RaceEventType.COUNTDOWN);
         }
 
-        private void LoadSegment(int amount)
+        private void SpawnSegment(int amount)
         {
             for (int i = 0; i < amount; i++)
             {
@@ -189,7 +148,7 @@ namespace FPP.Scripts.Controllers
 
         public void LoadNextSegment()
         {
-            LoadSegment(incrementalSegmentAmount);
+            SpawnSegment(incrementalSegmentAmount);
         }
 
         public override void Notify(Subject subject)

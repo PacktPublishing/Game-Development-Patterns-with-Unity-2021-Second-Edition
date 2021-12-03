@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class BikeShield : MonoBehaviour, IBikeElement
+namespace FPP.Scripts.Ingredients.Bike.Elements
 {
-    public int currentStrength;
-    private const int DefaultStrength = 100; // Percentage points
-
-    void Awake()
+    public class BikeShield : MonoBehaviour, IBikeElement
     {
-        currentStrength = DefaultStrength;
-    }
+        public int currentStrength;
+        public int maxStrength = 100; // Percentage
 
-    public float TakeDamage(int damage)
-    {
-        currentStrength -= damage;
-        return currentStrength;
-    }
+        void Awake()
+        {
+            currentStrength = maxStrength;
+        }
 
-    public void ResetShieldStrength()
-    {
-        currentStrength = DefaultStrength;
-    }
+        public float TakeDamage(int damage)
+        {
+            currentStrength -= damage;
+            return currentStrength;
+        }
+
+        public void ResetShieldStrength()
+        {
+            currentStrength = maxStrength;
+        }
     
-    public void Accept(IVisitor visitor)
-    {
-        visitor.Visit(this);
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }
