@@ -1,7 +1,3 @@
-## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B16075?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
------
-For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
-
 # Game Development Patterns with Unity 2021-Second Edition
 
 <a href="https://www.packtpub.com/product/game-development-patterns-with-unity-2021-second-edition/9781800200814"><img src="https://static.packt-cdn.com/products/9781800200814/cover/smaller" alt="Game Development Patterns with Unity 2021" height="256px" align="right"></a>
