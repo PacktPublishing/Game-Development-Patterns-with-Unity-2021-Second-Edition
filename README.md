@@ -81,3 +81,7 @@ is a game developer with over 15 years of experience in the industry. He has wor
 * [Hands-On Game Development Patterns with Unity 2019](https://www.packtpub.com/product/hands-on-game-development-patterns-with-unity-2019/9781789349337)
 
 
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800200814">https://packt.link/free-ebook/9781800200814 </a> </p>
